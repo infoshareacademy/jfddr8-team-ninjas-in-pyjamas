@@ -7,8 +7,8 @@ import Registration from "../Components/Registration";
 function Routing() {
   return (
       <Routes>
-        <Route path="/Registration" element={<Registration />} />
-        {/* <Route path="/Login" element={<Login />} /> */}
+        <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
       </Routes>
   );

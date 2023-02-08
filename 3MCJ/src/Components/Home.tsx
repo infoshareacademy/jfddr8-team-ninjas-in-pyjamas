@@ -1,37 +1,30 @@
-import React from 'react'
-// const productsOptions = [
-//   { value: 'mięso', label: 'Mięso' },
-//   { value: 'nabiał', label: 'Nabiał' },
-//   { value: 'wypieki', label: 'Wypieki' },
-//   { value: 'miody', label: 'Miody' },
-// ]
-
-// const locationOptions = [
-//   { value: 'Gdańsk', label: 'Gdańsk' },
-//   { value: 'Sopot', label: 'Sopot' },
-//   { value: 'Gdynia', label: 'Gdynia' }
-// ]
-
+import { useNavigate } from "react-router-dom";
 function Home() {
+  
+  const navigate = useNavigate();
+
+
   return (
     <div>
-      <label for="location">Lokalizacja:</label>
+      <div>
+        <button onClick={() => navigate('/login')}>Log in </button>
+      </div>
+      <label htmlFor="location">Lokalizacja:</label>
       <select name="location" id="location">
-        <option value="Gdańsk">Gdańsk</option>
-        <option value="Sopot">Sopot</option>
         <option value="Gdynia">Gdynia</option>
+        <option value="Sopot">Sopot</option>
+        <option value="Gdańsk">Gdańsk</option>
       </select>
-      <label for="products">Kategoria produktu:</label>
+      <label htmlFor="products">Kategoria produktu:</label>
       <select name="products" id="products">
         <option value="Wyroby-Miesne">Wyroby Mięsne</option>
         <option value="Wyroby-Rybne">Wyroby Rybne</option>
         <option value="nabiał">Nabiał</option>
         <option value="miód">Miód</option>
         <option value="Wyroby Alkoholowe">Wyroby Alkoholowe</option>
-
       </select>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
