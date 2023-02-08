@@ -23,9 +23,12 @@ function Home() {
       </select>
       <label for="products">Kategoria produktu:</label>
       <select name="products" id="products">
-        <option value="ryby">Ryby</option>
-        <option value="mięso">Mięso</option>
+        <option value="Wyroby-Miesne">Wyroby Mięsne</option>
+        <option value="Wyroby-Rybne">Wyroby Rybne</option>
         <option value="nabiał">Nabiał</option>
+        <option value="miód">Miód</option>
+        <option value="Wyroby Alkoholowe">Wyroby Alkoholowe</option>
+
       </select>
     </div>
   )

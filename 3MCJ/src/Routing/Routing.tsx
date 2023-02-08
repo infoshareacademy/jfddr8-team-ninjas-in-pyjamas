@@ -6,13 +6,11 @@ import Registration from "../Components/Registration";
 
 function Routing() {
   return (
-    <div>
       <Routes>
         <Route path="/Registration" element={<Registration />} />
-        <Route path="/Login" element={<Login />} />
+        {/* <Route path="/Login" element={<Login />} /> */}
         <Route path="/" element={<Home />} />
       </Routes>
-    </div>
   );
 }
 
