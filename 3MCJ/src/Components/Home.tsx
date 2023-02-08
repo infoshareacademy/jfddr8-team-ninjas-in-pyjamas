@@ -1,13 +1,34 @@
 import { useNavigate } from "react-router-dom";
+import { globalContext } from "../Context/Context";
+import { useContext } from "react";
+import { signOut } from "firebase/auth";
+import { firebaseAuth } from "../main";
+
 function Home() {
   
   const navigate = useNavigate();
+  const { setIsLogged, isLogged } = useContext(globalContext);
 
+  const handleLogInOut = () => {
+    if (!isLogged){
+      navigate('/login')
+    setIsLogged(!isLogged)
+    } else {
+      navigate('/')
+      setIsLogged(!isLogged)
+      signOut(firebaseAuth)
+    }  
+  }
+
+  const handleRegistration = () => {
+    navigate('/registration')
+  }
 
   return (
     <div>
       <div>
-        <button onClick={() => navigate('/login')}>Log in </button>
+        <button onClick={handleLogInOut}>{isLogged? "Wyloguj się": "Zaloguj się"}</button> 
+        <button onClick={handleRegistration}>Zarejestruj się</button>
       </div>
       <label htmlFor="location">Lokalizacja:</label>
       <select name="location" id="location">
