@@ -1,10 +1,16 @@
 import React from 'react'
 
-function Context() {
+
+
+export const globalContext = React.createContext<>
+
+function Context((props: PropsWithChildren): JSX.Element ) {
   return (
-    <div>
-      
-    </div>
+   
+      <globalContext.Provider value = {{}}>
+        {props.children}
+      </globalContext.Provider>
+
   )
 }
 
