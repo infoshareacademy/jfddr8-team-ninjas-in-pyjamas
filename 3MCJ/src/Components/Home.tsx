@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../main";
 import SellerPage from "./SellerPage";
+import SellersList from "./SellersList";
 
 function Home() {
   const navigate = useNavigate();
@@ -32,8 +33,7 @@ function Home() {
     setSearchingCategory(categoryValue);
     
   }
-  console.log(searchingLocation )
-  console.log(searchingCategory)
+
   return (
     <div>
       <div>
@@ -45,7 +45,7 @@ function Home() {
       <form onSubmit={(e)=>handleSubmit(e)}>
       <label htmlFor="location">Lokalizacja:</label>
       <select onChange={(e)=>{setLocationValue(e.target.value)}} name="location" id="location">
-        <option disabled>Wybierz miasto</option>
+        <option value="Wszystkie">Wszystkie</option>
         <option value="Gdynia">Gdynia</option>
         <option value="Sopot">Sopot</option>
         <option value="Gdańsk">Gdańsk</option>
@@ -67,7 +67,7 @@ function Home() {
         <div>Nabiał</div>
         <div>Wyroby Garmażeryjne</div>
       </div>
-      <SellerPage/>
+      <SellersList/>
     </div>
   );
 }
