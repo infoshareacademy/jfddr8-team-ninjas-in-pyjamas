@@ -30,7 +30,7 @@ function SellersList() {
 
   const filterSellers = () => {
   const filteredSellers = sellers.filter((seller) => {   
-    return  ( seller.city === searchingLocation) && (seller.category === searchingCategory)
+    return  ( searchingLocation === "" || seller.city === searchingLocation) && (searchingCategory === '' || seller.category === searchingCategory)
     }
   );
   setFilteredSellers(filteredSellers); 
