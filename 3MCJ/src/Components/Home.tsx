@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { globalContext } from "../Context/Context";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../main";
+import SellerPage from "./SellerPage";
 
 function Home() {
   const navigate = useNavigate();
   const { setIsLogged, isLogged, searchingLocation, setSearchingLocation, searchingCategory, setSearchingCategory } = useContext(globalContext);
+  const [locationValue, setLocationValue] = useState<string>('')
+  const [categoryValue, setCategoryValue] = useState<string>('')
 
   const handleLogInOut = () => { 
     if (!isLogged) {
@@ -23,10 +26,10 @@ function Home() {
     navigate("/registration");
   };
 
-  const handleSubmit = (e:React.FormEvent<EventTarget>) => {
+  const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault();
-    setSearchingLocation(e.target.location.value);
-    setSearchingCategory(e.target.products.value)
+    setSearchingLocation(locationValue);
+    setSearchingCategory(categoryValue);
     
   }
   console.log(searchingLocation )
@@ -41,14 +44,14 @@ function Home() {
       </div>
       <form onSubmit={(e)=>handleSubmit(e)}>
       <label htmlFor="location">Lokalizacja:</label>
-      <select name="location" id="location">
+      <select onChange={(e)=>{setLocationValue(e.target.value)}} name="location" id="location">
         <option disabled>Wybierz miasto</option>
         <option value="Gdynia">Gdynia</option>
         <option value="Sopot">Sopot</option>
         <option value="Gdańsk">Gdańsk</option>
       </select>
       <label htmlFor="products">Kategoria produktu:</label>
-      <select name="products" id="products">
+      <select onChange={(e)=>{setCategoryValue(e.target.value)}} name="products" id="products">
         <option value="Wyroby Mięsne">Wyroby Mięsne</option>
         <option value="Wyroby Rybne">Wyroby Rybne</option>
         <option value="Wyroby Cukiernicze">Wyroby Cukiernicze</option>
@@ -64,6 +67,7 @@ function Home() {
         <div>Nabiał</div>
         <div>Wyroby Garmażeryjne</div>
       </div>
+      <SellerPage/>
     </div>
   );
 }
