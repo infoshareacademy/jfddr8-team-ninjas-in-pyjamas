@@ -5,7 +5,7 @@ function Footer() {
 
     let currentDate = new Date;
 
-    const [authors, setAuthors] = useState([
+    const authors = [
         {
             autorName: 'Katarzyna Sęk',
             autorGithubLink: 'https://github.com/Kasiatko'
@@ -20,47 +20,30 @@ function Footer() {
         },
         {
             autorName: 'Patryk Mąkosa',
-            autorGithublink: 'https://github.com/Mentos2509'
+            autorGithubLink: 'https://github.com/Mentos2509'
         },
         {
             autorName: 'Gabriel Dąbrowski',
-            autorGithublink: 'https://github.com/Netrunner-44'
+            autorGithubLink: 'https://github.com/Netrunner-44'
         }
-    ])
+    ]
 
     return(
         <div className="footer-container">
             <div className="site-logo"></div>
             <div className="site-info">
-                <div className="site-name">3miejskie jadło</div>
-                <div className="site-copyright-year">{currentDate.getFullYear()}</div>
+                <div className="site-name">3JMIEJSKIE CRAFTOWE JADŁO</div>
+                <div className="site-copyright-year">
+                    Ninjas in Pyjamas &#169; {currentDate.getFullYear()}</div>
             </div>
             <ul className="site-authors">
-
-                <li className="author">
-                    <p className="author-name">Autor 1</p>
-                    <a className="author-link" href="#">Link do Github</a>
+                {authors.map(autor => {
+                    return <li className="author">
+                    <a className="author-link" href={autor.autorGithubLink}>{autor.autorName}
+                    </a>
                 </li>
 
-                <li className="author">
-                    <p className="author-name">Autor 2</p>
-                    <a className="author-link" href="#">Link do Github</a>
-                </li>
-
-                <li className="author">
-                    <p className="author-name">Autor 3</p>
-                    <a className="author-link" href="#">Link do Github</a>
-                </li>
-
-                <li className="author">
-                    <p className="author-name">Autor 4</p>
-                    <a className="author-link" href="#">Link do Github</a>
-                </li>
-
-                <li className="author">
-                    <p className="author-name">Autor 5</p>
-                    <a className="author-link" href="#">Link do Github</a>
-                </li>
+                }) }
 
             </ul>
         </div>
