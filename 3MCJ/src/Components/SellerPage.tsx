@@ -2,6 +2,15 @@ import { useContext } from "react";
 import { globalContext } from "../Context/Context";
 import { useParams } from "react-router-dom";
 
+type Products = {
+  id:string; 
+  name: string;
+  photo: string;
+  description: string;
+  allergens: string;
+  price: number;
+}
+
 function SellerPage() {
   const { sellers, setSellers } = useContext(globalContext); 
   const {sellerId} = useParams();
@@ -9,13 +18,18 @@ function SellerPage() {
     return seller.id === sellerId
    
   })
-  console.log(filteredSeller)
+
+  const addToShopping = (product:Products) => {
+    console.log(product);
+
+  }
+
   return (
-    <div>
-      {filteredSeller.products.map((products) => (
-        <div key={products.id}>
+    <div key={sellerId}>
+      {filteredSeller.products.map((products:Products) => (
+        <div key={products.name}>
           <div>{products.name}
-          <button>Dodaj do koszyka</button>
+          <button onClick={()=>addToShopping(products)}>Dodaj do koszyka</button>
           </div>
           <img src={products.photo}/>
           <div>{products.description}</div>

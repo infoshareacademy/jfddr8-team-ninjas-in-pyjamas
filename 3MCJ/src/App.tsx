@@ -20,28 +20,3 @@ function App() {
 }
 
 export default App;
-  // const { username, setUsername } = useContext(globalContext);
-
-  // useEffect((): void => {
-  //   onAuthStateChanged(firebaseAuth, async (user) => {
-  //     if (user) {
-  //       const userEmail = user.email;
-  //       setUsername(userEmail);
-
-  //       try {
-  //         const docRef = doc(firebaseDb, "cart", `${userEmail}`);
-  //         const cartValueSnapshot = await getDoc(docRef);
-  //         console.log(cartValueSnapshot);
-  //         if (cartValueSnapshot.exists()) {
-  //           const data = cartValueSnapshot.data();
-  //           setCartProducts(data.products);
-  //         }
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     } else {
-  //       setUsername("");
-  //       setCartProducts([]);
-  //     }
-  //   });
-  // }, [setCartProducts, setUsername]);

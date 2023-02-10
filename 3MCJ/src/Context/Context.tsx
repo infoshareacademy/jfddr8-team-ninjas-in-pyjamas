@@ -11,6 +11,9 @@ type GlobalVariablesType = {
   setReadDivValue: (readDivValue:string) => void;
   sellers:any[];
   setSellers:(sellers:any[]) => void;
+  shoppingCartValue:any[];
+  setShoppingCartValue:(shoppingCartValue:any[])=> void;
+
 };
 
 type PropsWithChildren = {
@@ -27,8 +30,9 @@ function Context(props: PropsWithChildren): JSX.Element {
   const [searchingLocation, setSearchingLocation] = useState<string>('')
   const [readDivValue, setReadDivValue] = useState<string>('')
   const [sellers, setSellers] = useState<any[]>([]);
+  const [shoppingCartValue,setShoppingCartValue] = useState<any[]>([]);
   return (
-    <globalContext.Provider value={{ sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
+    <globalContext.Provider value={{ shoppingCartValue, setShoppingCartValue, sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
       {props.children}
     </globalContext.Provider>
   );

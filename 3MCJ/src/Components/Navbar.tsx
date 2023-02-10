@@ -1,6 +1,5 @@
-import React from 'react'
 import { firebaseAuth } from "../main";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { globalContext } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -36,9 +35,10 @@ function Navbar() {
     return (
     <div>
       <div>
-      {!isLogged&&<button onClick={handleLogInOut}>
+      {/* {!isLogged&& */}
+      <button onClick={handleLogInOut}>
           {isLogged ? "Wyloguj się" : "Zaloguj się"}
-        </button>}
+        </button>
         {!isLogged&&<button onClick={handleRegistration}>Zarejestruj się</button>}
         <ShoppingCart/>
       </div>

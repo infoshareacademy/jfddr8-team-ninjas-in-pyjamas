@@ -5,7 +5,6 @@ import { globalContext } from "../Context/Context";
 import { NavigateOptions, useNavigate, Link } from "react-router-dom";
 
 function SellersList() {
-  // const [sellers, setSellers] = useState<any[]>([]);
   const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
   const { searchingCategory, searchingLocation, sellers, setSellers } =
     useContext(globalContext);
@@ -19,7 +18,6 @@ function SellersList() {
       sellersSnapshot.forEach((seller) => {
         fetchedSellers.push({ id: seller.id, ...seller.data() });
       });
-      // console.log("fetchedSellers", fetchedSellers);
       setSellers(fetchedSellers);
     } catch (error) {
       console.error("Error fetching sellers: ", error);
