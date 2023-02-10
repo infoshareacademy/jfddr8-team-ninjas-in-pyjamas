@@ -6,7 +6,7 @@ import { firebaseAuth } from "../main";
 import SellersList from "./SellersList";
 
 function Home() {
-  const navigate = useNavigate();
+ 
   const {
     setIsLogged,
     isLogged,
@@ -20,20 +20,7 @@ function Home() {
   const [locationValue, setLocationValue] = useState<string>("");
   const [categoryValue, setCategoryValue] = useState<string>("");
 
-  const handleLogInOut = () => {
-    if (!isLogged) {
-      navigate("/login");
-      setIsLogged(!isLogged);
-    } else {
-      navigate("/");
-      setIsLogged(!isLogged);
-      signOut(firebaseAuth);
-    }
-  };
 
-  const handleRegistration = () => {
-    navigate("/registration");
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,12 +36,7 @@ function Home() {
 
   return (
     <div>
-      <div>
-        <button onClick={handleLogInOut}>
-          {isLogged ? "Wyloguj się" : "Zaloguj się"}
-        </button>
-        <button onClick={handleRegistration}>Zarejestruj się</button>
-      </div>
+      
       <form onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="location">Lokalizacja:</label>
         <select 

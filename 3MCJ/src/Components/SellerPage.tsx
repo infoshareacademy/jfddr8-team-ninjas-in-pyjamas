@@ -14,10 +14,13 @@ function SellerPage() {
     <div>
       {filteredSeller.products.map((products) => (
         <div key={products.id}>
-          <div>{products.name}</div>
+          <div>{products.name}
+          <button>Dodaj do koszyka</button>
+          </div>
           <img src={products.photo}/>
           <div>{products.description}</div>
           <div>{products.allergens}</div>
+          <div>{products.price}</div>
         </div>
       ))
       }
@@ -26,7 +29,6 @@ function SellerPage() {
   );
 
 }
-
 
 
   export default SellerPage;

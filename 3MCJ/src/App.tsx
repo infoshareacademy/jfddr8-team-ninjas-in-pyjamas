@@ -5,8 +5,21 @@ import { getDoc, doc } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "./main";
 import Routing from "./Routing/Routing";
 import { globalContext } from "./Context/Context";
+import ShoppingCart from "./Components/ShoppingCart";
+import  Navbar  from "./Components/Navbar";
 
 function App() {
+
+
+  return (
+    <div className="App">
+      <Navbar/>
+      <Routing />
+    </div>
+  );
+}
+
+export default App;
   // const { username, setUsername } = useContext(globalContext);
 
   // useEffect((): void => {
@@ -32,13 +45,3 @@ function App() {
   //     }
   //   });
   // }, [setCartProducts, setUsername]);
-
-  return (
-    <div className="App">
-      
-      <Routing />
-    </div>
-  );
-}
-
-export default App;

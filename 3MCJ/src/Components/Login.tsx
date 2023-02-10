@@ -12,33 +12,20 @@ function Login(): JSX.Element {
 
   const navigate = useNavigate();
 
-  const handleLogin = async() => {
+  const handleLogin = async(e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     try{
       await signInWithEmailAndPassword(firebaseAuth, login, password);
-      navigate('/home');
+      navigate('/');
       setIsLogged(true);
     } catch (error) {
       console.log(error)
     }
   }
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //  try {
-  //   await createUserWithEmailAndPassword(firebaseAuth, login, password);
-  //   setIsLogged(true);
-  //   navigate('/home');
-  //  } catch({code}){
-  //   if(code === 'auth/email-already-in-use') {
-  //     handleLogin();
-  //   }
-  //   console.log(code);
-  //  };
-   
-  // };
 
   return (
-    <form onSubmit={() => handleLogin()}>
+    <form onSubmit={handleLogin}>
       <input
         type="text"
         name="login"
