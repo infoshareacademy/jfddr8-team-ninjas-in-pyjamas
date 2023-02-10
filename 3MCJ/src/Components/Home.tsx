@@ -14,6 +14,8 @@ function Home() {
     setSearchingLocation,
     searchingCategory,
     setSearchingCategory,
+    readDivValue,
+    setReadDivValue
   } = useContext(globalContext);
   const [locationValue, setLocationValue] = useState<string>("");
   const [categoryValue, setCategoryValue] = useState<string>("");
@@ -38,6 +40,12 @@ function Home() {
     setSearchingLocation(locationValue);
     setSearchingCategory(categoryValue);
   };
+
+  // const directToCategorySellers = (event:React.MouseEvent<HTMLButtonElement>) =>{
+  //   let a = event.currentTarget.textContent
+  //   console.log(a)
+  // }
+
 
   return (
     <div>
@@ -84,13 +92,13 @@ function Home() {
         </select>
         <input type="submit" value={"Znajdź pyszności"} />
       </form>
-      <div>
-        <div >Wyroby Mięsne</div>
-        <div>Wyroby Rybne</div>
-        <div>Wyroby Cuiernicze</div>
-        <div>Nabiał</div>
-        <div>Wyroby Garmażeryjne</div>
-      </div>
+      {/* <div>
+        <div onClick={directToCategorySellers}>Wyroby Mięsne</div>
+        <div onClick={directToCategorySellers}>Wyroby Rybne</div>
+        <div onClick={directToCategorySellers}>Wyroby Cukiernicze</div>
+        <div onClick={directToCategorySellers}>Nabiał</div>
+        <div onClick={directToCategorySellers}>Wyroby Garmażeryjne</div>
+      </div> */}
       <SellersList />
     </div>
   );
