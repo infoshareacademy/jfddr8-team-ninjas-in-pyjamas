@@ -2,102 +2,65 @@ import { useState, useEffect, useContext } from "react";
 import { firebaseDb } from "../main";
 import { getDocs, collection, query } from "firebase/firestore";
 import { globalContext } from "../Context/Context";
-
+import { NavigateOptions, useNavigate, Link } from "react-router-dom";
 
 function SellersList() {
-  const [sellers, setSellers] = useState<any[]>([]);
-  const { searchingCategory, searchingLocation } = useContext(globalContext);
+  // const [sellers, setSellers] = useState<any[]>([]);
+  const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
+  const { searchingCategory, searchingLocation, sellers, setSellers } =
+    useContext(globalContext);
+  const navigate = useNavigate();
 
   const fetchSellers = async () => {
-    const q = collection(firebaseDb, "Sellers");
-
-    }
+    const q = query(collection(firebaseDb, "Sellers"));
     try {
       const sellersSnapshot = await getDocs(q);
       const fetchedSellers: any[] = [];
       sellersSnapshot.forEach((seller) => {
         fetchedSellers.push({ id: seller.id, ...seller.data() });
       });
+      // console.log("fetchedSellers", fetchedSellers);
       setSellers(fetchedSellers);
     } catch (error) {
       console.error("Error fetching sellers: ", error);
     }
- 
-  console.log(sellers)
+  };
+
   useEffect(() => {
     fetchSellers();
   }, []);
 
+  const filterSellers = () => {
+    const filteredSellers = sellers.filter((seller) => {
+      return (
+        (searchingLocation === "" || seller.city === searchingLocation) &&
+        (searchingCategory === "" || seller.category === searchingCategory)
+      );
+    });
+    setFilteredSellers(filteredSellers);
+  };
 
-  const filterLocation = () => {
-    
-    if (searchingLocation !== "Wybierz miasto" ) {
-      sellers.filter((element)=> element.city === searchingLocation)
-    }
-  }
+  useEffect(() => {
+    filterSellers();
+  }, [searchingCategory, searchingLocation, sellers]);
 
+  const directToShopProfile = (id:string) => {
+    navigate("/sellerPage", {sellerId:id} as NavigateOptions  );
+  };
 
   return (
-    <div>
-      {sellers.map((seller) => (
+    <div >
+      {filteredSellers.map((seller) => (
         <div key={seller.id}>
-          <h2>{seller.id}</h2>
+        <Link to={`/sellerPage/${seller.id}`}>
+          <h2>{seller.name}</h2>
           <p>{seller.sellerPhoto}</p>
           <p>{seller.sellerDescription}</p>
+        </Link>
         </div>
       ))}
     </div>
   );
 }
-// function SellersList() {
-//   const [products, setProducts] = useState<any[]>([]);
-//   const { searchingCategory, searchingLocation } = useContext(globalContext);
-
-//   const fetchSellers = async () => {
-//     const q = query(collection(firebaseDb, "Sellers"));
-//   };
-
-//   const fetchProducts = async (
-//     searchingCategory: string,
-//     searchingLocation: string
-//   ) => {
-//     const q = query(
-//       collection(firebaseDb, "Sellers")
-//       // where("City", "==", searchingLocation)
-//     );
-//     try {
-//       const productsSnapshot = await getDocs(q);
-//       console.log(productsSnapshot);
-//       const fetchedProducts: any[] = [];
-//       productsSnapshot.forEach((product) => {
-//         fetchedProducts.push({ id: product.id, ...product.data() });
-//       });
-//       console.log(fetchedProducts);
-//       setProducts(
-//         fetchedProducts.filter(
-//           (element) => element.Category === searchingCategory
-//         )
-//       );
-//     } catch (error) {
-//       console.error("Error fetching products: ", error);
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchProducts(searchingCategory, searchingLocation);
-//   }, [searchingCategory, searchingLocation]);
-
-//   return (
-//     <div>
-//       {products.map((product) => (
-//         <div key={product.id}>
-//           <h2>{product.id}</h2>
-//           <p>{product.sellerPhoto}</p>
-//           <p>{product.sellerDescription}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
 
 export default SellersList;

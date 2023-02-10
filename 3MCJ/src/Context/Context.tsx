@@ -7,6 +7,10 @@ type GlobalVariablesType = {
   setSearchingCategory: (searchingCategory: string) => void;
   searchingLocation: string;
   setSearchingLocation: (searchingLocation: string) => void;
+  readDivValue:string;
+  setReadDivValue: (readDivValue:string) => void;
+  sellers:any[];
+  setSellers:(sellers:any[]) => void;
 };
 
 type PropsWithChildren = {
@@ -21,8 +25,10 @@ function Context(props: PropsWithChildren): JSX.Element {
   const [isLogged, setIsLogged] = useState(false);
   const [searchingCategory, setSearchingCategory] = useState<string>('')
   const [searchingLocation, setSearchingLocation] = useState<string>('')
+  const [readDivValue, setReadDivValue] = useState<string>('')
+  const [sellers, setSellers] = useState<any[]>([]);
   return (
-    <globalContext.Provider value={{ isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation }}>
+    <globalContext.Provider value={{ sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
       {props.children}
     </globalContext.Provider>
   );

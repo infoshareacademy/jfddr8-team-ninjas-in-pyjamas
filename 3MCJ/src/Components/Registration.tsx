@@ -73,7 +73,7 @@ function Registration() {
       <input name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
       <input name="surname" onChange={handleInputChange} required value={user.surname} placeholder="Nazwisko" />
       <input name="city" onChange={handleInputChange} required value={user.city} placeholder="Miasto" />
-      <select onChange={handleInputChange} name="products" id="products">
+      <select onChange={handleInputChange} name="userType" id="products">
         <option value={userType.Customer}>Klient</option>
         <option value={userType.Seller}>Sprzedawca</option>
       </select>
