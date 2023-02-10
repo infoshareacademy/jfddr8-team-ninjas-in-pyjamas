@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { firebaseDb } from "../main";
 import { getDocs, collection, query } from "firebase/firestore";
 import { globalContext } from "../Context/Context";
-import { useNavigate } from "react-router-dom";
+import { NavigateOptions, useNavigate, Link } from "react-router-dom";
 
 function SellersList() {
   // const [sellers, setSellers] = useState<any[]>([]);
@@ -19,7 +19,7 @@ function SellersList() {
       sellersSnapshot.forEach((seller) => {
         fetchedSellers.push({ id: seller.id, ...seller.data() });
       });
-      console.log("fetchedSellers", fetchedSellers);
+      // console.log("fetchedSellers", fetchedSellers);
       setSellers(fetchedSellers);
     } catch (error) {
       console.error("Error fetching sellers: ", error);
@@ -44,17 +44,19 @@ function SellersList() {
     filterSellers();
   }, [searchingCategory, searchingLocation, sellers]);
 
-  const directToShopProfile = () => {
-    navigate("/sellerPage");
+  const directToShopProfile = (id:string) => {
+    navigate("/sellerPage", {sellerId:id} as NavigateOptions  );
   };
 
   return (
-    <div onClick={directToShopProfile}>
+    <div >
       {filteredSellers.map((seller) => (
         <div key={seller.id}>
+        <Link to={`/sellerPage/${seller.id}`}>
           <h2>{seller.name}</h2>
           <p>{seller.sellerPhoto}</p>
           <p>{seller.sellerDescription}</p>
+        </Link>
         </div>
       ))}
     </div>

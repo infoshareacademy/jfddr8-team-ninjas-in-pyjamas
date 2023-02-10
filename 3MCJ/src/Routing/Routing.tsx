@@ -11,7 +11,7 @@ function Routing() {
       <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Home />} />
       <Route path="/" element={<Home />} />
-      <Route path="/sellerPage" element={<SellerPage />} />
+      <Route path="/sellerPage/:sellerId" element={<SellerPage />} />
     </Routes>
   );
 }
