@@ -1,38 +1,31 @@
 import { useContext, useEffect } from "react";
 import { globalContext } from "../Context/Context";
-import { getDocs, collection, query } from "firebase/firestore";
+import { getDoc, doc,   collection, query } from "firebase/firestore";
 import { firebaseDb } from "../main";
 
 function ShoppingCart() {
   const { shoppingCartValue, setShoppingCartValue } = useContext(globalContext);
 
   const fetchShoppingCartDetails = async () => {
-    const a = query(collection(firebaseDb, "ShoppingCart"));
+    const a = doc(firebaseDb, "Users", "ShoppingCartItems" );
     try {
-      const shoppingCartDetailsSnapshot = await getDocs(a);
+      const shoppingCartDetailsSnapshot = await getDoc(a);
       const fetchShoppingCartDetails: any[] = [];
-      shoppingCartDetailsSnapshot.forEach((element) => {
-        fetchShoppingCartDetails.push({ id: element.id, ...element.data() });
-      });
-      setShoppingCartValue(fetchShoppingCartDetails);
+      if(shoppingCartDetailsSnapshot.exists()){
+        shoppingCartDetailsSnapshot.data()
+      }
     } catch (error) {
       console.log("Error fetching shopping cart data", error);
     }
   };
+  useEffect(()=>{
+    fetchShoppingCartDetails()
+  },[])
+  
+  console.log(shoppingCartDetailsSnapshot.data())
 
-  useEffect(() => {
-    fetchShoppingCartDetails();
-  }, []);
+  return( <div>
 
-  // return (
-  //   <div>
-  //     {shoppingCartValue}
-  //     {shoppingCartValue.map((products) => (
-  //       <div key={products.id}>
-  //         dasd
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
+  </div> );
 }
 export default ShoppingCart;
