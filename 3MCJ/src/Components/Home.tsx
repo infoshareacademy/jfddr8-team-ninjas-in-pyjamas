@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../main";
 import SellersList from "./SellersList";
+import StarRating from "./StarRating";
 
 function Home() {
  
@@ -82,6 +83,7 @@ function Home() {
         <div onClick={directToCategorySellers}>Wyroby Garmażeryjne</div>
       </div> */}
       <SellersList />
+      <StarRating />
     </div>
   );
 }
