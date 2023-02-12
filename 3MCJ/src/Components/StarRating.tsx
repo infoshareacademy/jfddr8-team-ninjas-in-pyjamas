@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
 import { globalContext } from "../Context/Context";
-import StarRatings from './react-star-ratings';
 
-interface rate {
+
+interface Props {
   onRate: (value: number) => void;
 }
 
-const StarRating: React.FC<rate> = ({ onRate }) => {
+const StarRating: React.FC<Props> = ({ onRate }) => {
 
   const { rating, setRating } = useContext(globalContext);  
 
@@ -16,12 +16,12 @@ const StarRating: React.FC<rate> = ({ onRate }) => {
         <span key={value} onClick={() => {
           setRating(value);
           onRate(value);
+          console.log("rating:", rating);
         }}>
-          {rating >= value ? '★' : '☆'}
+          {rating >= value ? '⭐️' : '☆'}
         </span>
       ))}
     </div>
   )
 }
-
 export default StarRating

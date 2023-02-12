@@ -39,8 +39,8 @@ function Registration() {
     e.preventDefault();
     try {      
       await createUserWithEmailAndPassword(firebaseAuth, user.email, user.password);
-      const {uid} = firebaseAuth.currentUser!;
-      await setDoc(doc(firebaseDb, 'Users' , `${uid}`),{
+      const {email} = firebaseAuth.currentUser!;
+      await setDoc(doc(firebaseDb, 'Users' , `${email}`),{
         city:user.city,
         email:user.email,
         name: user.name,
