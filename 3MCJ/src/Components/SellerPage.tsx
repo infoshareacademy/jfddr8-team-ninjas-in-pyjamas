@@ -3,6 +3,7 @@ import { globalContext } from "../Context/Context";
 import { useParams } from "react-router-dom";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "../main";
+// import { update } from "firebase/database";
 
 type Products = {
   id: string;
@@ -21,40 +22,42 @@ function SellerPage() {
     return seller.id === sellerId;
   });
 
-  const addToShopping = async (products: Products) => {
+
+  useEffect(()=>{
     const { email } = firebaseAuth.currentUser!;
-    const docRef = doc(firebaseDb, `Users/${email}`, "shoppingCartItems");
-    
-
-
-    
+    const docRef = doc(firebaseDb, "Users", `${email}`);
     try {
-      setShoppingCartItems([...shoppingCartItems, products]);
-      await setDoc(docRef, shoppingCartItems);
-
-      
+      const data = {
+        shoppingCartItems: shoppingCartItems
+      }
+      setDoc(docRef, data,{merge:true});  
     } catch (error) {
       console.log("Error fetching shopping cart data", error);
     }
+  },[shoppingCartItems])
+
+
+
+  const addToShopping = (product: Products) => {
+     setShoppingCartItems([product,...shoppingCartItems]);
+
   };
   console.log(shoppingCartItems)
   
-
-
   return (
     <div key={sellerId}>
-      {filteredSeller.products.map((products: Products) => (
-        <div key={products.name}>
+      {filteredSeller.products.map((product: Products) => (
+        <div key={product.name}>
           <div>
-            {products.name}
-            <button onClick={() => addToShopping(products)}>
+            {product.name}
+            <button onClick={() => addToShopping(product)}>
               Dodaj do koszyka
             </button>
           </div>
-          <img src={products.photo} />
-          <div>{products.description}</div>
-          <div>{products.allergens}</div>
-          <div>{products.price}</div>
+          <img src={product.photo} />
+          <div>{product.description}</div>
+          <div>{product.allergens}</div>
+          <div>{product.price}</div>
         </div>
       ))}
     </div>
@@ -62,3 +65,6 @@ function SellerPage() {
 }
 
 export default SellerPage;
+
+
+
