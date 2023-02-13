@@ -22,28 +22,24 @@ function SellerPage() {
     return seller.id === sellerId;
   });
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const { email } = firebaseAuth.currentUser!;
     const docRef = doc(firebaseDb, "Users", `${email}`);
     try {
       const data = {
-        shoppingCartItems: shoppingCartItems
-      }
-      setDoc(docRef, data,{merge:true});  
+        shoppingCartItems: shoppingCartItems,
+      };
+      setDoc(docRef, data, { merge: true });
     } catch (error) {
       console.log("Error fetching shopping cart data", error);
     }
-  },[shoppingCartItems])
-
-
+  }, [shoppingCartItems]);
 
   const addToShopping = (product: Products) => {
-     setShoppingCartItems([product,...shoppingCartItems]);
-
+    setShoppingCartItems([product, ...shoppingCartItems]);
   };
-  console.log(shoppingCartItems)
-  
+  console.log(shoppingCartItems);
+
   return (
     <div key={sellerId}>
       {filteredSeller.products.map((product: Products) => (
@@ -65,6 +61,3 @@ function SellerPage() {
 }
 
 export default SellerPage;
-
-
-
