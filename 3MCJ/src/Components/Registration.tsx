@@ -3,7 +3,7 @@ import { globalContext } from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth, firebaseDb } from "../main";
-import { Firestore, setDoc, doc,  } from "firebase/firestore";
+import { setDoc, doc,  } from "firebase/firestore";
 
 
 enum userType {
@@ -19,6 +19,7 @@ type UserData = {
   surname: string;
   confirmPassword: string;
   userType: userType;
+  shoppingCartItems:any[];
 };
 const initialUser = {
   city: "",
@@ -27,7 +28,8 @@ const initialUser = {
   name: "",
   surname: "",
   confirmPassword: "",
-  userType: userType.Customer
+  userType: userType.Customer,
+  shoppingCartItems: []
 };
 
 function Registration() {
@@ -45,12 +47,12 @@ function Registration() {
         email:user.email,
         name: user.name,
         surname: user.surname,
-        userType: user.userType
+        userType: user.userType,
+        shoppingCartItems:user.shoppingCartItems,
       })
       
       setIsLogged(true);
       navigate("/home");
-      console.log('tutaj')
     } catch ({ code }) {
       console.log(code);
     }

@@ -14,7 +14,7 @@ function Navbar() {
         searchingCategory,
         setSearchingCategory,
         readDivValue,
-        setReadDivValue
+        setReadDivValue,
       } = useContext(globalContext);
     const navigate = useNavigate();
     const handleLogInOut = () => {
