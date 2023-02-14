@@ -55,6 +55,7 @@ function Navbar() {
           <img style={{width:"50px"}} src="src/assets/Logo/ShoppingCartLogo.png" alt=""/>
           {isLogged && shoppingCartValue}
           </div>
+        <button onClick={()=> navigate("/#")}>sellerpage</button>
       
        
       </div>

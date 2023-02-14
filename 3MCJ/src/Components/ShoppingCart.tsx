@@ -18,9 +18,43 @@ function ShoppingCart() {
     // setShoppingCartValue(shoppingCartValue-product.price)
     shoppingCartItems.filter(async (e) => {
       if (e.id === product.id) {
-        product.quantity = product.quantity - 1;
-       
-        if ((product.quantity < 1)) {
+        
+        const { email } = firebaseAuth.currentUser!;
+        const docRef = doc(firebaseDb, "Users", `${email}`);
+        try {
+
+
+           setShoppingCartItems(shoppingCartItems.filter(
+              (e) => e.id === product.id
+            ).map((e) => {
+              if (e.id === product.id) {
+                return e;
+              } else {
+                return {
+                  ...e,
+                  quantity: e.quantity - 1
+                };
+              }
+            }),)
+          const data = {
+            shoppingCartItems: shoppingCartItems ,
+            shoppingCartValue: shoppingCartValue - product.price,
+          };
+          await setDoc(docRef, data);
+          setShoppingCartValue(shoppingCartValue - product.price);
+          // setShoppingCartItems(
+          //   shoppingCartItems.filter((e) => e.id !== product.id)
+          // );
+        } catch (error) {
+          console.log("Error fetching shopping cart data", error);
+        }
+
+
+
+
+        
+       console.log(product.quantity)
+        if ((product.quantity <= 1)) {
           const { email } = firebaseAuth.currentUser!;
           const docRef = doc(firebaseDb, "Users", `${email}`);
           try {
@@ -58,6 +92,7 @@ function ShoppingCart() {
             <button onClick={() => removeItemFromShoppingCart(item)}>
               Usuń
             </button>
+
           </div>
         ))}
       </div>
