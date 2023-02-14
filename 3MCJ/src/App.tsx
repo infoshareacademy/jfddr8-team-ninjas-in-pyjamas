@@ -7,6 +7,7 @@ import Routing from "./Routing/Routing";
 import { globalContext } from "./Context/Context";
 import ShoppingCart from "./Components/ShoppingCart";
 import  Navbar  from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <Routing />
+      <Footer/>
     </div>
   );
 }

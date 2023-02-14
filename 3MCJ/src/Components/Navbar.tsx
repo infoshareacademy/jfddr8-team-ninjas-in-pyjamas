@@ -1,9 +1,10 @@
 import { firebaseAuth } from "../main";
 import { useContext } from "react";
 import { globalContext } from "../Context/Context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import ShoppingCart from './ShoppingCart';
+
 
 function Navbar() {
     const {
@@ -15,6 +16,7 @@ function Navbar() {
         setSearchingCategory,
         readDivValue,
         setReadDivValue,
+        shoppingCartValue
       } = useContext(globalContext);
     const navigate = useNavigate();
     const handleLogInOut = () => {
@@ -40,7 +42,12 @@ function Navbar() {
           {isLogged ? "Wyloguj się" : "Zaloguj się"}
         </button>
         {!isLogged&&<button onClick={handleRegistration}>Zarejestruj się</button>}
-        <ShoppingCart/>
+        <div onClick={()=> navigate("/shoppingCart")}>
+          <img style={{width:"50px"}} src="src/assets/Logo/ShoppingCartLogo.png" alt=""/>
+          {shoppingCartValue}
+          </div>
+      
+       
       </div>
     </div>
   )
