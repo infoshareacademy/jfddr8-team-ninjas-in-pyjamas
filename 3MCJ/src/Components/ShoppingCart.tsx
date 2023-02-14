@@ -21,12 +21,13 @@ const fetchShoppingCartDetails = async () => {
   };
   const removeItemFromShoppingCart = (id:string) => {
       setShoppingCartItems(shoppingCartItems.filter((item) => item.id !== id));
+      
   }
 
 
   useEffect(()=>{
     fetchShoppingCartDetails()
-  },[])
+  },[isLogged===true])
   
   
 
