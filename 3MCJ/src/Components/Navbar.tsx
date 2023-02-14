@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth";
 import ShoppingCart from './ShoppingCart';
 
 
+
 function Navbar() {
     const {
         setIsLogged,
@@ -16,23 +17,31 @@ function Navbar() {
         setSearchingCategory,
         readDivValue,
         setReadDivValue,
-        shoppingCartValue
+        shoppingCartValue,
+        setShoppingCartValue,
+        setShoppingCartItems
       } = useContext(globalContext);
     const navigate = useNavigate();
     const handleLogInOut = () => {
         if (!isLogged) {
           navigate("/login");
+
         } else {
           navigate("/");
-          setIsLogged(!isLogged);
+          setIsLogged(false);
           signOut(firebaseAuth);
+          setShoppingCartValue(0);
+          setShoppingCartItems([])
+        
         }
       };
     
       const handleRegistration = () => {
         navigate("/registration");
       };
-  
+      
+
+   
   
     return (
     <div>
@@ -44,7 +53,7 @@ function Navbar() {
         {!isLogged&&<button onClick={handleRegistration}>Zarejestruj się</button>}
         <div onClick={()=> navigate("/shoppingCart")}>
           <img style={{width:"50px"}} src="src/assets/Logo/ShoppingCartLogo.png" alt=""/>
-          {shoppingCartValue}
+          {isLogged && shoppingCartValue}
           </div>
       
        

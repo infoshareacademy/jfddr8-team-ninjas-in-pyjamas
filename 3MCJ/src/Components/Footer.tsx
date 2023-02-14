@@ -39,8 +39,7 @@ function Footer() {
             <ul className="site-authors">
                 {authors.map(autor => {
                     return <li className="author">
-                    <a className="author-link" href={autor.autorGithubLink} target="_blank">{autor.autorName}
-</a>
+                    <a className="author-link" href={autor.autorGithubLink} target="_blank">{autor.autorName}</a>
                 </li>
 
                 }) }

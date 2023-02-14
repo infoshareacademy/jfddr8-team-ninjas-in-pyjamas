@@ -1,10 +1,16 @@
 import { useContext, useEffect } from "react";
 import { globalContext } from "../Context/Context";
 import { useParams } from "react-router-dom";
-import { doc, setDoc, addDoc, collection, updateDoc, deleteField } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  addDoc,
+  collection,
+  updateDoc,
+  deleteField,
+} from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "../main";
-import uuid from 'react-uuid';
-
+import uuid from "react-uuid";
 
 type Products = {
   id: string;
@@ -13,51 +19,70 @@ type Products = {
   description: string;
   allergens: string;
   price: number;
-  quantity:number;
+  quantity: number;
 };
 
 function SellerPage() {
-  const { sellers, setSellers, setShoppingCartItems, shoppingCartItems } =
-    useContext(globalContext);
+  const {
+    isLogged,
+    sellers,
+    setSellers,
+    setShoppingCartItems,
+    shoppingCartItems,
+    setShoppingCartValue,
+    shoppingCartValue,
+  } = useContext(globalContext);
   const { sellerId } = useParams();
   const filteredSeller = sellers.find((seller) => {
     return seller.id === sellerId;
   });
 
-  useEffect(() => {
-    const { email } = firebaseAuth.currentUser!;
-    const docRef = doc(firebaseDb, "Users", `${email}`);
+  // useEffect(() => {
+  //   // const { email } = firebaseAuth.currentUser!;
+  //   // const docRef = doc(firebaseDb, "Users", `${email}`);
+
+  //   // try {
+  //   //   const data = {
+  //   //     shoppingCartItems: shoppingCartItems,
+  //   //     shoppingCartValue: shoppingCartValue
+  //   //   };
+  //   //   setDoc(docRef, data);
+  //   //   // updateDoc(docRef, {
+  //   //   //   shoppingCartItems: shoppingCartItems
+
+  //   //   // });
+
+  //   // } catch (error) {
+  //   //   console.log("Error fetching shopping cart data", error);
+  //   // }
+  // }, [shoppingCartItems]);
+
+  const addToShopping = async (product: Products) => {
+    let isNewProduct = true
+    product.id = uuid();
+    const newShoppingCartItems = shoppingCartItems.filter((e) => {
+      if (e.id === product.id) {
+        isNewProduct = false
+        product.quantity = product.quantity + 1;
+        console.log(product.quantity);
+      }
+    });
     
+    const { email } = firebaseAuth.currentUser!;
+    console.log(email);
+    const docRef = doc(firebaseDb, "Users", `${email}`);
+
     try {
       const data = {
-        shoppingCartItems: shoppingCartItems,
+        shoppingCartItems: [ ...newShoppingCartItems,...(isNewProduct ? [product] : [])],
+        shoppingCartValue: shoppingCartValue + product.price,
       };
-      setDoc(docRef, data);
-      // updateDoc(docRef, {
-      //   shoppingCartItems: shoppingCartItems
-        
-      // });
+      await setDoc(docRef, data);
+      setShoppingCartValue(shoppingCartValue + product.price);
+      setShoppingCartItems([ ...newShoppingCartItems,...(isNewProduct ? [product] : [])]);
     } catch (error) {
       console.log("Error fetching shopping cart data", error);
     }
-  }, [shoppingCartItems]);
-
-  const addToShopping = (product: Products) => { 
-    product.id=uuid();
-       shoppingCartItems.filter((e)=>{
-        if (e.id === product.id){
-          
-          product.quantity = product.quantity+1
-          console.log(product.quantity);
-          
-        }
-       })
-
-      //  if (product.id === shoppingCartItems.forEach((e)=>{e.id})){
-      //   console.log("jest")
-      //  }
-    
-    setShoppingCartItems([product, ...shoppingCartItems]);
   };
   console.log(shoppingCartItems);
 
@@ -71,7 +96,7 @@ function SellerPage() {
               Dodaj do koszyka
             </button>
           </div>
-          <img style={{width:"50px"}} src={product.photo} />
+          <img style={{ width: "50px" }} src={product.photo} />
           <div>{product.description}</div>
           <div>{product.allergens}</div>
           <div>{product.price}</div>

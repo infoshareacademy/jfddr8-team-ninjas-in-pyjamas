@@ -18,6 +18,7 @@ function Login(): JSX.Element {
       await signInWithEmailAndPassword(firebaseAuth, login, password);
       navigate('/');
       setIsLogged(true);
+      
     } catch (error) {
       console.log(error)
     }
