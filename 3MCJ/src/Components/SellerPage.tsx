@@ -37,54 +37,33 @@ function SellerPage() {
     return seller.id === sellerId;
   });
 
-  // useEffect(() => {
-  //   // const { email } = firebaseAuth.currentUser!;
-  //   // const docRef = doc(firebaseDb, "Users", `${email}`);
-
-  //   // try {
-  //   //   const data = {
-  //   //     shoppingCartItems: shoppingCartItems,
-  //   //     shoppingCartValue: shoppingCartValue
-  //   //   };
-  //   //   setDoc(docRef, data);
-  //   //   // updateDoc(docRef, {
-  //   //   //   shoppingCartItems: shoppingCartItems
-
-  //   //   // });
-
-  //   // } catch (error) {
-  //   //   console.log("Error fetching shopping cart data", error);
-  //   // }
-  // }, [shoppingCartItems]);
-
   const addToShopping = async (product: Products) => {
-    let isNewProduct = true
-    product.id = uuid();
-    const newShoppingCartItems = shoppingCartItems.filter((e) => {
+    let isNewProduct = true   
+    shoppingCartItems.filter((e) => {
       if (e.id === product.id) {
         isNewProduct = false
         product.quantity = product.quantity + 1;
         console.log(product.quantity);
       }
     });
-    
+    // console.log([ ...shoppingCartItems,...(isNewProduct ? [product] : [])])
     const { email } = firebaseAuth.currentUser!;
-    console.log(email);
     const docRef = doc(firebaseDb, "Users", `${email}`);
 
     try {
       const data = {
-        shoppingCartItems: [ ...newShoppingCartItems,...(isNewProduct ? [product] : [])],
+        shoppingCartItems: [ ...shoppingCartItems,...(isNewProduct ? [product] : [])],
         shoppingCartValue: shoppingCartValue + product.price,
       };
       await setDoc(docRef, data);
       setShoppingCartValue(shoppingCartValue + product.price);
-      setShoppingCartItems([ ...newShoppingCartItems,...(isNewProduct ? [product] : [])]);
+      setShoppingCartItems([ ...shoppingCartItems,...(isNewProduct ? [product] : [])]);
     } catch (error) {
       console.log("Error fetching shopping cart data", error);
     }
   };
   console.log(shoppingCartItems);
+    
 
   return (
     <div key={sellerId}>

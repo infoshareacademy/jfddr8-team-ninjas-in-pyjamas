@@ -41,7 +41,7 @@ function Navbar() {
       };
       
 
-   
+      // console.log(shoppingCartValue)
   
     return (
     <div>
