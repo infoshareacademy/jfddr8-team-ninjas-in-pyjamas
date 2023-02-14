@@ -6,20 +6,20 @@ import { firebaseDb, firebaseAuth } from "../main";
 
 function ShoppingCart() {
 const { shoppingCartValue, setShoppingCartValue, isLogged, sellers, shoppingCartItems, setShoppingCartItems } = useContext(globalContext);
-const fetchShoppingCartDetails = async () => {
-    const {email} = firebaseAuth.currentUser!;
-    console.log(email)
-    const docRef = doc(firebaseDb, "Users", `${email}`);
-    try {
-      const shoppingCartDetailsSnapshot = await getDoc(docRef);
-      if(shoppingCartDetailsSnapshot.exists()){
-        setShoppingCartItems(shoppingCartDetailsSnapshot.data().shoppingCartItems);
-        setShoppingCartValue(shoppingCartDetailsSnapshot.data().shoppingCartValue);
-      }
-    } catch (error) {
-      console.log("Error fetching shopping cart data", error);
-    }
-  };
+// const fetchShoppingCartDetails = async () => {
+//     const {email} = firebaseAuth.currentUser!;
+//     console.log(email)
+//     const docRef = doc(firebaseDb, "Users", `${email}`);
+//     try {
+//       const shoppingCartDetailsSnapshot = await getDoc(docRef);
+//       if(shoppingCartDetailsSnapshot.exists()){
+//         setShoppingCartItems(shoppingCartDetailsSnapshot.data().shoppingCartItems);
+//         setShoppingCartValue(shoppingCartDetailsSnapshot.data().shoppingCartValue);
+//       }
+//     } catch (error) {
+//       console.log("Error fetching shopping cart data", error);
+//     }
+//   };
   // const removeItemFromShoppingCart = (id:string) => {
   //   setShoppingCartItems(shoppingCartItems.filter((item) => item.id !== id));
   //   setShoppingCartValue(shoppingCartValue-product.price )
@@ -33,11 +33,11 @@ const fetchShoppingCartDetails = async () => {
   
 
   
-  useEffect(()=>{
-    if (isLogged){
-      fetchShoppingCartDetails()
-    }
-  },[isLogged])
+  // useEffect(()=>{
+  //   if (isLogged){
+  //     fetchShoppingCartDetails()
+  //   }
+  // },[isLogged])
   
 
   

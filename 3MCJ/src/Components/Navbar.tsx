@@ -39,6 +39,8 @@ function Navbar() {
       const handleRegistration = () => {
         navigate("/registration");
       };
+
+      console.log(shoppingCartValue)
       
 
    
