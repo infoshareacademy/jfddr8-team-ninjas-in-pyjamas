@@ -52,7 +52,7 @@ function SellersList() {
         <div key={seller.id}>
         <Link to={`/sellerPage/${seller.id}`}>
           <h2>{seller.name}</h2>
-          <p>{seller.sellerPhoto}</p>
+          <img src={seller.sellerPhoto}/>
           <p>{seller.sellerDescription}</p>
         </Link>
         </div>

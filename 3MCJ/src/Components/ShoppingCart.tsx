@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { globalContext } from "../Context/Context";
-import { getDoc, doc, collection, query } from "firebase/firestore";
+import { getDoc, doc, collection, query} from "firebase/firestore";
 import { firebaseDb, firebaseAuth } from "../main";
 
 
@@ -20,15 +20,18 @@ const fetchShoppingCartDetails = async () => {
     }
   };
   const removeItemFromShoppingCart = (id:string) => {
-      setShoppingCartItems(shoppingCartItems.filter((item) => item.id !== id));
-      
+    setShoppingCartItems(shoppingCartItems.filter((item) => item.id !== id));
+    
   }
-
-
+  console.log("po usunięciu", shoppingCartItems)
+  
+  
+  
   useEffect(()=>{
     fetchShoppingCartDetails()
-  },[isLogged===true])
+  },[isLogged])
   
+
   
 
   return( <div>
