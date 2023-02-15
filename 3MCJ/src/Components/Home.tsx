@@ -29,12 +29,6 @@ function Home() {
     setSearchingCategory(categoryValue);
   };
 
-  // const directToCategorySellers = (event:React.MouseEvent<HTMLButtonElement>) =>{
-  //   let a = event.currentTarget.textContent
-  //   console.log(a)
-  // }
-
-
   return (
     <div>
       
@@ -75,13 +69,7 @@ function Home() {
         </select>
         <input type="submit" value={"Znajdź pyszności"} />
       </form>
-      {/* <div>
-        <div onClick={directToCategorySellers}>Wyroby Mięsne</div>
-        <div onClick={directToCategorySellers}>Wyroby Rybne</div>
-        <div onClick={directToCategorySellers}>Wyroby Cukiernicze</div>
-        <div onClick={directToCategorySellers}>Nabiał</div>
-        <div onClick={directToCategorySellers}>Wyroby Garmażeryjne</div>
-      </div> */}
+   
       <SellersList />
       <StarRating />
     </div>

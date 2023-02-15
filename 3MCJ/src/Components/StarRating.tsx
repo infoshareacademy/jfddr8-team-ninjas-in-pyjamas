@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { globalContext } from "../Context/Context";
 
-
 interface Props {
   onRate: (value: number) => void;
 }

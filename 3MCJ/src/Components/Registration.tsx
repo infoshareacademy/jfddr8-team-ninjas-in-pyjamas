@@ -5,7 +5,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth, firebaseDb } from "../main";
 import { setDoc, doc,  } from "firebase/firestore";
 
-
 enum userType {
   Customer = "customer",
   Seller = "seller",

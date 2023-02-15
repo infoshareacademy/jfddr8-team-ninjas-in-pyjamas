@@ -46,7 +46,6 @@ function SellerPage() {
         console.log(product.quantity);
       }
     });
-    // console.log([ ...shoppingCartItems,...(isNewProduct ? [product] : [])])
     const { email } = firebaseAuth.currentUser!;
     const docRef = doc(firebaseDb, "Users", `${email}`);
 

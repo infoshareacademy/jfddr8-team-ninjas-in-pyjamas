@@ -23,7 +23,6 @@ function App() {
           if(shoppingCartDetailsSnapshot.exists()){
             setShoppingCartItems(shoppingCartDetailsSnapshot.data().shoppingCartItems);
             setShoppingCartValue(shoppingCartDetailsSnapshot.data().shoppingCartValue);
-            console.log(shoppingCartDetailsSnapshot.data().shoppingCartValue)
           }} catch (error) {
             console.log("Error fetching shopping cart data", error);
           }

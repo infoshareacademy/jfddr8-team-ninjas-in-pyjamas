@@ -40,14 +40,11 @@ function Navbar() {
         navigate("/registration");
       };
       
-
-      // console.log(shoppingCartValue)
-  
+       
     return (
     <div>
       <div>
-      {/* {!isLogged&& */}
-      <button onClick={handleLogInOut}>
+           <button onClick={handleLogInOut}>
           {isLogged ? "Wyloguj się" : "Zaloguj się"}
         </button>
         {!isLogged&&<button onClick={handleRegistration}>Zarejestruj się</button>}
