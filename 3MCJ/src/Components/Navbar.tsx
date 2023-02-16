@@ -40,28 +40,29 @@ function Navbar() {
   return (
     <div>
       <div className="navbar">
-      <img className="shop-logo"
-            src="src/assets/Logo/TCJLogo.png"
-            alt=""
-          />
         <div className="div-login-registration">
-          {" "}
-          <button className="button" onClick={handleLogInOut}>
-            {isLogged ? "Wyloguj się" : "Zaloguj się"}
-          </button>
-          {!isLogged && (
-            <button className="button" onClick={handleRegistration}>Zarejestruj się</button>
-          )}
-          <div className="shopping-cart-icon-div" onClick={() => navigate("/shoppingCart")}>
-            {isLogged && shoppingCartValue + " zł"}
-          <img className="shopping-cart-icon"
-            src="src/assets/Logo/ShoppingCartLogo.png"
-            alt=""
-          />
+          <div className="navbar-button-div">
+            <div className="button" onClick={handleLogInOut}>
+              {isLogged ? "Wyloguj się" : "Zaloguj się"}
+            </div>
+            {!isLogged && (
+              <div className="button" onClick={handleRegistration}>
+                Zarejestruj się
+              </div>
+            )}
+            <div
+              className="shopping-cart-icon-div"
+              onClick={() => navigate("/shoppingCart")}
+            >
+              {isLogged && shoppingCartValue + " zł"}
+            </div>
+            <img
+              className="shopping-cart-icon"
+              src="src/assets/Logo/ShoppingCartLogo.png"
+              alt=""
+            />
+          </div>
         </div>
-      </div>
-
-        
         {/* <button onClick={() => navigate("/#")}>sellerpage</button> */}
       </div>
     </div>

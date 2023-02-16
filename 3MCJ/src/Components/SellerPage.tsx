@@ -74,7 +74,7 @@ function SellerPage() {
               Dodaj do koszyka
             </button>
           </div>
-          <img style={{ width: "50px" }} src={product.photo} />
+          <img src={product.photo} />
           <div>{product.description}</div>
           <div>{product.allergens}</div>
           <div>{product.price}</div>

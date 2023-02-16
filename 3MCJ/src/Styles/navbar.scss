@@ -5,24 +5,38 @@
 
 .navbar {
   background-color: $background-light;
-  @include makeMeFlex(row, end);
-  img{
-    width: 48px;
-    padding-right: 4%;
-  }
-  .button{
-    padding: 4px 12px;
-    width: 136px;
-    margin: 4px;    
-  }
+  @include makeMeFlex(row, flex-end);
   
 }
 .div-login-registration{
     margin:10px;
-}
+  }
+  
+  .shopping-cart-icon-div{
+    @include makeMeFlex(row, end);
+    gap: 20px;  
+  }
+  
+  .shopping-cart-icon{
+    width: 48px;
+    padding-right: 4%;
+  }
+  
+  .button{
+    padding: 4px 12px;
+    width: 132px;
+    margin: 4px;   
+    border: 2px solid black;
+    border-radius: 12px; 
+    text-align: center;
+    background-color: $background-button-light ;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  }
 
-.shopping-cart-icon-div{
-  @include makeMeFlex(row, end);
-  gap: 20px;  
-}
+  .shop-logo{
+    width: 350px;
+  }
 
+  .navbar-button-div{
+    @include makeMeFlex(row, end)
+  }

@@ -1,1 +1,34 @@
 @use './variables'as *;
+@use './mixins' as *;
+
+.search-section{
+    min-height: 300px;
+    @include makeMeFlex(column, center);
+    gap: 48px;
+
+    select{
+        padding: 12px;
+        margin: 0px 8px;
+        border-radius: 8px;
+        text-align: center;
+        width: 25vw;
+        border: 1px solid black;
+        background-color: $primary-light;
+    }
+    input{
+        padding: 6px;
+        border-radius: 8px;
+        margin: 0px 8px;
+        width: 15vw;
+        border: 1px solid black;
+        background-color: $primary-light;
+    }
+    form {
+        margin-left:calc(15vw + 8px);
+         }
+   
+    image{
+        max-width: 50%;
+    }
+    
+}

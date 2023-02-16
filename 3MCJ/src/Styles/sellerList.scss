@@ -1,0 +1,44 @@
+@use './variables'as *;
+@use './mixins' as *;
+
+.seller-list {
+    @include makeMeFlex(row, flex-start);
+    margin: 24px 24%;
+    border: 2px solid $primary-light;
+    border-radius: 20px;
+     
+  
+    img {  
+    border-radius: 20px 0 0 20px;
+    width: 50%;
+    height: auto;
+    
+    
+   }
+    .seller-description {
+        @include makeMeFlex(column,space-between);
+        gap: 40px;
+        margin: 20px;
+        flex-wrap: wrap;  
+        width: 50%;
+       
+    }
+    .seller-data {
+        @include makeMeFlex(row, flex-start);
+       
+    }
+
+      
+    h2{
+        text-decoration: none;
+        
+    }
+    p{
+        text-decoration: none;
+    }
+  
+}
+
+.outer-div{
+    
+}

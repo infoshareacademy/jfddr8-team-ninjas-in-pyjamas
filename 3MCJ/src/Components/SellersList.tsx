@@ -3,6 +3,7 @@ import { firebaseDb } from "../main";
 import { getDocs, collection, query } from "firebase/firestore";
 import { globalContext } from "../Context/Context";
 import { NavigateOptions, useNavigate, Link } from "react-router-dom";
+import "../Styles/sellerList.scss";
 
 function SellersList() {
   const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
@@ -42,19 +43,25 @@ function SellersList() {
     filterSellers();
   }, [searchingCategory, searchingLocation, sellers]);
 
-  const directToShopProfile = (id:string) => {
-    navigate("/sellerPage", {sellerId:id} as NavigateOptions  );
+  const directToShopProfile = (id: string) => {
+    navigate("/sellerPage", { sellerId: id } as NavigateOptions);
   };
 
   return (
-    <div >
+    <div className="outer-div">
       {filteredSellers.map((seller) => (
-        <div key={seller.id}>
-        <Link to={`/sellerPage/${seller.id}`}>
-          <h2>{seller.name}</h2>
-          <img src={seller.sellerPhoto}/>
-          <p>{seller.sellerDescription}</p>
-        </Link>
+        <div className="main" key={seller.id}>
+          <div className="seller-list">
+            <Link to={`/sellerPage/${seller.id}`}>
+              <div className="seller-data">
+                <img src={seller.sellerPhoto} />
+                <div className="seller-description">
+                  <h2>{seller.name}</h2>
+                  <p>{seller.sellerDescription}</p>
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       ))}
     </div>
