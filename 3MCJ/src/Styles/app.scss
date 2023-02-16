@@ -1,0 +1,8 @@
+@use './variables'as *;
+@use './mixins' as *;
+
+
+.App {
+    background-color: $background-light;
+    padding: 0 2%;
+}

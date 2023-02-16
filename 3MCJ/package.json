@@ -15,6 +15,7 @@
     "react-router-dom": "^6.8.1",
     "react-star-ratings": "^2.3.0",
     "react-uuid": "^2.0.0",
+    "sass": "^1.58.1",
     "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {

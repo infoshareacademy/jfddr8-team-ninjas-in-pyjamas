@@ -1,4 +1,3 @@
-import "./App.css";
 import { useContext, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
@@ -8,6 +7,7 @@ import { globalContext } from "./Context/Context";
 import ShoppingCart from "./Components/ShoppingCart";
 import  Navbar  from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import "./Styles/app.scss";
 
 function App() {
   const { setShoppingCartItems, setShoppingCartValue, isLogged, setIsLogged} = useContext(globalContext);

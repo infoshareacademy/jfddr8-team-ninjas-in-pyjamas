@@ -1,0 +1,7 @@
+//function
+@mixin makeMeFlex($flex-direction, $justify) {
+    display:flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify;
+    align-items: center;
+}
