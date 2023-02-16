@@ -1,4 +1,40 @@
 @use './variables'as *;
 @use './mixins' as *;
 
+.product-list {
+    @include makeMeFlex(row, flex-start);
+    margin: 1vw 2vw;
+    border: 2px solid $primary-light;
+    border-radius: 22px;
+
+    img {  
+    border-radius: 20px 0 0 20px;
+    width: 24vw; 
+    }
+
+    .product-description {
+        align-self: flex-start;
+        margin: 1vw;
+        width: 67vw;  
+    }
+
+    .product-data {
+        @include makeMeFlex(row, flex-start);
+    }
+
+    p {
+        color: $font-color;      
+    }
+
+    h2 {
+        color: $font-color;
+        margin-bottom: 10px;
+    }
+    .product-price {
+        h3 {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
 

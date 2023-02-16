@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "../main";
 import uuid from "react-uuid";
+import "../Styles/sellerPage.scss";
 
 type Products = {
   id: string;
@@ -67,18 +68,22 @@ function SellerPage() {
   return (
     <div key={sellerId}>
       {filteredSeller.products.map((product: Products) => (
-        <div className="seller-list" key={product.name}>
+        <div className="product-list" key={product.name}>
           <img src={product.photo} />
-          <div className="seller-data">
-            <h2>{product.name }</h2>
-            <button onClick={() => addToShopping(product)}>
+          <div className="product-description">
+            <div className="product-data">
+              <h2>{product.name }</h2>
+              <button onClick={() => addToShopping(product)}>
               Dodaj do koszyka
-            </button>
+              </button>
             </div>
-          <div className="seller-description">
-          <div>{product.description}</div>
-          <div>{product.allergens}</div>
-          <div>{product.price}</div>
+            <div>
+            <p>{product.description}</p>
+            <div>{product.allergens}</div>
+            <div className="product-price">
+              <h3>{product.price} zł</h3>
+            </div>
+            </div>
           </div>
         </div>
       ))}
