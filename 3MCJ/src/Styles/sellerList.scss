@@ -3,42 +3,35 @@
 
 .seller-list {
     @include makeMeFlex(row, flex-start);
-    margin: 24px 24%;
+    margin: 24px 28%;
     border: 2px solid $primary-light;
     border-radius: 20px;
      
   
     img {  
     border-radius: 20px 0 0 20px;
-    width: 50%;
+    width: 30%;
     height: auto;
     
     
    }
     .seller-description {
-        @include makeMeFlex(column,space-between);
-        gap: 40px;
+        align-self: flex-start;
         margin: 20px;
-        flex-wrap: wrap;  
-        width: 50%;
+        width: 70%;
        
     }
     .seller-data {
         @include makeMeFlex(row, flex-start);
        
     }
-
-      
-    h2{
-        text-decoration: none;
+    p {
+        color: $font-color;
+        margin-top: 10px;
         
     }
-    p{
-        text-decoration: none;
-    }
+    h2 {
+        color: $font-color;
+          }
   
-}
-
-.outer-div{
-    
 }

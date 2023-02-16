@@ -3,7 +3,7 @@ $background-light:rgb(210, 225, 230);
 $primary-light:  rgb(254, 255, 240);
 $secondary-light: white;
 $background-button-light: rgb(254, 255, 240);
-$third: black;
+$font-color: black;
 $fourth: black;
 
 
@@ -12,5 +12,6 @@ $fourth: black;
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
+    text-decoration: none;
 }
 
