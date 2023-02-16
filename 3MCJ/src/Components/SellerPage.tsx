@@ -67,17 +67,19 @@ function SellerPage() {
   return (
     <div key={sellerId}>
       {filteredSeller.products.map((product: Products) => (
-        <div key={product.name}>
-          <div>
-            {product.name}
+        <div className="seller-list" key={product.name}>
+          <img src={product.photo} />
+          <div className="seller-data">
+            <h2>{product.name }</h2>
             <button onClick={() => addToShopping(product)}>
               Dodaj do koszyka
             </button>
-          </div>
-          <img src={product.photo} />
+            </div>
+          <div className="seller-description">
           <div>{product.description}</div>
           <div>{product.allergens}</div>
           <div>{product.price}</div>
+          </div>
         </div>
       ))}
     </div>

@@ -3,35 +3,32 @@
 
 .seller-list {
     @include makeMeFlex(row, flex-start);
-    margin: 24px 28%;
+    margin: 1vw 2vw;
     border: 2px solid $primary-light;
-    border-radius: 20px;
-     
-  
+    border-radius: 22px;
+
     img {  
     border-radius: 20px 0 0 20px;
-    width: 30%;
-    height: auto;
-    
-    
-   }
+    width: 24vw; 
+    }
+
     .seller-description {
         align-self: flex-start;
-        margin: 20px;
-        width: 70%;
-       
+        margin: 1vw;
+        width: 68vw;  
     }
+
     .seller-data {
         @include makeMeFlex(row, flex-start);
-       
     }
+
     p {
-        color: $font-color;
-        margin-top: 10px;
-        
+        color: $font-color;      
     }
+
     h2 {
         color: $font-color;
-          }
+        margin-bottom: 10px;
+    }
   
 }
