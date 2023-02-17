@@ -35,7 +35,7 @@ function Home() {
       <div className="search-section">
         <img className="shop-logo"
             src="src/assets/Logo/TCJLogo.png"
-            alt=""
+            alt="shop logo"
           />
         <form onSubmit={(e) => handleSubmit(e)}>
           {/* <label htmlFor="location">Lokalizacja:</label> */}

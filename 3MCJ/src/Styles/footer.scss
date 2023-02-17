@@ -1,1 +1,35 @@
 @use './variables'as *;
+@use './mixins' as *;
+
+
+
+
+.footer-container {
+    @include makeMeFlex(column, center);
+    gap: 50px;
+    border-top: 2px solid white;
+  
+   
+    ul { @include makeMeFlex(row, center);
+        
+        
+
+    }
+    li.author{
+        margin: 6px 12px;
+        font-size: 20px;
+    }
+}
+.footer-icons {
+    height: 16px;
+    margin:0px 4px;
+}
+.site-info img {
+    height: 100px;
+   
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+}

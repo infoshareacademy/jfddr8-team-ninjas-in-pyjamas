@@ -1,1 +1,71 @@
 @use './variables'as *;
+@use './mixins' as *;
+
+
+
+
+.shopping-cart-product-list {
+    @include makeMeFlex(row, flex-start);
+    margin: 2vw 28vw;
+    border-radius: 22px;
+    background-color: #FEFCFF;
+    box-shadow: 0px 10px 49px 6px rgba(75, 75, 75, 1);
+   
+    
+    img {  
+    border-radius: 20px 0 0 20px;
+    width: 12vw; 
+    }
+
+    .shopping-cart-product-description {
+        align-self: flex-start;
+        margin: 1vw;
+        width: 60vw;  
+    }
+
+    .shopping-cart-product-data {
+        @include makeMeFlex(column, flex-start);
+    }
+    
+    h2 {
+        color: $font-color;
+        margin-bottom: 10px;
+        font-size: 48px;
+    } 
+
+    h3, h4 {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    h3 {
+        font-size: 32px;
+    }
+
+    h4 {     
+        font-size: 24px;
+    }
+    
+    .shopping-cart-quantity {
+        @include makeMeFlex(row, flex-start);
+        gap: 12px;
+        align-items: baseline;
+
+
+        .button{
+            padding: 4px 12px;
+            width: 160px;
+            margin: 4px;   
+            border: 2px solid black;
+            border-radius: 12px; 
+            text-align: center;
+            background-color: #FEFCFF;
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            font-size: 20px;
+        }
+    }
+
+    }
+    
+

@@ -2,6 +2,7 @@ import { useContext} from "react";
 import { globalContext } from "../Context/Context";
 import {  doc, setDoc } from "firebase/firestore";
 import { firebaseDb, firebaseAuth } from "../main";
+import "../Styles/shoppingCart.scss";
 
 function ShoppingCart() {
   const {
@@ -69,20 +70,26 @@ function ShoppingCart() {
   };
 
   return (
-    <div>
+    <div className="container">
       <div>
         {shoppingCartItems.map((item) => (
           <div key={item.id}>
-            <h2>{item.name}</h2>
-            {/* <span>{item.photo}</span> */}
-            <span>{item.description} </span>
-            <span>{item.price} zł </span>
-            <div>{item.quantity} szt.</div>
-            
-            <button onClick={() => removeItemFromShoppingCart(item)}>
-              Usuń
-            </button>
-
+            <h2> Strona główna</h2>            
+            <div className="shopping-cart-product-list">              
+              <img src={item.photo}/>
+              <div className="shopping-cart-product-description">
+                <div className="shopping-cart-product-data">
+                  <h2>{item.name}</h2>
+                  <h3>{item.price} zł / {item.packing} </h3>
+                  <div className="shopping-cart-quantity">
+                  <h4>{item.quantity} szt.</h4>
+                    <button className="button" onClick={() => removeItemFromShoppingCart(item)}>
+                    Usuń produkt
+                    </button> 
+                  </div>               
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>

@@ -21,6 +21,7 @@ type Products = {
   allergens: string;
   price: number;
   quantity: number;
+  packing: string;
 };
 
 function SellerPage() {
@@ -79,9 +80,10 @@ function SellerPage() {
             </div>
             <div>
             <p>{product.description}</p>
-            <div>{product.allergens}</div>
+            <div>Alergeny: {product.allergens}</div>
             <div className="product-price">
-              <h3>{product.price} zł</h3>
+              <h3>{product.price} zł / {product.packing}</h3>
+            
             </div>
             </div>
           </div>
