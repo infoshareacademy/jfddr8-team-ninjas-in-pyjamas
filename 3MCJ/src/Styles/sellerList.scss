@@ -1,6 +1,7 @@
 @use './variables'as *;
 @use './mixins' as *;
 
+
 .seller-list:hover {
     transform: scale(1.03)
 }

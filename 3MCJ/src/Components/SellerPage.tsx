@@ -67,7 +67,7 @@ function SellerPage() {
     
 
   return (
-    <div key={sellerId}>
+    <div className="outer-product-list" key={sellerId}>
       {filteredSeller.products.map((product: Products) => (
         <div className="product-list" key={product.name}>
           <img src={product.photo} />
@@ -82,8 +82,7 @@ function SellerPage() {
             <p>{product.description}</p>
             <div>Alergeny: {product.allergens}</div>
             <div className="product-price">
-              <h3>{product.price} zł / {product.packing}</h3>
-            
+              <h3>{product.price} zł / {product.packing}</h3>            
             </div>
             </div>
           </div>

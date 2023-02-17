@@ -1,7 +1,9 @@
 @use './variables'as *;
 @use './mixins' as *;
 
-
+.container {
+    min-height: 75vh;
+}
 
 
 .shopping-cart-product-list {

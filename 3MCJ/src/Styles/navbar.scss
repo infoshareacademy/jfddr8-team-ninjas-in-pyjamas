@@ -4,6 +4,7 @@
 
 
 .navbar {
+  height: 5vh;
   background-color: $background-light;
   @include makeMeFlex(row, space-between);
 
@@ -29,8 +30,8 @@
   }
   
   .button{
-    padding: 4px 12px;
-    width: 132px;
+    padding: 4px 8px;
+    width: 162px;
     margin: 4px;   
     border: 2px solid black;
     border-radius: 12px; 

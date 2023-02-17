@@ -5,6 +5,7 @@
 
 
 .footer-container {
+    height: 15vh;
     @include makeMeFlex(column, center);
     gap: 50px;
     border-top: 2px solid white;
@@ -12,8 +13,6 @@
    
     ul { @include makeMeFlex(row, center);
         
-        
-
     }
     li.author{
         margin: 6px 12px;

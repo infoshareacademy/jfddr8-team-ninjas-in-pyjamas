@@ -73,8 +73,7 @@ function ShoppingCart() {
     <div className="container">
       <div>
         {shoppingCartItems.map((item) => (
-          <div key={item.id}>
-            <h2> Strona główna</h2>            
+          <div key={item.id}>          
             <div className="shopping-cart-product-list">              
               <img src={item.photo}/>
               <div className="shopping-cart-product-description">
