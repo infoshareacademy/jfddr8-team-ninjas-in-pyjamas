@@ -3,9 +3,9 @@
 
 
 .outer-product-list{
-    min-width: 75vh;
-
+    min-height: 75vh;
 }
+
 .product-list {
     @include makeMeFlex(row, flex-start);
     margin: 2vw 9vw;
@@ -17,13 +17,13 @@
 
     img {  
     border-radius: 20px 0 0 20px;
-    width: 18vw; 
+    width: 24%; 
     }
 
     .product-description {
         align-self: flex-start;
         margin: 1vw;
-        width: 60vw;  
+        width: 76%;  
     }
 
     .product-data {

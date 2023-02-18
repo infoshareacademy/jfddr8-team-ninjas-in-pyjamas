@@ -16,13 +16,13 @@
     
     img {  
     border-radius: 20px 0 0 20px;
-    width: 12vw; 
+    width: 36%; 
     }
 
     .shopping-cart-product-description {
         align-self: flex-start;
         margin: 1vw;
-        width: 60vw;  
+        width: 64%;  
     }
 
     .shopping-cart-product-data {
@@ -32,7 +32,7 @@
     h2 {
         color: $font-color;
         margin-bottom: 10px;
-        font-size: 48px;
+        font-size: 32px;
     } 
 
     h3, h4 {

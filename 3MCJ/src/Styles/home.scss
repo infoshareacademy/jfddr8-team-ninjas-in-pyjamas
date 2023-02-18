@@ -2,16 +2,16 @@
 @use './mixins' as *;
 
 .search-section{
-    min-height: 300px;
+    // min-height: 300px;
     @include makeMeFlex(column, center);
     gap: 48px;
 
     select{
-        padding: 12px;
-        margin: 0px 8px;
+        padding: 8px;
+        margin: 0px 10px;
         border-radius: 8px;
         text-align: center;
-        width: 21vw;
+        width: 320px;
         border: 1px solid black;
         background-color: #FEFCFF;
         font-size: 24px;
@@ -21,10 +21,10 @@
     }
    
     input{
-        padding: 8px;
+        padding: 4px;
         border-radius: 8px;
-        margin: 0px 8px;
-        width: 8vw;
+        margin: 0px 48px;
+        width: 280px;
         border: 1px solid black;
         background-color: #FEFCFF;
         font-size: 24px;
@@ -36,7 +36,10 @@
         background-color: rgba(128,194,203,0.9681372549019608);
     }
     form {
-        margin-left:calc(8vw + 8px);
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
          }
    
     image{
@@ -53,6 +56,6 @@
         }    
 }
 .home {
-    min-height: 75vh;
+    // min-height: 75vh;
 }
 

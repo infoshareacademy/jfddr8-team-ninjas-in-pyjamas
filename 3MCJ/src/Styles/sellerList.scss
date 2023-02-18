@@ -16,13 +16,13 @@
 
     img {  
     border-radius: 20px 0 0 20px;
-    width: 18vw; 
+    width: 30%; 
     }
 
     .seller-description {
         align-self: flex-start;
-        margin: 1vw;
-        width: 60vw;  
+        margin: 14px;
+        width: 70%;  
     }
 
     .seller-data {
@@ -32,14 +32,14 @@
 
     p {
         color: $font-color;    
-        font-size: 24px;
-        margin: 50px 50px;  
+        font-size: 16px;
+        margin: 16px 36px;  
     }
 
     h2 {
         color: $font-color;
-        margin-bottom: 10px;
-        font-size: 44px;
+        font-size: 36px;
+        margin-left: 12px;
     }
   
 }

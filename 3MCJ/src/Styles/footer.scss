@@ -5,12 +5,11 @@
 
 
 .footer-container {
-    height: 15vh;
+    // height: 15vh;
     @include makeMeFlex(column, center);
-    gap: 50px;
+    // gap: 50px;
     border-top: 2px solid white;
   
-   
     ul { @include makeMeFlex(row, center);
         
     }
@@ -24,8 +23,7 @@
     margin:0px 4px;
 }
 .site-info img {
-    height: 100px;
-   
+    height: 100px; 
 }
 
 .author {
