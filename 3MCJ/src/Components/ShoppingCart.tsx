@@ -14,7 +14,7 @@ function ShoppingCart() {
     setShoppingCartItems,
   } = useContext(globalContext);
 
-  const removeItemFromShoppingCart = (product: any) => {
+    const removeItemFromShoppingCart = (product: any) => {
     shoppingCartItems.filter(async (e) => {
       if (e.id === product.id) {
         
@@ -91,7 +91,7 @@ function ShoppingCart() {
     };
     setDoc(docRef, data);
   };
-
+  
   return (
     <div className="container">
       <div>
@@ -104,10 +104,10 @@ function ShoppingCart() {
                   <h2>{item.name}</h2>
                   <h3>{item.price} zł / {item.packing} </h3>
                   <div className="shopping-cart-quantity">
-                  <h4>{item.quantity} szt.</h4>
+                    <h4>{item.quantity} szt.</h4>
                     <button className="button" onClick={() => removeItemFromShoppingCart(item)}>
-                    -
-                    </button> 
+                      Usuń produkt
+                    </button>
                     <button className="button" onClick={() => addItemToShoppingCart(item)}>
                       +
                     </button>
@@ -120,5 +120,6 @@ function ShoppingCart() {
       </div>
     </div>
   );
-}
+        }
+
 export default ShoppingCart;
