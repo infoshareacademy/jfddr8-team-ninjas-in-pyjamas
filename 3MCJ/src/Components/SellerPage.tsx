@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { globalContext } from "../Context/Context";
 import { useParams } from "react-router-dom";
 import {
@@ -12,6 +12,7 @@ import {
 import { firebaseAuth, firebaseDb } from "../main";
 import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
+import StarRating from "./StarRating";
 
 type Products = {
   id: string;
@@ -39,6 +40,14 @@ function SellerPage() {
     return seller.id === sellerId;
   });
 
+  const starRating = filteredSeller.rating?.reduce((acc:number, value:number)=> acc + value , 0)/filteredSeller.rating?.length
+
+  const handleRatingChange = (value) => {
+    console.log(value);
+    // id sellera przypisać do usera (już ocenione)
+    // wysłać dane do firebase- seller.rating
+      }
+
   const addToShopping = async (product: Products) => {
     let isNewProduct = true   
     shoppingCartItems.filter((e) => {
@@ -64,30 +73,37 @@ function SellerPage() {
     }
   };
   console.log(shoppingCartItems);
+
     
 
   return (
-    <div className="outer-product-list" key={sellerId}>
-      {filteredSeller.products.map((product: Products) => (
-        <div className="product-list" key={product.name}>
-          <img src={product.photo} />
-          <div className="product-description">
-            <div className="product-data">
-              <h2>{product.name }</h2>
-              <button onClick={() => addToShopping(product)}>
-             {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
-              </button>
-            </div>
-            <div>
-            <p>{product.description}</p>
-            <div>Alergeny: {product.allergens}</div>
-            <div className="product-price">
-              <h3>{product.price} zł / {product.packing}</h3>            
-            </div>
+    <div>
+      <div>
+        <h2>{filteredSeller.name}</h2>
+        <StarRating rating={starRating} onRateChange={handleRatingChange}/>
+      </div>
+      <div className="outer-product-list" key={sellerId}>
+        {filteredSeller.products.map((product: Products) => (
+          <div className="product-list" key={product.name}>
+            <img src={product.photo} />
+            <div className="product-description">
+              <div className="product-data">
+                <h2>{product.name }</h2>
+                <button onClick={() => addToShopping(product)}>
+               {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
+                </button>
+              </div>
+              <div>
+              <p>{product.description}</p>
+              <div>Alergeny: {product.allergens}</div>
+              <div className="product-price">
+                <h3>{product.price} zł / {product.packing}</h3>            
+              </div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

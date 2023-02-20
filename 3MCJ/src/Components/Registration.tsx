@@ -19,8 +19,21 @@ type UserData = {
   confirmPassword: string;
   userType: userType;
   shoppingCartItems:any[];
-  shoppingCartValue:number
+  shoppingCartValue:number; 
+  rating?: number[]
 };
+
+// type SellerData = {
+//   city: string;
+//   email: string;
+//   password: string;
+//   name: string;
+//   surname: string;
+//   confirmPassword: string;
+//   userType: userType;
+//   rating?: number[]
+// }
+
 const initialUser = {
   city: "",
   email: "",
@@ -31,7 +44,7 @@ const initialUser = {
   userType: userType.Customer,
   shoppingCartItems: [],
   shoppingCartValue: 0,
-};
+ };
 
 function Registration() {
   const [user, setUser] = useState<UserData>(initialUser);
