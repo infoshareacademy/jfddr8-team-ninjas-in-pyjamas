@@ -42,11 +42,25 @@ function SellerPage() {
 
   const starRating = filteredSeller.rating?.reduce((acc:number, value:number)=> acc + value , 0)/filteredSeller.rating?.length
 
-  const handleRatingChange = (value) => {
-    console.log(value);
+  const handleRatingChange = async (value:number) => {
+    console.log("value", value);
     // id sellera przypisać do usera (już ocenione)
     // wysłać dane do firebase- seller.rating
-      }
+
+    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+    console.log(sellerId)
+    // try {
+    //   const data = {
+    //     rating: starRating
+    //   };
+    //   await setDoc(docRef, data);
+    //   setRating(starRating + value);
+    // }catch (error) {
+    //   console.log("Error fetching shopping cart data", error);
+    // }
+  };
+
+
 
   const addToShopping = async (product: Products) => {
     let isNewProduct = true;

@@ -14,6 +14,8 @@ const StarRating: React.FC<Props> = ({ onRateChange, rating:initialRating }) => 
     setRating(value);
           onRateChange(value);
           console.log("rating:", rating);
+
+
   }
 
   return (
