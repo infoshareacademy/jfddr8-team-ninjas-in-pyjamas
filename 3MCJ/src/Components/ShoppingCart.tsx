@@ -14,7 +14,7 @@ function ShoppingCart() {
     setShoppingCartItems,
   } = useContext(globalContext);
 
-  const removeItemFromShoppingCart = (product: any) => {
+    const removeItemFromShoppingCart = (product: any) => {
     shoppingCartItems.filter(async (e) => {
       if (e.id === product.id) {
         
@@ -69,6 +69,29 @@ function ShoppingCart() {
     });
   };
 
+
+  const addItemToShoppingCart = (product: any) => {
+    const updatedItems = shoppingCartItems.map((item) => {
+      if (item.id === product.id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1
+        };
+      }
+      return item;
+    });
+    const updatedValue = shoppingCartValue + product.price;
+    setShoppingCartItems(updatedItems);
+    setShoppingCartValue(updatedValue);
+    const { email } = firebaseAuth.currentUser!;
+    const docRef = doc(firebaseDb, "Users", `${email}`);
+    const data = {
+      shoppingCartItems: updatedItems,
+      shoppingCartValue: updatedValue
+    };
+    setDoc(docRef, data);
+  };
+  
   return (
     <div className="container">
       <div>
@@ -81,10 +104,13 @@ function ShoppingCart() {
                   <h2>{item.name}</h2>
                   <h3>{item.price} zł / {item.packing} </h3>
                   <div className="shopping-cart-quantity">
-                  <h4>{item.quantity} szt.</h4>
+                    <h4>{item.quantity} szt.</h4>
                     <button className="button" onClick={() => removeItemFromShoppingCart(item)}>
-                    Usuń produkt
-                    </button> 
+                      Usuń produkt
+                    </button>
+                    <button className="button" onClick={() => addItemToShoppingCart(item)}>
+                      +
+                    </button>
                   </div>               
                 </div>
               </div>
@@ -94,5 +120,6 @@ function ShoppingCart() {
       </div>
     </div>
   );
-}
+        }
+
 export default ShoppingCart;
