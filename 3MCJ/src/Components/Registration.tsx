@@ -20,7 +20,8 @@ type UserData = {
   confirmPassword: string;
   userType: userType;
   shoppingCartItems:any[];
-  shoppingCartValue:number
+  shoppingCartValue:number;
+  rating?: number[]
 };
 const initialUser = {
   city: "",

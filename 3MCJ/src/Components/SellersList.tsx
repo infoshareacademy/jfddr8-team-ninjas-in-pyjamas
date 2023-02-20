@@ -4,6 +4,7 @@ import { getDocs, collection, query } from "firebase/firestore";
 import { globalContext } from "../Context/Context";
 import { NavigateOptions, useNavigate, Link } from "react-router-dom";
 import "../Styles/sellerList.scss";
+import StarRating from "./StarRating";
 
 function SellersList() {
   const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
@@ -50,21 +51,24 @@ function SellersList() {
 
   return (
     <div className="outer-div">
-      {filteredSellers.map((seller) => (
-        <div className="main" key={seller.id}>
+      {filteredSellers.map((seller) => {
+        const {id, sellerPhoto, name, sellerDescription, rating} = seller
+        const starRating = rating?.reduce((acc:any, value:number)=> acc + value , 0)/rating?.length
+        return <div className="main" key={id}>
           <div className="seller-list">
-            <Link to={`/sellerPage/${seller.id}`}>
+            <Link to={`/sellerPage/${id}`}>
               <div className="seller-data">
-                <img src={seller.sellerPhoto} />
+                <img src={sellerPhoto} />
                 <div className="seller-description">
-                  <h2>{seller.name}</h2>
-                  <p>{seller.sellerDescription}</p>
+                  <h2>{name}</h2>
+                  <StarRating rating={starRating} />
+                  <p>{sellerDescription}</p>
                 </div>
               </div>
             </Link>
           </div>
         </div>
-      ))}
+      })}
     </div>
   );
 }

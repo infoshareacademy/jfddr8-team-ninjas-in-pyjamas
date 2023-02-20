@@ -69,6 +69,30 @@ function ShoppingCart() {
     });
   };
 
+
+  const addItemToShoppingCart = (product: any) => {
+    const updatedItems = shoppingCartItems.map((item) => {
+      if (item.id === product.id) {
+        return {
+          ...item,
+          quantity: item.quantity + 1
+        };
+      }
+      return item;
+    });
+    const updatedValue = shoppingCartValue + product.price;
+    setShoppingCartItems(updatedItems);
+    setShoppingCartValue(updatedValue);
+    const { email } = firebaseAuth.currentUser!;
+    const docRef = doc(firebaseDb, "Users", `${email}`);
+    const data = {
+      shoppingCartItems: updatedItems,
+      shoppingCartValue: updatedValue
+    };
+    setDoc(docRef, data);
+  };
+
+
   return (
     <div className="container">
       <div>
@@ -83,8 +107,11 @@ function ShoppingCart() {
                   <div className="shopping-cart-quantity">
                   <h4>{item.quantity} szt.</h4>
                     <button className="button" onClick={() => removeItemFromShoppingCart(item)}>
-                    Usuń produkt
+                    -
                     </button> 
+                    <button className="button" onClick={() => addItemToShoppingCart(item)}>
+                      +
+                    </button>
                   </div>               
                 </div>
               </div>

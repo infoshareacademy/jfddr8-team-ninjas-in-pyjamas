@@ -1,22 +1,25 @@
-import React, { useContext } from 'react'
-import { globalContext } from "../Context/Context";
+import React, { useState } from 'react';
 
 interface Props {
-  onRate: (value: number) => void;
+  onRateChange?: (value: number) => void;
+  rating: number; 
 }
 
-const StarRating: React.FC<Props> = ({ onRate }) => {
+const StarRating: React.FC<Props> = ({ onRateChange, rating:initialRating }) => {
 
-  const { rating, setRating } = useContext(globalContext);  
+  const [ rating, setRating ] = useState<number>(initialRating);  
+
+  const onRating = (value:number) => {
+    if (!onRateChange) return
+    setRating(value);
+          onRateChange(value);
+          console.log("rating:", rating);
+  }
 
   return (
     <div>
       {[1, 2, 3, 4, 5].map(value => (
-        <span key={value} onClick={() => {
-          setRating(value);
-          onRate(value);
-          console.log("rating:", rating);
-        }}>
+        <span key={value} onClick={() => onRating(value)}>
           {rating >= value ? '⭐️' : '☆'}
         </span>
       ))}
