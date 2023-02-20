@@ -1,5 +1,51 @@
 @use './variables'as *;
 
-.container-login {
-    min-height: 75vh;
+.login-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    // height: 45vh;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    margin: 60px 0 120px 0; 
+   
 }
+  
+  input[type="text"],
+  input[type="password"] {
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  
+  button {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    background: #3790bd;
+    border: 1px solid #348cc3;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  button:hover {
+    background: #a4adaa;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .login-form {
+    background-color: white;
+    padding: 3.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 10px;
+  }

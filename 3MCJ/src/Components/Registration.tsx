@@ -19,6 +19,7 @@ type UserData = {
   confirmPassword: string;
   userType: userType;
   shoppingCartItems:any[];
+  shoppingCartValue:number
 };
 const initialUser = {
   city: "",
@@ -28,7 +29,8 @@ const initialUser = {
   surname: "",
   confirmPassword: "",
   userType: userType.Customer,
-  shoppingCartItems: []
+  shoppingCartItems: [],
+  shoppingCartValue: 0,
 };
 
 function Registration() {
@@ -48,6 +50,7 @@ function Registration() {
         surname: user.surname,
         userType: user.userType,
         shoppingCartItems:user.shoppingCartItems,
+        shoppingCartValue:user.shoppingCartValue
       })
       
       setIsLogged(true);

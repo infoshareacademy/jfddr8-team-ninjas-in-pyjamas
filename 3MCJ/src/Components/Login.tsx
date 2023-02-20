@@ -27,24 +27,33 @@ function Login(): JSX.Element {
 
 
   return (
-    <div className="container-login">
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          name="login"
-          id="login"
-          placeholder="login"
-          onChange={(e) => setLogin(e.target.value)}
-        />
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button>Login</button>
-      </form>
+    <div className="login-app">
+      <div className="login-form">
+        <form onSubmit={handleLogin} >
+          <div className="input-container">
+            <label>Użytkownik</label>
+            <input
+              type="text"
+              name="login"
+              id="login"
+              // placeholder="login"
+              onChange={(e) => setLogin(e.target.value)}
+            />
+          </div>
+          <div className="input-container">
+            <label>Hasło</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              // placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="button-container"><button>Login</button></div>
+          
+        </form>
+      </div>
     </div>
   );
 }

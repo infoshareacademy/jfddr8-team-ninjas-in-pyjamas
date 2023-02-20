@@ -40,43 +40,47 @@ function Navbar() {
   return (
     <div>
       <div className="navbar">
-      <img className="nav-bar-logo"
-            onClick={() => navigate("/#")}
-            src="src/assets/Logo/TCJLogoNavbar.png"
-            alt=""
-          />
+        <img
+          className="nav-bar-logo"
+          onClick={() => navigate("/#")}
+          src="src/assets/Logo/TCJLogoNavbar.png"
+          alt=""
+        />
         <div className="div-login-registration">
-          
           <div className="navbar-button-div">
-            <div>
-            <img
-              onClick={handleLogInOut}
-              className="shopping-cart-icon"
-              src="src/assets/Logo/log-out.png"
-              alt="shopping cart icon"
-            />
-             {isLogged ? <p> Wyloguj się </p> : <p> Zaloguj się </p>}
-            </div >
-            <img
-              
-              className="shopping-cart-icon"
-              src="src/assets/Logo/registration.png"
-              alt="shopping cart icon"
-            />
-            {!isLogged && <p> Zarejestruj się</p>}
-            
-            
-  
+            <div
+            className="shopping-cart-icon-div">
+              <img
+                onClick={handleLogInOut}
+                className="shopping-cart-icon"
+                src="src/assets/Logo/log-out.png"
+                alt="shopping cart icon"
+              />
+              {isLogged ? <p>Wyloguj się</p> : <p>Zaloguj się</p>}
+            </div>
+
+            <div 
+            className="shopping-cart-icon-div"
+            onClick={handleRegistration}>
+              <img
+                className="shopping-cart-icon"
+                src="src/assets/Logo/registration.png"
+                alt="shopping cart icon"
+              />
+              {!isLogged && <p>Zarejestruj się</p>}
+            </div>
+
             <div
               className="shopping-cart-icon-div"
               onClick={() => navigate("/shoppingCart")}
-              >
+            >
               {isLogged && shoppingCartValue + " zł"}
-            <img
-              className="shopping-cart-icon"
-              src="src/assets/Logo/ShoppingCartLogo.png"
-              alt="shopping cart icon"
-            />
+              <img
+                className="shopping-cart-icon"
+                src="src/assets/Logo/ShoppingCartLogo.png"
+                alt="shopping cart icon"
+              />
+              <p>Koszyk</p>
             </div>
           </div>
         </div>
