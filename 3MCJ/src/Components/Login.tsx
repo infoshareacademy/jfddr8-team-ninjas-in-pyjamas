@@ -31,7 +31,7 @@ function Login(): JSX.Element {
       <div className="login-form">
         <form onSubmit={handleLogin} >
           <div className="input-container">
-            <label>Username</label>
+            <label>Użytkownik</label>
             <input
               type="text"
               name="login"
@@ -41,7 +41,7 @@ function Login(): JSX.Element {
             />
           </div>
           <div className="input-container">
-            <label>Password</label>
+            <label>Hasło</label>
             <input
               type="password"
               name="password"
