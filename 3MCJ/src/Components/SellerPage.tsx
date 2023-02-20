@@ -75,7 +75,7 @@ function SellerPage() {
             <div className="product-data">
               <h2>{product.name }</h2>
               <button onClick={() => addToShopping(product)}>
-              Dodaj do koszyka
+             {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
               </button>
             </div>
             <div>

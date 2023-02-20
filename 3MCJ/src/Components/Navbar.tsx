@@ -58,8 +58,7 @@ function Navbar() {
               />
               {isLogged ? <p>Wyloguj się</p> : <p>Zaloguj się</p>}
             </div>
-
-            <div 
+            {!isLogged &&  <div 
             className="shopping-cart-icon-div"
             onClick={handleRegistration}>
               <img
@@ -68,20 +67,22 @@ function Navbar() {
                 alt="shopping cart icon"
               />
               {!isLogged && <p>Zarejestruj się</p>}
-            </div>
-
-            <div
-              className="shopping-cart-icon-div"
+            </div>}
+           
+              {isLogged &&  <div
+              className="shopping-cart-icon-div shopping-cart-icon-cart"
               onClick={() => navigate("/shoppingCart")}
+              
             >
-              {isLogged && shoppingCartValue + " zł"}
               <img
                 className="shopping-cart-icon"
                 src="src/assets/Logo/ShoppingCartLogo.png"
                 alt="shopping cart icon"
-              />
-              <p>Koszyk</p>
-            </div>
+               
+                />
+                {isLogged && shoppingCartValue + " zł"}
+            </div>}
+           
           </div>
         </div>
       </div>

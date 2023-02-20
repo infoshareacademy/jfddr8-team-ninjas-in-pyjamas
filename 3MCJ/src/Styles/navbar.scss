@@ -4,24 +4,24 @@
 
 
 .navbar {
-  // height: 5vh;
   background-color: $background-light;
   @include makeMeFlex(row, space-between);
 
   .nav-bar-logo{
     max-width: 160px;
+    margin: 10px 10%
   }
   
 }
 .div-login-registration{
-    margin:10px;
+    margin:10px 10%;
   }
   
   .shopping-cart-icon-div{
     @include makeMeFlex(row, end);
-    gap: 20px;  
+    gap: 12px;  
     font-size: 24px;
-    margin: 8px;
+    margin: 4px;
   }
   
   .shopping-cart-icon{
@@ -54,9 +54,14 @@
     transform: scale(1.1);
     background-color: rgba(128,194,203,0.9681372549019608);
   }
-
+  
   .shopping-cart-icon-div:hover{
     transform: scale(1.1);
     border-radius: 12px;
+    cursor:pointer;
 
+  }
+
+  .nav-bar-logo:hover{
+    cursor:pointer;
   }

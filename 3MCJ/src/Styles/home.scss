@@ -2,7 +2,6 @@
 @use './mixins' as *;
 
 .search-section{
-    // min-height: 300px;
     @include makeMeFlex(column, center);
     gap: 48px;
 

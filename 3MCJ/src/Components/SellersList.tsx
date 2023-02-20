@@ -18,14 +18,14 @@ function SellersList() {
       const fetchedSellers: any[] = [];
       sellersSnapshot.forEach((seller) => {
         fetchedSellers.push({ id: seller.id, ...seller.data() });
-        setSpinnerHome(false)
       });
       setSellers(fetchedSellers);
+      setSpinnerHome(false)
     } catch (error) {
       console.error("Error fetching sellers: ", error);
     }
   };
-
+  
   useEffect(() => {
     fetchSellers();
   }, []);
