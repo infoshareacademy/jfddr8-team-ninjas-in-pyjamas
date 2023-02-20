@@ -48,15 +48,25 @@ function Navbar() {
         <div className="div-login-registration">
           
           <div className="navbar-button-div">
+            <div>
+            <img
+              onClick={handleLogInOut}
+              className="shopping-cart-icon"
+              src="src/assets/Logo/log-out.png"
+              alt="shopping cart icon"
+            />
+             {isLogged ? <p> Wyloguj się </p> : <p> Zaloguj się </p>}
+            </div >
+            <img
+              
+              className="shopping-cart-icon"
+              src="src/assets/Logo/registration.png"
+              alt="shopping cart icon"
+            />
+            {!isLogged && <p> Zarejestruj się</p>}
             
-            <div className="button" onClick={handleLogInOut}>
-              {isLogged ? "Wyloguj się" : "Zaloguj się"}
-            </div>
-            {!isLogged && (
-              <div className="button" onClick={handleRegistration}>
-                Zarejestruj się
-              </div>
-            )}
+            
+  
             <div
               className="shopping-cart-icon-div"
               onClick={() => navigate("/shoppingCart")}
