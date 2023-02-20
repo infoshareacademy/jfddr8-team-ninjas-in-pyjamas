@@ -69,7 +69,8 @@ function Registration() {
     console.log(user)
   };
   return (
-    <div>
+    <div className="container">
+      <header>Twoje dane</header>
       <form onSubmit={handleSubmit} name="registration_form">
       <input name="email" onChange={handleInputChange} required value={user.email} placeholder="Email" />
       <input name="password" type="password"onChange={handleInputChange} required value={user.password} placeholder="Hasło" />
