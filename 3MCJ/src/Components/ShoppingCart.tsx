@@ -92,7 +92,10 @@ function ShoppingCart() {
     setDoc(docRef, data);
   };
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> d2e617129ce1d123450b16512387ed55702ba919
   return (
     <div className="container">
       <div>
