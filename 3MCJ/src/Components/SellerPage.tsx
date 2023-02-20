@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { globalContext } from "../Context/Context";
 import { useParams } from "react-router-dom";
 import {
@@ -12,6 +12,7 @@ import {
 import { firebaseAuth, firebaseDb } from "../main";
 import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
+import StarRating from "./StarRating";
 
 type Products = {
   id: string;
@@ -38,6 +39,14 @@ function SellerPage() {
   const filteredSeller = sellers.find((seller) => {
     return seller.id === sellerId;
   });
+
+  const starRating = filteredSeller.rating?.reduce((acc:number, value:number)=> acc + value , 0)/filteredSeller.rating?.length
+
+  const handleRatingChange = (value) => {
+    console.log(value);
+    // id sellera przypisać do usera (już ocenione)
+    // wysłać dane do firebase- seller.rating
+      }
 
   const addToShopping = async (product: Products) => {
     let isNewProduct = true;
@@ -72,41 +81,47 @@ function SellerPage() {
   console.log(shoppingCartItems);
 
   return (
-    <div className="outer-product-list" key={sellerId}>
-      {filteredSeller.products.map((product: Products) => (
-        <div className="product-list" key={product.name}>
-          <img src={product.photo} />
-          <div className="product-description">
-            <div className="product-data">
-              <h2>{product.name}</h2>
-            </div>
-            <div>
-              <p>{product.description}</p>
-              <div className="allergens-div">Alergeny: {product.allergens}</div>
-              <div className="product-price">
-                <h3>
-                  {product.price} zł / {product.packing}
-                </h3>
-                <div
-                  className="shopping-icon-div"
-                  onClick={() => addToShopping(product)}
-                >
-                  <img
-                    className="shopping-cart-icon-seller-page"
-                    src="src/assets/Logo/ShoppingCartLogo.png"
-                    alt="shopping cart icon"
-                  />
-                  {isLogged ? (
-                    <p>Dodaj do koszyka</p>
-                  ) : (
-                    <p>Zaloguj się aby dodać do koszyka</p>
-                  )}
+    <div>
+      <div>
+          <h2>{filteredSeller.name}</h2>
+          <StarRating rating={starRating} onRateChange={handleRatingChange}/>
+      </div>
+      <div className="outer-product-list" key={sellerId}>
+        {filteredSeller.products.map((product: Products) => (
+          <div className="product-list" key={product.name}>
+            <img src={product.photo} />
+            <div className="product-description">
+              <div className="product-data">
+                <h2>{product.name}</h2>
+              </div>
+              <div>
+                <p>{product.description}</p>
+                <div className="allergens-div">Alergeny: {product.allergens}</div>
+                <div className="product-price">
+                  <h3>
+                    {product.price} zł / {product.packing}
+                  </h3>
+                  <div
+                    className="shopping-icon-div"
+                    onClick={() => addToShopping(product)}
+                  >
+                    <img
+                      className="shopping-cart-icon-seller-page"
+                      src="src/assets/Logo/ShoppingCartLogo.png"
+                      alt="shopping cart icon"
+                    />
+                    {isLogged ? (
+                      <p>Dodaj do koszyka</p>
+                    ) : (
+                      <p>Zaloguj się aby dodać do koszyka</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

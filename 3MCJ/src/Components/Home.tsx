@@ -86,7 +86,6 @@ function Home() {
   wrapperClass="dna-wrapper"
 />      
       <SellersList />
-      <StarRating />
     </div>
   );
 }
