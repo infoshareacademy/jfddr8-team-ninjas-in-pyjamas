@@ -55,7 +55,7 @@ function SellerPage() {
     //   };
     //   await setDoc(docRef, data);
     //   setRating(starRating + value);
-    // }catch (error) {
+    // } catch (error) {
     //   console.log("Error fetching shopping cart data", error);
     // }
   };
