@@ -48,41 +48,41 @@ function Navbar() {
         />
         <div className="div-login-registration">
           <div className="navbar-button-div">
-            <div
-            className="shopping-cart-icon-div">
+            <div className="shopping-cart-icon-div" onClick={handleLogInOut}>
               <img
-                onClick={handleLogInOut}
                 className="shopping-cart-icon"
                 src="src/assets/Logo/log-out.png"
                 alt="shopping cart icon"
               />
               {isLogged ? <p>Wyloguj się</p> : <p>Zaloguj się</p>}
             </div>
-            {!isLogged &&  <div 
-            className="shopping-cart-icon-div"
-            onClick={handleRegistration}>
-              <img
-                className="shopping-cart-icon"
-                src="src/assets/Logo/registration.png"
-                alt="shopping cart icon"
-              />
-              {!isLogged && <p>Zarejestruj się</p>}
-            </div>}
-           
-              {isLogged &&  <div
-              className="shopping-cart-icon-div shopping-cart-icon-cart"
-              onClick={() => navigate("/shoppingCart")}
-              
-            >
-              <img
-                className="shopping-cart-icon"
-                src="src/assets/Logo/ShoppingCartLogo.png"
-                alt="shopping cart icon"
-               
+            {!isLogged && (
+              <div
+                className="shopping-cart-icon-div"
+                onClick={handleRegistration}
+              >
+                <img
+                  className="shopping-cart-icon"
+                  src="src/assets/Logo/registration.png"
+                  alt="shopping cart icon"
+                />
+                {!isLogged && <p>Zarejestruj się</p>}
+              </div>
+            )}
+
+            {isLogged && (
+              <div
+                className="shopping-cart-icon-div shopping-cart-icon-cart"
+                onClick={() => navigate("/shoppingCart")}
+              >
+                <img
+                  className="shopping-cart-icon"
+                  src="src/assets/Logo/ShoppingCartLogo.png"
+                  alt="shopping cart icon"
                 />
                 {isLogged && shoppingCartValue + " zł"}
-            </div>}
-           
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -40,10 +40,10 @@ function SellerPage() {
   });
 
   const addToShopping = async (product: Products) => {
-    let isNewProduct = true   
+    let isNewProduct = true;
     shoppingCartItems.filter((e) => {
       if (e.id === product.id) {
-        isNewProduct = false
+        isNewProduct = false;
         product.quantity = product.quantity + 1;
         console.log(product.quantity);
       }
@@ -53,18 +53,23 @@ function SellerPage() {
 
     try {
       const data = {
-        shoppingCartItems: [ ...shoppingCartItems,...(isNewProduct ? [product] : [])],
+        shoppingCartItems: [
+          ...shoppingCartItems,
+          ...(isNewProduct ? [product] : []),
+        ],
         shoppingCartValue: shoppingCartValue + product.price,
       };
       await setDoc(docRef, data);
       setShoppingCartValue(shoppingCartValue + product.price);
-      setShoppingCartItems([ ...shoppingCartItems,...(isNewProduct ? [product] : [])]);
+      setShoppingCartItems([
+        ...shoppingCartItems,
+        ...(isNewProduct ? [product] : []),
+      ]);
     } catch (error) {
       console.log("Error fetching shopping cart data", error);
     }
   };
   console.log(shoppingCartItems);
-    
 
   return (
     <div className="outer-product-list" key={sellerId}>
@@ -73,26 +78,31 @@ function SellerPage() {
           <img src={product.photo} />
           <div className="product-description">
             <div className="product-data">
-              <h2>{product.name }</h2>
-             
-              {/* <button onClick={() => addToShopping(product)}>
-              </button> */}
+              <h2>{product.name}</h2>
             </div>
             <div>
-            <p>{product.description}</p>
-            <div className="allergens-div">Alergeny: {product.allergens}</div>
-            <div className="product-price">
-              <h3>{product.price} zł / {product.packing}</h3>   
-              <div className="shopping-icon-div"><img
-              onClick={() => addToShopping(product)}
-                className="shopping-cart-icon-seller-page"
-                src="src/assets/Logo/ShoppingCartLogo.png"
-                alt="shopping cart icon"
-               
-                />
-             {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> }          </div>
-              
-            </div>
+              <p>{product.description}</p>
+              <div className="allergens-div">Alergeny: {product.allergens}</div>
+              <div className="product-price">
+                <h3>
+                  {product.price} zł / {product.packing}
+                </h3>
+                <div
+                  className="shopping-icon-div"
+                  onClick={() => addToShopping(product)}
+                >
+                  <img
+                    className="shopping-cart-icon-seller-page"
+                    src="src/assets/Logo/ShoppingCartLogo.png"
+                    alt="shopping cart icon"
+                  />
+                  {isLogged ? (
+                    <p>Dodaj do koszyka</p>
+                  ) : (
+                    <p>Zaloguj się aby dodać do koszyka</p>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
