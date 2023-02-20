@@ -39,6 +39,9 @@ function Registration() {
   const { isLogged, setIsLogged } = useContext(globalContext);
   const navigate = useNavigate();
   const userData = useState<UserData>(initialUser);
+  const [error, setError] = useState<string>('');
+
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if(user.password !== user.confirmPassword) {
@@ -86,6 +89,7 @@ function Registration() {
           <div className="input-container">
           <input name="confirmPassword" type="password" onChange={handleInputChange} required value={user.confirmPassword} placeholder="Potwierdź Hasło"/>
           </div>
+          {error && (<div className="error-message">{error}</div>)}
           <div className="input-container">
           <input type="name" name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
           </div>
