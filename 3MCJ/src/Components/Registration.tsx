@@ -41,6 +41,10 @@ function Registration() {
   const userData = useState<UserData>(initialUser);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if(user.password !== user.confirmPassword) {
+      alert("Hasła się nie zgadzają");
+      return;
+    }
     try {      
       await createUserWithEmailAndPassword(firebaseAuth, user.email, user.password);
       const {email} = firebaseAuth.currentUser!;
