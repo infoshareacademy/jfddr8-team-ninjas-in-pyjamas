@@ -7,13 +7,14 @@
 .footer-container {
     @include makeMeFlex(column, center);
     border-top: 2px solid white;
+    background-color: #D2D4C8;
   
     ul { @include makeMeFlex(row, center);
         
     }
     li.author{
         margin: 6px 12px;
-        font-size: 20px;
+        font-size: 12px;
     }
 }
 .footer-icons {

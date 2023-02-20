@@ -69,21 +69,34 @@ function Registration() {
     console.log(user)
   };
   return (
-    <div className="container">
-      <header>Twoje dane</header>
-      <form onSubmit={handleSubmit} name="registration_form">
-      <input name="email" onChange={handleInputChange} required value={user.email} placeholder="Email" />
-      <input name="password" type="password"onChange={handleInputChange} required value={user.password} placeholder="Hasło" />
-      <input name="confirmPassword" type="password" onChange={handleInputChange} required value={user.confirmPassword} placeholder="Potwierdź Hasło"/>
-      <input name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
-      <input name="surname" onChange={handleInputChange} required value={user.surname} placeholder="Nazwisko" />
-      <input name="city" onChange={handleInputChange} required value={user.city} placeholder="Miasto" />
-      <select onChange={handleInputChange} name="userType" id="products">
-        <option value={userType.Customer}>Klient</option>
-        <option value={userType.Seller}>Sprzedawca</option>
-      </select>
-        <input type="submit" value={"Załóż konto"} />
-      </form>
+    <div className="registration-app">
+      <div className= "registration-form">
+        <form onSubmit={handleSubmit} name="registration_form">
+          <div>
+            <input name="email" onChange={handleInputChange} required value={user.email} placeholder="Email" />
+          </div>
+          <div>
+          <input name="password" type="password"onChange={handleInputChange} required value={user.password} placeholder="Hasło" />
+          </div>
+          <div>
+          <input name="confirmPassword" type="password" onChange={handleInputChange} required value={user.confirmPassword} placeholder="Potwierdź Hasło"/>
+          </div>
+          <div>
+          <input name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
+          </div>
+          <div>
+          <input name="surname" onChange={handleInputChange} required value={user.surname} placeholder="Nazwisko" />
+          </div>
+          <div>
+          <input name="city" onChange={handleInputChange} required value={user.city} placeholder="Miasto" />
+          </div>
+        <select onChange={handleInputChange} name="userType" id="products">
+          <option value={userType.Customer}>Klient</option>
+          <option value={userType.Seller}>Sprzedawca</option>
+        </select>
+          <input type="submit" value={"Załóż konto"} />
+        </form>
+      </div>
     </div>
   );
 }

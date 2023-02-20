@@ -4,23 +4,24 @@
 
 
 .navbar {
-  background-color: $background-light;
+  background-color: $secondary-light;
   @include makeMeFlex(row, space-between);
+  border-bottom: 2px solid white;
 
   .nav-bar-logo{
     max-width: 160px;
-    margin: 10px 10%
+    margin: 10px 
   }
   
 }
 .div-login-registration{
-    margin:10px 10%;
+    margin:10px ;
   }
   
   .shopping-cart-icon-div{
     @include makeMeFlex(row, end);
     gap: 12px;  
-    font-size: 24px;
+    font-size: 12px;
     margin: 4px;
   }
   
