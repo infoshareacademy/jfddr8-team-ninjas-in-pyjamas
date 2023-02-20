@@ -8,7 +8,7 @@
 
 .seller-list {
     @include makeMeFlex(row, flex-start);
-    margin: 20px auto;
+    margin: 32px auto;
     border-radius: 22px;
     background-color: $primary-light;
     box-shadow: 0px 10px 49px 6px rgba(75, 75, 75, 1);
@@ -19,6 +19,7 @@
     img {  
     border-radius: 20px 0 0 20px;
     width: 30%; 
+   
     }
 
     .seller-description {
