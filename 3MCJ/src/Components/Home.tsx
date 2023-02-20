@@ -6,6 +6,7 @@ import { firebaseAuth } from "../main";
 import SellersList from "./SellersList";
 import StarRating from "./StarRating";
 import "../Styles/home.scss"
+import { Dna } from "react-loader-spinner";
 
 function Home() {
  
@@ -17,7 +18,8 @@ function Home() {
     searchingCategory,
     setSearchingCategory,
     readDivValue,
-    setReadDivValue
+    setReadDivValue,
+    spinnerHome
   } = useContext(globalContext);
   const [locationValue, setLocationValue] = useState<string>("");
   const [categoryValue, setCategoryValue] = useState<string>("");
@@ -75,7 +77,14 @@ function Home() {
           <input type="submit" value={"Znajdź pyszności"} />
         </form>
        </div> 
-   
+       <Dna
+  visible={spinnerHome}
+  height="80"
+  width="80"
+  ariaLabel="dna-loading"
+  wrapperStyle={{}}
+  wrapperClass="dna-wrapper"
+/>      
       <SellersList />
       <StarRating />
     </div>

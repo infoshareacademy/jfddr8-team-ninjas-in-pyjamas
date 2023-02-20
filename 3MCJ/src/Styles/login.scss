@@ -18,13 +18,14 @@
   }
   
   button {
-    margin-top: 10px;
+    margin-top: 15px;
     cursor: pointer;
     font-size: 15px;
     background: #3790bd;
     border: 1px solid #348cc3;
     color: #fff;
     padding: 10px 20px;
+    width: 35%;
   }
   
   button:hover {
@@ -38,8 +39,10 @@
   
   .login-form {
     background-color: white;
-    padding: 3.5rem;
+    padding: 60px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 15px;
+    background-image: "https://img.freepik.com/darmowe-zdjecie/grillowane-szaszlyki-miesne-szaszlyk-z-kurczaka-z-cukinia-pomidorami-i-czerwona-cebula_2829-10942.jpg?w=1380&t=st=1676886816~exp=1676887416~hmac=802240d5c98d896d9e54bc1b11275cb09ff636bb85199527108face746443a52";
   }
   
 
@@ -47,5 +50,5 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 10px;
+    margin: 15px;
   }

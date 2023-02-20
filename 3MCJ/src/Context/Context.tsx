@@ -17,6 +17,8 @@ type GlobalVariablesType = {
   setShoppingCartItems:(shoppingCartItems:any[])=>void;
   rating:number;
   setRating:(rating:number)=> void;
+  spinnerHome:boolean;
+  setSpinnerHome:(spinnerHome:boolean)=>void;
 };
 
 type PropsWithChildren = {
@@ -36,8 +38,9 @@ function Context(props: PropsWithChildren): JSX.Element {
   const [shoppingCartValue,setShoppingCartValue] = useState<number>(0);
   const [rating, setRating] = useState<number>(0);
   const [shoppingCartItems, setShoppingCartItems] = useState<any[]>([])
+  const [spinnerHome, setSpinnerHome] = useState<boolean>(true)
   return (
-    <globalContext.Provider value={{ setShoppingCartItems, shoppingCartItems ,rating, setRating, shoppingCartValue, setShoppingCartValue, sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
+    <globalContext.Provider value={{spinnerHome, setSpinnerHome, setShoppingCartItems, shoppingCartItems ,rating, setRating, shoppingCartValue, setShoppingCartValue, sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
       {props.children}
     </globalContext.Provider>
   );

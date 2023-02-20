@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { globalContext } from "../Context/Context";
 import { useNavigate, Navigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import ShoppingCart from "./ShoppingCart";
 import "../Styles/navbar.scss";
+import { Dna } from "react-loader-spinner";
 
 function Navbar() {
   const {

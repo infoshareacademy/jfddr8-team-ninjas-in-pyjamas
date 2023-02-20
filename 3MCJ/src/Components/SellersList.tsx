@@ -7,7 +7,7 @@ import "../Styles/sellerList.scss";
 
 function SellersList() {
   const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
-  const { searchingCategory, searchingLocation, sellers, setSellers } =
+  const { spinnerHome,setSpinnerHome, searchingCategory, searchingLocation, sellers, setSellers } =
     useContext(globalContext);
   const navigate = useNavigate();
 
@@ -18,6 +18,7 @@ function SellersList() {
       const fetchedSellers: any[] = [];
       sellersSnapshot.forEach((seller) => {
         fetchedSellers.push({ id: seller.id, ...seller.data() });
+        setSpinnerHome(false)
       });
       setSellers(fetchedSellers);
     } catch (error) {
