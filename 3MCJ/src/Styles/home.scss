@@ -4,6 +4,8 @@
 .search-section{
     @include makeMeFlex(column, center);
     gap: 48px;
+    margin-bottom: 60px;
+   
 
     select{
         padding: 8px;

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth, firebaseDb } from "../main";
 import { setDoc, doc,  } from "firebase/firestore";
+import "../Styles/registration.scss";
 
 enum userType {
   Customer = "customer",
@@ -72,29 +73,31 @@ function Registration() {
     <div className="registration-app">
       <div className= "registration-form">
         <form onSubmit={handleSubmit} name="registration_form">
-          <div>
-            <input name="email" onChange={handleInputChange} required value={user.email} placeholder="Email" />
+          <div className="input-container">
+            <input type="email" name="email" onChange={handleInputChange} required value={user.email} placeholder="Email" />
           </div>
-          <div>
+          <div className="input-container">
           <input name="password" type="password"onChange={handleInputChange} required value={user.password} placeholder="Hasło" />
           </div>
-          <div>
+          <div className="input-container">
           <input name="confirmPassword" type="password" onChange={handleInputChange} required value={user.confirmPassword} placeholder="Potwierdź Hasło"/>
           </div>
-          <div>
-          <input name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
+          <div className="input-container">
+          <input type="name" name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
           </div>
-          <div>
-          <input name="surname" onChange={handleInputChange} required value={user.surname} placeholder="Nazwisko" />
+          <div className="input-container">
+          <input type="surname" name="surname" onChange={handleInputChange} required value={user.surname} placeholder="Nazwisko" />
           </div>
-          <div>
-          <input name="city" onChange={handleInputChange} required value={user.city} placeholder="Miasto" />
+          <div className="input-container">
+          <input type="city" name="city" onChange={handleInputChange} required value={user.city} placeholder="Miasto" />
           </div>
-        <select onChange={handleInputChange} name="userType" id="products">
+        <select className="input-container" onChange={handleInputChange} name="userType" id="products">
           <option value={userType.Customer}>Klient</option>
           <option value={userType.Seller}>Sprzedawca</option>
         </select>
+        <div className="submit-container">
           <input type="submit" value={"Załóż konto"} />
+        </div>
         </form>
       </div>
     </div>

@@ -7,7 +7,7 @@
 .footer-container {
     @include makeMeFlex(column, center);
     border-top: 2px solid white;
-    background-color: #D2D4C8;
+    background-color:$secondary-light ;
   
     ul { @include makeMeFlex(row, center);
         

@@ -4,9 +4,10 @@
 
 
 .navbar {
-  background-color: $secondary-light;
   @include makeMeFlex(row, space-between);
+  background-color: $secondary-light;
   border-bottom: 2px solid white;
+  
 
   .nav-bar-logo{
     max-width: 160px;

@@ -74,9 +74,16 @@ function SellerPage() {
           <div className="product-description">
             <div className="product-data">
               <h2>{product.name }</h2>
-              <button onClick={() => addToShopping(product)}>
+              <img
+              onClick={() => addToShopping(product)}
+                className="shopping-cart-icon-seller-page"
+                src="src/assets/Logo/ShoppingCartLogo.png"
+                alt="shopping cart icon"
+               
+                />
              {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
-              </button>
+              {/* <button onClick={() => addToShopping(product)}>
+              </button> */}
             </div>
             <div>
             <p>{product.description}</p>

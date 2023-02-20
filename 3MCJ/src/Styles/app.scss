@@ -2,9 +2,9 @@
 @use './mixins' as *;
 
 .App {
-    background: rgb(244,244,244);
-    // background: linear-gradient(180deg, rgba(244,244,244,1) 2%, rgba(128,194,203,0.9681372549019608) 6%);
-    font-family: "Roboto";
+    background: white;
+
+    font-family: "Cambria";
     position:relative; 
     min-height: 100vh;
     display: flex;
