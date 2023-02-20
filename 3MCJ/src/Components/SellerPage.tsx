@@ -74,22 +74,24 @@ function SellerPage() {
           <div className="product-description">
             <div className="product-data">
               <h2>{product.name }</h2>
-              <img
+             
+              {/* <button onClick={() => addToShopping(product)}>
+              </button> */}
+            </div>
+            <div>
+            <p>{product.description}</p>
+            <div className="allergens-div">Alergeny: {product.allergens}</div>
+            <div className="product-price">
+              <h3>{product.price} zł / {product.packing}</h3>   
+              <div className="shopping-icon-div"><img
               onClick={() => addToShopping(product)}
                 className="shopping-cart-icon-seller-page"
                 src="src/assets/Logo/ShoppingCartLogo.png"
                 alt="shopping cart icon"
                
                 />
-             {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
-              {/* <button onClick={() => addToShopping(product)}>
-              </button> */}
-            </div>
-            <div>
-            <p>{product.description}</p>
-            <div>Alergeny: {product.allergens}</div>
-            <div className="product-price">
-              <h3>{product.price} zł / {product.packing}</h3>            
+             {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> }          </div>
+              
             </div>
             </div>
           </div>

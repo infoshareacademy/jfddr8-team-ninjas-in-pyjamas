@@ -4,8 +4,18 @@
 .container {
     min-height: 75vh;
 }
+.allergens-div{
+    margin: 12px 0px;
+}
+.product-price{
+    display: flex;
+    justify-content: space-around
+}
 
-
+.shopping-icon-div{
+    display: flex;
+    align-items: center
+}
 .shopping-cart-product-list {
     @include makeMeFlex(row, flex-start);
     margin: 32px auto;
