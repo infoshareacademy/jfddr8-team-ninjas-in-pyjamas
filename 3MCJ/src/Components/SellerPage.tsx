@@ -8,6 +8,7 @@ import {
   collection,
   updateDoc,
   deleteField,
+  getDoc,
 } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "../main";
 import uuid from "react-uuid";
@@ -49,6 +50,39 @@ function SellerPage() {
 
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
     console.log(sellerId)
+    
+    // const ratingData = [...[rating?], ...[value]];
+    
+
+    // await setDoc(docRef, { rating: ratingData }, { merge: true });
+    // console.log(`Seller ${sellerId} rated with ${value} stars.`);
+
+  // //  pobranie aktualnej średniej oceny sprzedawcy z Firebase
+  // const docSnap = await getDoc(docRef);
+  // const sellerData = docSnap.data();
+  // const currentRating = sellerData?.rating?.average ?? 0;
+  // const numRatings = sellerData?.rating?.numRatings ?? 0;
+
+  // // obliczenie nowej średniej oceny, uwzględniając klikniętą ilość gwiazdek
+  // const newRating = ((currentRating * numRatings) + value) / (numRatings + 1);
+  // const newNumRatings = numRatings + 1;
+
+  // // utworzenie obiektu reprezentującego nową ocenę
+  // const ratingData = {
+  //   average: newRating,
+  //   numRatings: newNumRatings,
+  //   lastRatedAt: new Date(),
+  // };
+
+  // // zapisanie nowej oceny do Firebase
+  // await setDoc(docRef, { rating: ratingData }, { merge: true });
+
+  // console.log(`Seller ${sellerId} rated with ${value} stars. New average rating: ${newRating}`);
+};
+
+
+
+
     // try {
     //   const data = {
     //     rating: starRating
@@ -58,7 +92,7 @@ function SellerPage() {
     // } catch (error) {
     //   console.log("Error fetching shopping cart data", error);
     // }
-  };
+  
 
 
 

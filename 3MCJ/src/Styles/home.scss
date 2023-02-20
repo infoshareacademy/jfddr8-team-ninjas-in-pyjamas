@@ -4,8 +4,9 @@
 
 
 .search-section{
-    background-image: url("../assets/Logo/2.jpg");
+    background-image: url("../assets/Logo/5.jpg");
     background-size: cover;
+    background-position: 30%;
   
 
 }
@@ -14,6 +15,7 @@
     @include makeMeFlex(column, center);
     gap: 48px;
     margin-bottom: 60px;
+    padding-top: 60px;
   
    
 
