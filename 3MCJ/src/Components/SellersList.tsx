@@ -56,13 +56,15 @@ function SellersList() {
         const starRating = rating?.reduce((acc:any, value:number)=> acc + value , 0)/rating?.length
         return <div className="main" key={id}>
           <div className="seller-list">
-            <Link to={`/sellerPage/${id}`}>
-              <div className="seller-data">
-                <img src={sellerPhoto} />
+            <Link to={`/sellerPage/${seller.id}`}>
+              <div className="seller-data">              
+                <img src={seller.sellerPhoto} />
                 <div className="seller-description">
-                  <h2>{name}</h2>
-                  <StarRating rating={starRating} />
-                  <p>{sellerDescription}</p>
+                  <div className="seller-rating">
+                    <h2>{seller.name}</h2>
+                    <StarRating rating={seller.ratingAverage} />
+                  </div>
+                  <p>{seller.sellerDescription}</p>
                 </div>
               </div>
             </Link>

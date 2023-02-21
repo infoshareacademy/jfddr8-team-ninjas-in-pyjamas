@@ -26,6 +26,16 @@ type Products = {
   packing: string;
 };
 
+type Seller = {
+  id: string;
+  name: string;
+  address: string;
+  photo: string;
+  products: Products[];
+  rating: number[];
+};
+
+
 function SellerPage() {
   const {
     isLogged,
@@ -41,57 +51,7 @@ function SellerPage() {
     return seller.id === sellerId;
   });
 
-  const starRating =
-    filteredSeller.rating?.reduce(
-      (acc: number, value: number) => acc + value,
-      0
-    ) / filteredSeller.rating?.length;
-
-  const handleRatingChange = async (value: number) => {
-    console.log("value", value);
-    // id sellera przypisać do usera (już ocenione)
-    // wysłać dane do firebase- seller.rating
-
-    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
-    console.log(sellerId);
-
-    // const ratingData = [...[rating?], ...[value]];
-
-    // await setDoc(docRef, { rating: ratingData }, { merge: true });
-    // console.log(`Seller ${sellerId} rated with ${value} stars.`);
-
-    // //  pobranie aktualnej średniej oceny sprzedawcy z Firebase
-    // const docSnap = await getDoc(docRef);
-    // const sellerData = docSnap.data();
-    // const currentRating = sellerData?.rating?.average ?? 0;
-    // const numRatings = sellerData?.rating?.numRatings ?? 0;
-
-    // // obliczenie nowej średniej oceny, uwzględniając klikniętą ilość gwiazdek
-    // const newRating = ((currentRating * numRatings) + value) / (numRatings + 1);
-    // const newNumRatings = numRatings + 1;
-
-    // // utworzenie obiektu reprezentującego nową ocenę
-    // const ratingData = {
-    //   average: newRating,
-    //   numRatings: newNumRatings,
-    //   lastRatedAt: new Date(),
-    // };
-
-    // // zapisanie nowej oceny do Firebase
-    // await setDoc(docRef, { rating: ratingData }, { merge: true });
-
-    // console.log(`Seller ${sellerId} rated with ${value} stars. New average rating: ${newRating}`);
-  };
-
-  // try {
-  //   const data = {
-  //     rating: starRating
-  //   };
-  //   await setDoc(docRef, data);
-  //   setRating(starRating + value);
-  // } catch (error) {
-  //   console.log("Error fetching shopping cart data", error);
-  // }
+  const [filteredSellerState, setFilteredSeller] = useState<Seller | undefined>(filteredSeller);
 
   const addToShopping = async (product: Products) => {
     let isNewProduct = true;
@@ -125,47 +85,61 @@ function SellerPage() {
   };
   console.log(shoppingCartItems);
 
+  const handleRatingChange = async (value: number) => {
+    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+    try {
+      // Fetch the current seller data from Firebase
+      const docData = await getDoc(docRef);
+      const sellerData = docData.data();
+  
+      // Update the seller's rating with the new value
+      const newRating = [...sellerData.rating || [], value];
+      const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
+  
+      // Update the seller data in Firebase with the new rating
+      await updateDoc(docRef, { rating: newRating, ratingAverage: newRatingAverage });
+  
+      // Update the local state with the new rating average
+      setFilteredSeller({
+        ...filteredSeller,
+        rating: newRating,
+        ratingAverage: newRatingAverage
+      });
+    } catch (error) {
+      console.log("Error updating seller rating", error);
+    }
+  };
+
   return (
     <div>
       <div>
-        <h2>{filteredSeller.name}</h2>
-        <StarRating rating={starRating} onRateChange={handleRatingChange} />
-      </div>
+        <h2>{filteredSeller?.name}</h2>
+        <StarRating onRateChange={handleRatingChange} rating={filteredSeller?.rating} />
+        </div>
       <div className="outer-product-list" key={sellerId}>
-        {filteredSeller.products.map((product: Products) => (
+        {filteredSeller && filteredSeller.products.map((product: Products) => (
           <div className="product-list" key={product.name}>
-            <div className="picture-div">
-              <img src={product.photo} />
-            </div>
+            <img src={product.photo} />
             <div className="product-description">
               <div className="product-data">
-                <h2>{product.name}</h2>
+                <h2>{product.name }</h2>
+                <img
+                onClick={() => addToShopping(product)}
+                  className="shopping-cart-icon-seller-page"
+                  src="src/assets/Logo/ShoppingCartLogo.png"
+                  alt="shopping cart icon"
+                
+                  />
+              {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
+                {/* <button onClick={() => addToShopping(product)}>
+                </button> */}
               </div>
               <div>
-                <p>{product.description}</p>
-                <div className="allergens-div">
-                  Alergeny: {product.allergens}
-                </div>
-                <div className="product-price">
-                  <h3>
-                    {product.price} zł / {product.packing}
-                  </h3>
-                  <div
-                    className="shopping-icon-div"
-                    onClick={() => addToShopping(product)}
-                  >
-                    <img
-                      className="shopping-cart-icon-seller-page"
-                      src="src/assets/Logo/ShoppingCartLogo.png"
-                      alt="shopping cart icon"
-                    />
-                    {isLogged ? (
-                      <p>Dodaj do koszyka</p>
-                    ) : (
-                      <p>Zaloguj się aby dodać do koszyka</p>
-                    )}
-                  </div>
-                </div>
+              <p>{product.description}</p>
+              <div>Alergeny: {product.allergens}</div>
+              <div className="product-price">
+                <h3>{product.price} zł / {product.packing}</h3>            
+              </div>
               </div>
             </div>
           </div>

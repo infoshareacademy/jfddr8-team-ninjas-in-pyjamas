@@ -86,6 +86,7 @@ function Home() {
   wrapperClass="dna-wrapper"
 />      
       <SellersList />
+      
     </div>
   );
 }
