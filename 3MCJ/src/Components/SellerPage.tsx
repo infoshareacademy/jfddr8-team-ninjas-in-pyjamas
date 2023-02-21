@@ -112,6 +112,12 @@ function SellerPage() {
   console.log(shoppingCartItems);
 
   const handleRatingChange = async (value: number) => {
+
+    if(!isLogged){
+      navigate("/login");
+      return;
+    }
+
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
     try {
       // Fetch the current seller data from Firebase
@@ -137,6 +143,12 @@ function SellerPage() {
   };
 
   const handleCommentChange = async () => {
+
+    if(!isLogged){
+      navigate("/login");
+      return;
+    }
+
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
     try {
       const docData = await getDoc(docRef);
