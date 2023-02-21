@@ -68,7 +68,7 @@
 
         .button{
             padding: 4px 12px;
-            width: 160px;
+            width: 50px;
             margin: 4px;   
             border: 2px solid black;
             border-radius: 12px; 
@@ -81,6 +81,10 @@
         button:hover {
             background: #a4adaa;
           }
+
+        .delete {
+            width: 140px;
+        }
     }
 
     }
