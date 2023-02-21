@@ -4,6 +4,8 @@ import { getDocs, collection, query } from "firebase/firestore";
 import { globalContext } from "../Context/Context";
 import { NavigateOptions, useNavigate, Link } from "react-router-dom";
 import "../Styles/sellerList.scss";
+import StarRating from "./StarRating";
+
 
 function SellersList() {
   const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
@@ -54,10 +56,13 @@ function SellersList() {
         <div className="main" key={seller.id}>
           <div className="seller-list">
             <Link to={`/sellerPage/${seller.id}`}>
-              <div className="seller-data">
+              <div className="seller-data">              
                 <img src={seller.sellerPhoto} />
                 <div className="seller-description">
-                  <h2>{seller.name}</h2>
+                  <div className="seller-rating">
+                    <h2>{seller.name}</h2>
+                    <StarRating rating={seller.ratingAverage} />
+                  </div>
                   <p>{seller.sellerDescription}</p>
                 </div>
               </div>

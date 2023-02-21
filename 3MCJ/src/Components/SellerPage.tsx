@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { globalContext } from "../Context/Context";
 import { useParams } from "react-router-dom";
 import {
@@ -8,10 +8,12 @@ import {
   collection,
   updateDoc,
   deleteField,
+  getDoc,
 } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "../main";
 import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
+import StarRating from "./StarRating";
 
 type Products = {
   id: string;
@@ -23,6 +25,16 @@ type Products = {
   quantity: number;
   packing: string;
 };
+
+type Seller = {
+  id: string;
+  name: string;
+  address: string;
+  photo: string;
+  products: Products[];
+  rating: number[];
+};
+
 
 function SellerPage() {
   const {
@@ -38,6 +50,8 @@ function SellerPage() {
   const filteredSeller = sellers.find((seller) => {
     return seller.id === sellerId;
   });
+
+  const [filteredSellerState, setFilteredSeller] = useState<Seller | undefined>(filteredSeller);
 
   const addToShopping = async (product: Products) => {
     let isNewProduct = true   
@@ -66,35 +80,66 @@ function SellerPage() {
   console.log(shoppingCartItems);
     
 
+  const handleRatingChange = async (value: number) => {
+    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+    try {
+      // Fetch the current seller data from Firebase
+      const docData = await getDoc(docRef);
+      const sellerData = docData.data();
+  
+      // Update the seller's rating with the new value
+      const newRating = [...sellerData.rating || [], value];
+      const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
+  
+      // Update the seller data in Firebase with the new rating
+      await updateDoc(docRef, { rating: newRating, ratingAverage: newRatingAverage });
+  
+      // Update the local state with the new rating average
+      setFilteredSeller({
+        ...filteredSeller,
+        rating: newRating,
+        ratingAverage: newRatingAverage
+      });
+    } catch (error) {
+      console.log("Error updating seller rating", error);
+    }
+  };
+
   return (
-    <div className="outer-product-list" key={sellerId}>
-      {filteredSeller.products.map((product: Products) => (
-        <div className="product-list" key={product.name}>
-          <img src={product.photo} />
-          <div className="product-description">
-            <div className="product-data">
-              <h2>{product.name }</h2>
-              <img
-              onClick={() => addToShopping(product)}
-                className="shopping-cart-icon-seller-page"
-                src="src/assets/Logo/ShoppingCartLogo.png"
-                alt="shopping cart icon"
-               
-                />
-             {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
-              {/* <button onClick={() => addToShopping(product)}>
-              </button> */}
-            </div>
-            <div>
-            <p>{product.description}</p>
-            <div>Alergeny: {product.allergens}</div>
-            <div className="product-price">
-              <h3>{product.price} zł / {product.packing}</h3>            
-            </div>
+    <div>
+      <div>
+        <h2>{filteredSeller?.name}</h2>
+        <StarRating onRateChange={handleRatingChange} rating={filteredSeller?.rating} />
+        </div>
+      <div className="outer-product-list" key={sellerId}>
+        {filteredSeller && filteredSeller.products.map((product: Products) => (
+          <div className="product-list" key={product.name}>
+            <img src={product.photo} />
+            <div className="product-description">
+              <div className="product-data">
+                <h2>{product.name }</h2>
+                <img
+                onClick={() => addToShopping(product)}
+                  className="shopping-cart-icon-seller-page"
+                  src="src/assets/Logo/ShoppingCartLogo.png"
+                  alt="shopping cart icon"
+                
+                  />
+              {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
+                {/* <button onClick={() => addToShopping(product)}>
+                </button> */}
+              </div>
+              <div>
+              <p>{product.description}</p>
+              <div>Alergeny: {product.allergens}</div>
+              <div className="product-price">
+                <h3>{product.price} zł / {product.packing}</h3>            
+              </div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

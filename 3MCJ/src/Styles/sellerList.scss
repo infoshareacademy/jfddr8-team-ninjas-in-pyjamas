@@ -35,7 +35,8 @@
     p {
         color: $font-color;    
         font-size: 16px;
-        margin: 16px 36px;  
+        margin: 16px 36px; 
+        text-align: justify; 
     }
 
     h2 {
@@ -44,4 +45,8 @@
         margin-left: 12px;
     }
   
+}
+.seller-rating{
+    @include makeMeFlex(row, space-between);
+    margin-right: 36px
 }
