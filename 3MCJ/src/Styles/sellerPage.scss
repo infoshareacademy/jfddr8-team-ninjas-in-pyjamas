@@ -94,3 +94,46 @@
        transition: .3s;
     }
 }
+
+
+.comments-container{
+    @include makeMeFlex(column, center);
+
+    form {
+        width: 800px;
+        height: 150px; 
+    }
+
+    textarea {
+        width: 800px;
+        height: 80px;
+    }
+
+    button{
+        padding: 5px;
+        width: 180px; 
+    }
+
+    .comments-2nd-tittle{
+        width: 1000px;
+        height: 100px;
+        
+        h3 { 
+        display: flex; 
+        flex-direction: flex-start;  
+    }
+    }
+}
+
+
+.comment-title{
+    width: 1000px;
+    margin: 5px auto;
+
+
+
+    
+}
+
+
+

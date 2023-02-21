@@ -15,7 +15,7 @@ import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
 import StarRating from "./StarRating";
 import { useNavigate } from "react-router-dom";
-import CommentsList from "./CommentsList";
+
 
 type Products = {
   id: string;
@@ -64,22 +64,24 @@ function SellerPage() {
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
   try {
     const docData = await getDoc(docRef);
-    console.log(docData.data())
     const sellerData = docData.data();
     setGetComments(sellerData?.comments);
   } catch (error) {
     console.log("Error updating seller rating", error);
   };  
-}
+  }
+  
   useEffect(() =>{
   fetchComments();
-  }, []);
+  }, [comment]);
 
 
   const addToShopping = async (product: Products) => {
+
     if (!isLogged) {navigate("/login");
     return;
-      } 
+    } 
+
     let isNewProduct = true   
     shoppingCartItems.filter((e) => {
       if (e.id === product.id) {
@@ -109,10 +111,9 @@ function SellerPage() {
       console.log("Error fetching shopping cart data", error);
     }
   };
-  console.log(shoppingCartItems);
 
   const handleRatingChange = async (value: number) => {
-
+    
     if(!isLogged){
       navigate("/login");
       return;
@@ -143,22 +144,20 @@ function SellerPage() {
   };
 
   const handleCommentChange = async () => {
-
-    if(!isLogged){
+    if(!isLogged){ 
       navigate("/login");
       return;
     }
-
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
     try {
       const docData = await getDoc(docRef);
+      console.log(docData.data())
       const sellerData = docData.data();
       const newComment = [...sellerData?.comments || [], comment];
       await updateDoc(docRef, { comments: newComment });
       setFilteredSeller({
         ...filteredSeller,
         comments: newComment,
-        
       });
     } catch (error) {
       console.log("Error updating seller rating", error);
@@ -175,7 +174,6 @@ function SellerPage() {
         {filteredSeller && filteredSeller.products.map((product: Products) => (
           <div className="product-list" key={product.name}>
             <div className="picture-div"><img src={product.photo} /></div>
-            
             <div className="product-description">
               <div className="product-data">
                 <h2>{product.name }</h2>
@@ -200,12 +198,18 @@ function SellerPage() {
           </div>
         ))}
       </div>
-      <div className="comments-container"> 
+      <div className="comment-title">
+        <h3>Oceń Sprzedającego :</h3>
+      </div>
+      <div className="comments-container">  
         <form>
           <textarea value={comment} onChange={(e) => setComment(e.target.value)}
            />
           <button onClick={() => {handleCommentChange();setComment('')}}>Wyślij komentarz</button>
         </form>
+        <div className="comments-2nd-tittle">
+          <h3>Komentarze : </h3>
+        </div>
         <div>
           {getComments.map((comment: string) =>
           <div className="comment" key={comment}>
