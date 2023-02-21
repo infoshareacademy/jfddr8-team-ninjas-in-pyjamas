@@ -115,6 +115,31 @@ function SellerPage() {
     }
   };
 
+  const handleRatingChange = async (value: number) => {
+    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+    try {
+      // Fetch the current seller data from Firebase
+      const docData = await getDoc(docRef);
+      const sellerData = docData.data();
+  
+      // Update the seller's rating with the new value
+      const newRating = [...sellerData?.rating || [], value];
+      const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
+  
+      // Update the seller data in Firebase with the new rating
+      await updateDoc(docRef, { rating: newRating, ratingAverage: newRatingAverage });
+  
+      // Update the local state with the new rating average
+      setFilteredSeller({
+        ...filteredSeller,
+        rating: newRating,
+        ratingAverage: newRatingAverage
+      });
+    } catch (error) {
+      console.log("Error updating seller rating", error);
+    }
+  };
+
   return (
     <div>
       <div className="seller-name-seller-page">
