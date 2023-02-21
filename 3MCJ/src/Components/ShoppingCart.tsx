@@ -117,7 +117,8 @@ function ShoppingCart() {
 
   return (
     <div className="container">
-      <div>
+      
+        <div className="basket-text">Koszyk</div>
         {shoppingCartItems.map((item) => (
           <div key={item.id}>
             <div className="shopping-cart-product-list">
@@ -154,12 +155,12 @@ function ShoppingCart() {
             </div>
           </div>
         ))}
-      </div>
-      <div className="pay">
-        <div >
-          Całkowita wartość: {shoppingCartValue + " zł"}
-        </div>
-        <div onClick={() => navigate("/outerPage")}> Przejdź do płatności</div>
+     
+      <div className="pay-container">
+        <p>
+          Całkowita wartość: <strong>{shoppingCartValue + " zł"}</strong>
+        </p>
+        <div className="pay" onClick={() => navigate("/outerPage")}> Przejdź do płatności</div>
       </div>
     </div>
   );
