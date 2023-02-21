@@ -14,7 +14,7 @@ function ShoppingCart() {
     setShoppingCartItems,
   } = useContext(globalContext);
 
-  const removeItemFromShoppingCart = (product: any) => {
+    const removeItemFromShoppingCart = (product: any) => {
     shoppingCartItems.filter(async (e) => {
       if (e.id === product.id) {
         
@@ -92,6 +92,23 @@ function ShoppingCart() {
     setDoc(docRef, data);
   };
 
+
+  const deleteItemFromShoppingCart = async (product: any) => {
+    const {email} = firebaseAuth.currentUser!;
+    const docRef = doc(firebaseDb, "Users", `$email`);
+    try {
+      const data = {
+        shoppingCartItems:shoppingCartItems.filter((e) => e.id !== product.id),
+        shoppingCartValue:shoppingCartValue - product.price * product.quantity,
+      };
+      await setDoc(docRef, data);
+      setShoppingCartItems(shoppingCartItems.filter((e) => e.id !== product.id));
+      setShoppingCartValue(shoppingCartValue - product.price * product.quantity);
+    } catch (error) {
+      console.log("Error fetching shopping cart data", error)
+    }
+  }
+  
   return (
     <div className="container">
       <div>
@@ -104,12 +121,15 @@ function ShoppingCart() {
                   <h2>{item.name}</h2>
                   <h3>{item.price} zł / {item.packing} </h3>
                   <div className="shopping-cart-quantity">
-                  <h4>{item.quantity} szt.</h4>
+                    <h4>{item.quantity} szt.</h4>
                     <button className="button" onClick={() => removeItemFromShoppingCart(item)}>
-                    -
-                    </button> 
+                      -
+                    </button>
                     <button className="button" onClick={() => addItemToShoppingCart(item)}>
                       +
+                    </button>
+                    <button className="button delete" onClick={() => deleteItemFromShoppingCart(item)}>
+                      Usuń z koszyka
                     </button>
                   </div>               
                 </div>
@@ -120,5 +140,6 @@ function ShoppingCart() {
       </div>
     </div>
   );
-}
+        }
+
 export default ShoppingCart;
