@@ -4,9 +4,11 @@
 .container {
     min-height: 75vh;
 }
+
 .allergens-div{
     margin: 12px 0px;
 }
+
 .product-price{
     display: flex;
     justify-content: space-around
@@ -16,6 +18,7 @@
     display: flex;
     align-items: center
 }
+
 .shopping-cart-product-list {
     @include makeMeFlex(row, flex-start);
     margin: 32px auto;
@@ -26,8 +29,7 @@
     
     img {  
         border-radius: 22px 0 0 22px;
-        max-width: 30%;
-       
+        max-width: 30%;   
     }
 
     .shopping-cart-product-description {
@@ -65,7 +67,6 @@
         gap: 12px;
         align-items: baseline;
 
-
         .button{
             padding: 4px 12px;
             width: 50px;
@@ -83,14 +84,9 @@
           }
 
         .delete {
-            width: 140px;
-        }
-
-        .delete {
-            width: 140px;
+            width: 180px;
         }
     }
-
     }
-    
+
 

@@ -1,7 +1,6 @@
 @use './variables'as *;
 @use './mixins' as *;
 
-
 .seller-list:hover {
     transform: scale(1.03)
 }
@@ -15,13 +14,10 @@
     transition: transform .3s; box-shadow:  5px 5px 10px #9f9f9f,
     -5px -5px 10px #ffffff;;
     max-width: 1000px;
-   
 
     img {  
     border-radius: 22px 0 0 22px;
     width: 45%;
-    
-   
     }
 
     .seller-description {

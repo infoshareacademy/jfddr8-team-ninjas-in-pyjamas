@@ -90,30 +90,30 @@ function SellerPage() {
   };
   console.log(shoppingCartItems);
 
-  const handleRatingChange = async (value: number) => {
-    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
-    try {
-      // Fetch the current seller data from Firebase
-      const docData = await getDoc(docRef);
-      const sellerData = docData.data();
+  // const handleRatingChange = async (value: number) => {
+  //   const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+  //   try {
+  //     // Fetch the current seller data from Firebase
+  //     const docData = await getDoc(docRef);
+  //     const sellerData = docData.data();
   
-      // Update the seller's rating with the new value
-      const newRating = [...sellerData?.rating || [], value];
-      const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
+  //     // Update the seller's rating with the new value
+  //     const newRating = [...sellerData?.rating || [], value];
+  //     const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
   
-      // Update the seller data in Firebase with the new rating
-      await updateDoc(docRef, { rating: newRating, ratingAverage: newRatingAverage });
+  //     // Update the seller data in Firebase with the new rating
+  //     await updateDoc(docRef, { rating: newRating, ratingAverage: newRatingAverage });
   
-      // Update the local state with the new rating average
-      setFilteredSeller({
-        ...filteredSeller,
-        rating: newRating,
-        ratingAverage: newRatingAverage
-      });
-    } catch (error) {
-      console.log("Error updating seller rating", error);
-    }
-  };
+  //     // Update the local state with the new rating average
+  //     setFilteredSeller({
+  //       ...filteredSeller,
+  //       rating: newRating,
+  //       ratingAverage: newRatingAverage
+  //     });
+  //   } catch (error) {
+  //     console.log("Error updating seller rating", error);
+  //   }
+  // };
 
   const handleRatingChange = async (value: number) => {
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
@@ -149,7 +149,8 @@ function SellerPage() {
       <div className="outer-product-list" key={sellerId}>
         {filteredSeller && filteredSeller.products.map((product: Products) => (
           <div className="product-list" key={product.name}>
-            <img src={product.photo} />
+            <div className="picture-div"><img src={product.photo} /></div>
+            
             <div className="product-description">
               <div className="product-data">
                 <h2>{product.name }</h2>
@@ -178,4 +179,5 @@ function SellerPage() {
   );
 }
 
-export default SellerPage;
+export default SellerPage; 
+ 

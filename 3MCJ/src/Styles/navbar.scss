@@ -1,14 +1,11 @@
 @use './variables'as *;
 @use './mixins' as *;
 
-
-
 .navbar {
   @include makeMeFlex(row, space-between);
   background-color: $secondary-light;
   border-bottom: 2px solid white;
   
-
   .nav-bar-logo{
     max-width: 160px;
     margin: 10px 
@@ -67,3 +64,4 @@
   .nav-bar-logo:hover{
     cursor:pointer;
   }
+  
