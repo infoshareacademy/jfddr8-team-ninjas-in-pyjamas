@@ -58,6 +58,24 @@ function SellerPage() {
 
   const [comment, setComment] = useState<string>('');
 
+  const [getComments, setGetComments] = useState<string[]>([]);
+  
+  const fetchComments = async() => {
+    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+  try {
+    const docData = await getDoc(docRef);
+    console.log(docData.data())
+    const sellerData = docData.data();
+    setGetComments(sellerData?.comments);
+  } catch (error) {
+    console.log("Error updating seller rating", error);
+  };  
+}
+  useEffect(() =>{
+  fetchComments();
+  }, []);
+
+
   const addToShopping = async (product: Products) => {
     if (!isLogged) {navigate("/login");
     return;
@@ -176,6 +194,12 @@ function SellerPage() {
            />
           <button onClick={() => {handleCommentChange();setComment('')}}>Wyślij komentarz</button>
         </form>
+        <div>
+          {getComments.map((comment: string) =>
+          <div className="comment" key={comment}>
+            <p>{comment}</p> 
+            </div>)}
+        </div>
       </div>
     </div>
   );
