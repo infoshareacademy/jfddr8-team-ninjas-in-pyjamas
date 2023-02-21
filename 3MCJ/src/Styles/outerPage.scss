@@ -1,0 +1,49 @@
+@use './variables'as *;
+@use './mixins' as *;
+
+.outer-page-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url("../assets/Logo/5.jpg");
+    background-size: cover;
+    flex: 1;
+    
+}
+
+.outer-page-box-div{
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 700px;
+    width: 850px;
+    border: 1px solid black;
+    border-radius: 22px;
+    box-shadow:  5px 10px 20px #9f9f9f;
+}
+
+.map-image{
+    height: 49%;
+    border-radius: 0 22px 22px 0 ; 
+    img {
+        width: 100%;
+        border-radius:0 0 22px 22px  ;
+    }   
+}
+
+.content-outer-div{
+    padding-top: 20px;
+    h2 { padding: 30px;
+    text-align: center;}
+    div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    
+    // flex-direction: row;
+    // justify-content: space-evenly;
+  }
+}

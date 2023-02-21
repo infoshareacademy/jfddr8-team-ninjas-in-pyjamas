@@ -15,6 +15,7 @@ import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
 import StarRating from "./StarRating";
 import { useNavigate } from "react-router-dom";
+import CommentsList from "./CommentsList";
 
 type Products = {
   id: string;
@@ -55,6 +56,8 @@ function SellerPage() {
   const [filteredSellerState, setFilteredSeller] = useState<Seller | undefined>(filteredSeller);
   const navigate = useNavigate();
 
+  const [comment, setComment] = useState<string>('');
+
   const addToShopping = async (product: Products) => {
     if (!isLogged) {navigate("/login");
     return;
@@ -90,31 +93,6 @@ function SellerPage() {
   };
   console.log(shoppingCartItems);
 
-  // const handleRatingChange = async (value: number) => {
-  //   const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
-  //   try {
-  //     // Fetch the current seller data from Firebase
-  //     const docData = await getDoc(docRef);
-  //     const sellerData = docData.data();
-  
-  //     // Update the seller's rating with the new value
-  //     const newRating = [...sellerData?.rating || [], value];
-  //     const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
-  
-  //     // Update the seller data in Firebase with the new rating
-  //     await updateDoc(docRef, { rating: newRating, ratingAverage: newRatingAverage });
-  
-  //     // Update the local state with the new rating average
-  //     setFilteredSeller({
-  //       ...filteredSeller,
-  //       rating: newRating,
-  //       ratingAverage: newRatingAverage
-  //     });
-  //   } catch (error) {
-  //     console.log("Error updating seller rating", error);
-  //   }
-  // };
-
   const handleRatingChange = async (value: number) => {
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
     try {
@@ -138,6 +116,23 @@ function SellerPage() {
     } catch (error) {
       console.log("Error updating seller rating", error);
     }
+  };
+
+  const handleCommentChange = async () => {
+    const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
+    try {
+      const docData = await getDoc(docRef);
+      const sellerData = docData.data();
+      const newComment = [...sellerData?.comments || [], comment];
+      await updateDoc(docRef, { comments: newComment });
+      setFilteredSeller({
+        ...filteredSeller,
+        comments: newComment,
+        
+      });
+    } catch (error) {
+      console.log("Error updating seller rating", error);
+    };
   };
 
   return (
@@ -174,6 +169,13 @@ function SellerPage() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="comments-container"> 
+        <form>
+          <textarea value={comment} onChange={(e) => setComment(e.target.value)}
+           />
+          <button onClick={() => {handleCommentChange();setComment('')}}>Wyślij komentarz</button>
+        </form>
       </div>
     </div>
   );

@@ -1,6 +1,21 @@
 @use './variables'as *;
 @use './mixins' as *;
 
+
+.pay{
+        
+    margin: 32px auto;
+    border-radius: 22px;
+    padding: 20px 20px;
+    width: 400px;
+    text-align: center;
+    font-size: 24px;
+    border-radius: 72px;
+background: #e0e0e0;
+box-shadow:  45px 45px 90px #a6a6a6,
+             -45px -45px 90px #ffffff;
+        }
+
 .container {
     min-height: 75vh;
 }
@@ -62,6 +77,8 @@
         font-size: 16px;
     }
     
+   
+
     .shopping-cart-quantity {
         @include makeMeFlex(row, flex-start);
         gap: 12px;
