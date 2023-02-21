@@ -201,6 +201,7 @@ function SellerPage() {
         ))}
       </div>
       <div className="comments-container"> 
+       <h3>Komentarze :</h3>
         <form>
           <textarea value={comment} onChange={(e) => setComment(e.target.value)}
            />

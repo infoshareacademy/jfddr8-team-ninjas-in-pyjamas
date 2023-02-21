@@ -19,7 +19,7 @@ const StarRating: React.FC<Props> = ({ onRateChange, rating:initialRating }) => 
   }
 
   return (
-    <div>
+    <div className='star-ratings-div' >
       {[1, 2, 3, 4, 5].map(value => (
         <span key={value} onClick={() => onRating(value)}>
           {rating >= value ? '⭐️' : '☆'}

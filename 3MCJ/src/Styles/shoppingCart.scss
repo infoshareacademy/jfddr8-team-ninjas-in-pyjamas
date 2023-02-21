@@ -2,22 +2,52 @@
 @use './mixins' as *;
 
 
+.pay-container{
+    font-size: 20px;
+    text-align: center;
+    p{
+        font-size: 24px;
+        
+    }
+  
+
 .pay{
         
-    margin: 32px auto;
-    border-radius: 22px;
+    margin: 16px auto 32px auto;
+    border-radius: 8px;
     padding: 20px 20px;
     width: 400px;
     text-align: center;
     font-size: 24px;
-    border-radius: 72px;
-background: #e0e0e0;
-box-shadow:  45px 45px 90px #a6a6a6,
-             -45px -45px 90px #ffffff;
-        }
+  
+    // background: #e0e0e0;
+
+    font-weight: bold;
+    border: 4px solid #a4adaa;
+    transition: 2s;
+    cursor: pointer;
+    &:hover{
+        background-color: #a4adaa;
+      
+        
+    }
+        } 
+
+
+}
+
+.basket-text{
+    text-align: center;
+    font-size: 44px;
+    font-weight: bold;
+    margin: 40px 0
+}
+
 
 .container {
-    min-height: 75vh;
+    min-height: 840px;
+
+   
 }
 
 .allergens-div{

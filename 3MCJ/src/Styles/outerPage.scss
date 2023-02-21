@@ -36,14 +36,15 @@
 
 .content-outer-div{
     padding-top: 20px;
+    line-height: 2.5;
     h2 { padding: 30px;
     text-align: center;}
     div {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  p{
     
-    
-    // flex-direction: row;
-    // justify-content: space-evenly;
   }
 }
+
