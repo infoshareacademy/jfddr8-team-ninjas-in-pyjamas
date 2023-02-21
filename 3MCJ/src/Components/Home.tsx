@@ -74,7 +74,7 @@ function Home() {
             <option value="Nabiał">Nabiał</option>
             <option value="Wyroby Garmażeryjne">Wyroby Garmażeryjne</option>
           </select>
-          <input type="submit" value={"Znajdź pyszności"} />
+          {/* <input type="submit" value={"Znajdź pyszności"} /> */}
         </form>
        </div> 
        <Dna

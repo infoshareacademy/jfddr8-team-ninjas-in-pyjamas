@@ -41,60 +41,57 @@ function SellerPage() {
     return seller.id === sellerId;
   });
 
-  const starRating = filteredSeller.rating?.reduce((acc:number, value:number)=> acc + value , 0)/filteredSeller.rating?.length
+  const starRating =
+    filteredSeller.rating?.reduce(
+      (acc: number, value: number) => acc + value,
+      0
+    ) / filteredSeller.rating?.length;
 
-  const handleRatingChange = async (value:number) => {
+  const handleRatingChange = async (value: number) => {
     console.log("value", value);
     // id sellera przypisać do usera (już ocenione)
     // wysłać dane do firebase- seller.rating
 
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
-    console.log(sellerId)
-    
+    console.log(sellerId);
+
     // const ratingData = [...[rating?], ...[value]];
-    
 
     // await setDoc(docRef, { rating: ratingData }, { merge: true });
     // console.log(`Seller ${sellerId} rated with ${value} stars.`);
 
-  // //  pobranie aktualnej średniej oceny sprzedawcy z Firebase
-  // const docSnap = await getDoc(docRef);
-  // const sellerData = docSnap.data();
-  // const currentRating = sellerData?.rating?.average ?? 0;
-  // const numRatings = sellerData?.rating?.numRatings ?? 0;
+    // //  pobranie aktualnej średniej oceny sprzedawcy z Firebase
+    // const docSnap = await getDoc(docRef);
+    // const sellerData = docSnap.data();
+    // const currentRating = sellerData?.rating?.average ?? 0;
+    // const numRatings = sellerData?.rating?.numRatings ?? 0;
 
-  // // obliczenie nowej średniej oceny, uwzględniając klikniętą ilość gwiazdek
-  // const newRating = ((currentRating * numRatings) + value) / (numRatings + 1);
-  // const newNumRatings = numRatings + 1;
+    // // obliczenie nowej średniej oceny, uwzględniając klikniętą ilość gwiazdek
+    // const newRating = ((currentRating * numRatings) + value) / (numRatings + 1);
+    // const newNumRatings = numRatings + 1;
 
-  // // utworzenie obiektu reprezentującego nową ocenę
-  // const ratingData = {
-  //   average: newRating,
-  //   numRatings: newNumRatings,
-  //   lastRatedAt: new Date(),
-  // };
+    // // utworzenie obiektu reprezentującego nową ocenę
+    // const ratingData = {
+    //   average: newRating,
+    //   numRatings: newNumRatings,
+    //   lastRatedAt: new Date(),
+    // };
 
-  // // zapisanie nowej oceny do Firebase
-  // await setDoc(docRef, { rating: ratingData }, { merge: true });
+    // // zapisanie nowej oceny do Firebase
+    // await setDoc(docRef, { rating: ratingData }, { merge: true });
 
-  // console.log(`Seller ${sellerId} rated with ${value} stars. New average rating: ${newRating}`);
-};
+    // console.log(`Seller ${sellerId} rated with ${value} stars. New average rating: ${newRating}`);
+  };
 
-
-
-
-    // try {
-    //   const data = {
-    //     rating: starRating
-    //   };
-    //   await setDoc(docRef, data);
-    //   setRating(starRating + value);
-    // } catch (error) {
-    //   console.log("Error fetching shopping cart data", error);
-    // }
-  
-
-
+  // try {
+  //   const data = {
+  //     rating: starRating
+  //   };
+  //   await setDoc(docRef, data);
+  //   setRating(starRating + value);
+  // } catch (error) {
+  //   console.log("Error fetching shopping cart data", error);
+  // }
 
   const addToShopping = async (product: Products) => {
     let isNewProduct = true;
@@ -131,20 +128,24 @@ function SellerPage() {
   return (
     <div>
       <div>
-          <h2>{filteredSeller.name}</h2>
-          <StarRating rating={starRating} onRateChange={handleRatingChange}/>
+        <h2>{filteredSeller.name}</h2>
+        <StarRating rating={starRating} onRateChange={handleRatingChange} />
       </div>
       <div className="outer-product-list" key={sellerId}>
         {filteredSeller.products.map((product: Products) => (
           <div className="product-list" key={product.name}>
-            <img src={product.photo} />
+            <div className="picture-div">
+              <img src={product.photo} />
+            </div>
             <div className="product-description">
               <div className="product-data">
                 <h2>{product.name}</h2>
               </div>
               <div>
                 <p>{product.description}</p>
-                <div className="allergens-div">Alergeny: {product.allergens}</div>
+                <div className="allergens-div">
+                  Alergeny: {product.allergens}
+                </div>
                 <div className="product-price">
                   <h3>
                     {product.price} zł / {product.packing}
