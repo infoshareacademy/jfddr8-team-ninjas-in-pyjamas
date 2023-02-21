@@ -14,6 +14,7 @@ import { firebaseAuth, firebaseDb } from "../main";
 import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
 import StarRating from "./StarRating";
+import { useNavigate } from "react-router-dom";
 
 type Products = {
   id: string;
@@ -52,9 +53,13 @@ function SellerPage() {
   });
 
   const [filteredSellerState, setFilteredSeller] = useState<Seller | undefined>(filteredSeller);
+  const navigate = useNavigate();
 
   const addToShopping = async (product: Products) => {
-    let isNewProduct = true;
+    if (!isLogged) {navigate("/login");
+    return;
+      } 
+    let isNewProduct = true   
     shoppingCartItems.filter((e) => {
       if (e.id === product.id) {
         isNewProduct = false;
@@ -93,7 +98,7 @@ function SellerPage() {
       const sellerData = docData.data();
   
       // Update the seller's rating with the new value
-      const newRating = [...sellerData.rating || [], value];
+      const newRating = [...sellerData?.rating || [], value];
       const newRatingAverage = newRating.reduce((acc, rating) => acc + rating, 0) / newRating.length;
   
       // Update the seller data in Firebase with the new rating
@@ -112,7 +117,7 @@ function SellerPage() {
 
   return (
     <div>
-      <div>
+      <div className="seller-name-seller-page">
         <h2>{filteredSeller?.name}</h2>
         <StarRating onRateChange={handleRatingChange} rating={filteredSeller?.rating} />
         </div>
@@ -123,16 +128,15 @@ function SellerPage() {
             <div className="product-description">
               <div className="product-data">
                 <h2>{product.name }</h2>
-                <img
-                onClick={() => addToShopping(product)}
-                  className="shopping-cart-icon-seller-page"
-                  src="src/assets/Logo/ShoppingCartLogo.png"
-                  alt="shopping cart icon"
-                
-                  />
-              {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
-                {/* <button onClick={() => addToShopping(product)}>
-                </button> */}
+                <div className="add-to-shopping" onClick={() => addToShopping(product)}>
+                  <img 
+                    className="shopping-cart-icon-seller-page"
+                    src="src/assets/Logo/ShoppingCartLogo.png"
+                    alt="shopping cart icon" />
+                  {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
+                  {/* <button onClick={() => addToShopping(product)}>
+                  </button> */}
+                </div>
               </div>
               <div>
               <p>{product.description}</p>

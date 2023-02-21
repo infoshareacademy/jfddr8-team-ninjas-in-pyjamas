@@ -106,7 +106,7 @@ function ShoppingCart() {
                   <div className="shopping-cart-quantity">
                     <h4>{item.quantity} szt.</h4>
                     <button className="button" onClick={() => removeItemFromShoppingCart(item)}>
-                      Usuń produkt
+                      -
                     </button>
                     <button className="button" onClick={() => addItemToShoppingCart(item)}>
                       +
