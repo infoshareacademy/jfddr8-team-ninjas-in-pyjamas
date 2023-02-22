@@ -211,7 +211,7 @@ function SellerPage() {
         ))}
       </div>
       <div className="comment-title">
-        <h3>Oceń Sprzedającego :</h3>
+        <h3>Oceń Sprzedającego:</h3>
       </div> 
       <div className="comments-container"> 
        
@@ -221,7 +221,7 @@ function SellerPage() {
           <button onClick={(e) => {handleCommentChange(e)}}>Wyślij komentarz</button>
         </form>
         <div className="comments-2nd-tittle">
-          <h3>Opinie : </h3>
+          <h3>Opinie: </h3>
         </div>
         <div>
           {getComments.map((comment: string, index:number) =>

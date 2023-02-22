@@ -1,9 +1,9 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
-.outer-product-list{
-    min-height: 65vh;   
-}
+// .outer-product-list {
+//   min-height: 65vh;
+// }
 
 .seller-name-seller-page {
   display: flex;
@@ -95,80 +95,74 @@
   }
 }
 
-.comments-container{
-    @include makeMeFlex(column, center);
+.comments-container {
+  @include makeMeFlex(column, center);
 
-    form {
-        width: 800px;
-        height: 200px; 
+  form {
+    width: 800px;
+    height: 200px;
+  }
+
+  textarea {
+    width: 800px;
+    height: 120px;
+    font-family: "Lato";
+  }
+
+  button {
+    padding: 10px;
+    width: 200px;
+    margin: 16px auto 32px auto;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 2s;
+    cursor: pointer;
+    &:hover {
+      background-color: #a4adaa;
     }
+  }
 
-    textarea {
-        width: 800px;
-        height: 120px;
-        font-family:"Lato";
-    }
-
-    button{
-        padding: 10px;
-        width: 200px; 
-        margin: 16px auto 32px auto;
-        border-radius: 8px; 
-        font-size:18px;   
-        transition: 2s;
-        cursor: pointer;
-        &:hover{
-            background-color: #a4adaa;
-        }
-    }      
-
-    .comments-2nd-tittle{
-        width: 1000px;
-        height: 50px;
-        
-        h3 { 
-        
-        font-size: 22px; 
-        
-    }
-    }
-}
-
-.comment-title{
+  .comments-2nd-tittle {
     width: 1000px;
     height: 50px;
-    margin: 50px auto 5px auto;
 
-    h3 { 
-        font-size:22px; 
+    h3 {
+      font-size: 22px;
     }
-      
+  }
+}
+
+.comment-title {
+  width: 1000px;
+  height: 50px;
+  margin: 50px auto 5px auto;
+
+  h3 {
+    font-size: 22px;
+  }
 }
 
 .comment {
-    border-bottom: 1px solid black;
-    padding: 20px; 
-    width: 800px; 
-    color: rgb(49, 47, 47);
+  border-bottom: 1px solid black;
+  padding: 20px;
+  width: 800px;
+  color: rgb(49, 47, 47);
 }
 
-
-.toast-message{
-    background-color: blue; 
+.toast-message {
+  background-color: blue;
 }
+
 @media screen and (max-width: 1150px) {
-  .comments-container{
-    margin-top: 40px;
-  }
-  
-    .product-description {
+  .product-description {
     min-width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
   }
   .product-list {
-    width: 80%;
+    margin: 10px;
+    width: 90%;
     p {
       display: none;
     }
@@ -176,8 +170,57 @@
       margin: 40px 0;
       h3 {
         font-weight: bold;
-        font-size: 24px;
+        font-size: 20px;
       }
     }
+    .picture-div {
+      height: 215px;
+      min-width: 200px;
+    }
+
+    .img {
+      height: 100%;
+      width: 100%;
+    }
   }
+  .comments-container {
+    
+    width: 90%;
+    margin-top: 30px;
+
+    form {
+      width: 90%;
+    }
+
+    textarea {
+      width: 100%;
+    }
+
+    .comments-2nd-tittle {
+      margin: 0px auto 10px 30px;
+      width: 100%;
+    }
+  }
+
+  .comment-title {
+    margin: 50px 30px 10px 30px;
+    width: 200px;
+    h3{
+      font-size: 20px;
+    }
+  }
+
+  .comment {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .shopping-cart-icon-seller-page {
+    width: 20px;
+  }
+
+  .seller-name-seller-page {
+    justify-content: flex-start;
+  }
+  
 }
