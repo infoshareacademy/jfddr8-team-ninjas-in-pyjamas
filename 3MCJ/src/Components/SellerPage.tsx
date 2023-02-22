@@ -73,7 +73,7 @@ function SellerPage() {
   
   useEffect(() =>{
   fetchComments();
-  }, [comment]);
+  }, []);
 
 
   const addToShopping = async (product: Products) => {
@@ -151,14 +151,16 @@ function SellerPage() {
     const docRef = doc(firebaseDb, "Sellers", `${sellerId}`);
     try {
       const docData = await getDoc(docRef);
-      console.log(docData.data())
       const sellerData = docData.data();
       const newComment = [...sellerData?.comments || [], comment];
       await updateDoc(docRef, { comments: newComment });
       setFilteredSeller({
+
         ...filteredSeller,
         comments: newComment,
       });
+      setGetComments(newComment)
+      setComment('')
     } catch (error) {
       console.log("Error updating seller rating", error);
     };
@@ -202,18 +204,18 @@ function SellerPage() {
         <h3>Oceń Sprzedającego :</h3>
       </div> 
       <div className="comments-container"> 
-       <h3>Komentarze :</h3>
+       
         <form>
           <textarea value={comment} onChange={(e) => setComment(e.target.value)}
            />
-          <button onClick={() => {handleCommentChange();setComment('')}}>Wyślij komentarz</button>
+          <button onClick={() => {handleCommentChange()}}>Wyślij komentarz</button>
         </form>
         <div className="comments-2nd-tittle">
           <h3>Komentarze : </h3>
         </div>
         <div>
-          {getComments.map((comment: string) =>
-          <div className="comment" key={comment}>
+          {getComments.map((comment: string, index:number) =>
+          <div className="comment" key={index}>
             <p>{comment}</p> 
             </div>)}
         </div>

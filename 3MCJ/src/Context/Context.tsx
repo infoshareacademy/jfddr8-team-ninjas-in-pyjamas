@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { query,collection, getDocs } from "firebase/firestore";
+import { firebaseDb } from "../main";
+
 
 type GlobalVariablesType = {
   isLogged: boolean;
@@ -19,6 +22,7 @@ type GlobalVariablesType = {
   setRating:(rating:number)=> void;
   spinnerHome:boolean;
   setSpinnerHome:(spinnerHome:boolean)=>void;
+  
 };
 
 type PropsWithChildren = {
@@ -39,8 +43,29 @@ function Context(props: PropsWithChildren): JSX.Element {
   const [rating, setRating] = useState<number>(0);
   const [shoppingCartItems, setShoppingCartItems] = useState<any[]>([])
   const [spinnerHome, setSpinnerHome] = useState<boolean>(true)
+
+  const fetchSellers = async () => {
+    const q = query(collection(firebaseDb, "Sellers"));
+    try {
+      const sellersSnapshot = await getDocs(q);
+      const fetchedSellers: any[] = [];
+      sellersSnapshot.forEach((seller) => {
+        fetchedSellers.push({ id: seller.id, ...seller.data() });
+      });
+      setSellers(fetchedSellers);
+      setSpinnerHome(false)
+    } catch (error) {
+      console.error("Error fetching sellers: ", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSellers();
+  }, []);
+
+
   return (
-    <globalContext.Provider value={{spinnerHome, setSpinnerHome, setShoppingCartItems, shoppingCartItems ,rating, setRating, shoppingCartValue, setShoppingCartValue, sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
+    <globalContext.Provider value={{ spinnerHome, setSpinnerHome, setShoppingCartItems, shoppingCartItems ,rating, setRating, shoppingCartValue, setShoppingCartValue, sellers, setSellers, isLogged, setIsLogged, searchingCategory, setSearchingCategory, searchingLocation, setSearchingLocation, readDivValue, setReadDivValue  }}>
       {props.children}
     </globalContext.Provider>
   );

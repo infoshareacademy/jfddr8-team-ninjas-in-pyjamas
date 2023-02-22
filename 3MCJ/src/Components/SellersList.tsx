@@ -12,24 +12,9 @@ function SellersList() {
     useContext(globalContext);
   const navigate = useNavigate();
 
-  const fetchSellers = async () => {
-    const q = query(collection(firebaseDb, "Sellers"));
-    try {
-      const sellersSnapshot = await getDocs(q);
-      const fetchedSellers: any[] = [];
-      sellersSnapshot.forEach((seller) => {
-        fetchedSellers.push({ id: seller.id, ...seller.data() });
-      });
-      setSellers(fetchedSellers);
-      setSpinnerHome(false)
-    } catch (error) {
-      console.error("Error fetching sellers: ", error);
-    }
-  };
+
   
-  useEffect(() => {
-    fetchSellers();
-  }, []);
+
 
   const filterSellers = () => {
     const filteredSellers = sellers.filter((seller) => {
