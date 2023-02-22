@@ -15,9 +15,9 @@ import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
 import StarRating from "./StarRating";
 import { useNavigate } from "react-router-dom";
-import {toast, ToastContainer} from 'react-toastify'
+import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png"
+import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png";
 
 
 

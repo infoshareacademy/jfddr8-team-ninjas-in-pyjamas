@@ -7,12 +7,19 @@
   position: relative;
   min-height: 100%;
   max-width: 1920px;
-  width: 100%;
+  max-width: 100%;
+
   margin: 0 auto;
   display: grid;
   grid-template-rows: 95px 1fr 150px;
 }
 
-body> #root {
+body > #root {
+  height: 100%;
+}
+html {
+  height: 100%;
+}
+body {
   height: 100%;
 }
