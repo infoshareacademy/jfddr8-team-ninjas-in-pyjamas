@@ -1,5 +1,7 @@
-import React, { useState, useContext } from "react";
 import "../Styles/footer.scss"
+import TCJLogoFooter from "../assets/Logo/TCJLogoFooter.png"
+import LinkedInIcon from "../assets/Logo/LinkedInIcon.png"
+import GitHubIcon from "../assets/Logo/GitHubIcon.png"
 
 function Footer() {
   let currentDate = new Date();
@@ -37,7 +39,7 @@ function Footer() {
       <div className="site-logo"></div>
       <div className="site-info">
         <div> <img
-          src="src/assets/Logo/TCJLogoFooter.png"
+          src={TCJLogoFooter}
         /></div>
        
         {/* <div className="site-copyright-year">
@@ -53,14 +55,14 @@ function Footer() {
                 href={author.authorGithubLink}
                 target="_blank"
               >
-             <img className="footer-icons" src="src/assets/Logo/GitHubIcon.png" alt="GitHub icon" />
+             <img className="footer-icons" src={GitHubIcon} alt="GitHub icon" />
               </a>
               <a
                    className="author-linkedin"
                 href={author.authorLinkedInLink}
                 target="_blank"
               >
-             <img className="footer-icons" src="src/assets/Logo/LinkedInIcon.png" alt="LinkedIn icon" />
+             <img className="footer-icons" src={LinkedInIcon} alt="LinkedIn icon" />
               </a>
               {author.authorName}
 

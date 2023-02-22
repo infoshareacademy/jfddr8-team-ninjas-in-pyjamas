@@ -17,6 +17,7 @@ import StarRating from "./StarRating";
 import { useNavigate } from "react-router-dom";
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png"
 
 
 
@@ -191,7 +192,7 @@ function SellerPage() {
                 <div className="add-to-shopping" onClick={() => addToShopping(product)}>
                   <img 
                     className="shopping-cart-icon-seller-page"
-                    src="src/assets/Logo/ShoppingCartLogo.png"
+                    src={ShoppingCartLogo}
                     alt="shopping cart icon" />
                   {isLogged? <p>Dodaj do koszyka</p>: <p>Zaloguj się aby dodać do koszyka</p> } 
                   {/* <button onClick={() => addToShopping(product)}>

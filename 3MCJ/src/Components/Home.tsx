@@ -8,6 +8,7 @@ import StarRating from "./StarRating";
 import "../Styles/home.scss";
 import { Dna } from "react-loader-spinner";
 import { useEffect } from "react";
+import Logo from "../assets/Logo/TCJLogo.png"
 
 
 function Home() {
@@ -35,7 +36,7 @@ function Home() {
       <div className="search-section">
         <img
           className="shop-logo"
-          src="src/assets/Logo/TCJLogo.png"
+          src={Logo}
           alt="shop logo"
         />
         <form>

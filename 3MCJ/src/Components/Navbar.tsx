@@ -4,7 +4,11 @@ import { globalContext } from "../Context/Context";
 import { useNavigate, Navigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import "../Styles/navbar.scss";
-import { Dna } from "react-loader-spinner";
+import TCJLogoNavbar from "../assets/Logo/TCJLogoNavbar.png";
+import logOut from "../assets/Logo/log-out.png";
+import Registration  from "../assets/Logo/registration.png";
+import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png";
+
 
 function Navbar() {
   const {
@@ -43,7 +47,7 @@ function Navbar() {
         <img
           className="nav-bar-logo"
           onClick={() => navigate("/#")}
-          src="src/assets/Logo/TCJLogoNavbar.png"
+          src={TCJLogoNavbar}
           alt=""
         />
         <div className="div-login-registration">
@@ -51,7 +55,7 @@ function Navbar() {
             <div className="shopping-cart-icon-div" onClick={handleLogInOut}>
               <img
                 className="shopping-cart-icon"
-                src="src/assets/Logo/log-out.png"
+                src={logOut}
                 alt="shopping cart icon"
               />
               {isLogged ? <p>Wyloguj się</p> : <p>Zaloguj się</p>}
@@ -63,7 +67,7 @@ function Navbar() {
               >
                 <img
                   className="shopping-cart-icon"
-                  src="src/assets/Logo/registration.png"
+                  src={Registration}
                   alt="shopping cart icon"
                 />
                 {!isLogged && <p>Zarejestruj się</p>}
@@ -77,7 +81,7 @@ function Navbar() {
               >
                 <img
                   className="shopping-cart-icon"
-                  src="src/assets/Logo/ShoppingCartLogo.png"
+                  src={ShoppingCartLogo}
                   alt="shopping cart icon"
                 />
                 {isLogged && shoppingCartValue + " zł"}
