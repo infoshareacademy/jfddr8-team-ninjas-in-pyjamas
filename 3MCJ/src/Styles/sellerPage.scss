@@ -142,7 +142,18 @@
     h3 { 
         font-size:22px; 
     }
+<<<<<<< HEAD
       
+=======
+    
+      display: flex;
+      flex-direction: flex-start;    
+}
+
+.comment-title {
+  width: 1000px;
+  margin: 40px auto 14px;
+>>>>>>> 8e0d49be2e917adcebbdb4d29d12d8c198044c18
 }
 
 .comment {
@@ -158,7 +169,7 @@
 }
 @media screen and (max-width: 1150px) {
   .comments-container{
-    margin-top: 20px;
+    margin-top: 40px;
   }
   
     .product-description {
