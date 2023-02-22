@@ -1,16 +1,14 @@
-@use './variables'as *;
-@use './mixins' as *;
+@use "./variables" as *;
+@use "./mixins" as *;
 
 .App {
-    background: white;
-
-    font-family: 'Lato', sans-serif;
-    position:relative; 
-    min-height: 100vh;
-    max-width: 1920px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: 95px 1fr 150px ;
-
+  background: white;
+  font-family: "Lato", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 95px 1fr 150px;
 }

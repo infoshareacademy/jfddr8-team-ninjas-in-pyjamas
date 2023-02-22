@@ -49,3 +49,27 @@
     @include makeMeFlex(row, space-between);
     margin-right: 36px
 }
+
+.outer-div {
+@media screen and (max-width: 1150px) {
+    .seller-list {
+        max-width: 450px;
+                 }
+
+ 
+
+    .seller-rating{
+        @include makeMeFlex(column, center);
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        h2{
+        font-size: 28px;
+      }
+    }
+    p {
+        display: none;
+      }
+     
+  }}
+ 

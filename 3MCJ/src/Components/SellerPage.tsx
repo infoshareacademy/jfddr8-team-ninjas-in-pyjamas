@@ -199,9 +199,9 @@ function SellerPage() {
                 </div>
               </div>
               <div>
-              <p>{product.description}</p>
-              <div>Alergeny: {product.allergens}</div>
-              <div className="product-price">
+                <p>{product.description}</p>
+                <div>Alergeny: {product.allergens}</div>
+                <div className="product-price">
                 <h3>{product.price} zł / {product.packing}</h3>            
               </div>
               </div>

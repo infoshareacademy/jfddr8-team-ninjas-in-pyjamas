@@ -52,6 +52,7 @@ function Home() {
             <option value="Gdynia">Gdynia</option>
             <option value="Sopot">Sopot</option>
             <option value="Gdańsk">Gdańsk</option>
+            <option value="">Całe Trójmiasto</option>
           </select>
           {/* <label htmlFor="products">Kategoria produktu:</label> */}
           <select
@@ -68,6 +69,7 @@ function Home() {
             <option value="Wyroby Cukiernicze">Wyroby Cukiernicze</option>
             <option value="Nabiał">Nabiał</option>
             <option value="Wyroby Garmażeryjne">Wyroby Garmażeryjne</option>
+            <option value="">Wszystkie Kategorie</option>
           </select>
           {/* <input type="submit" value={"Znajdź pyszności"} /> */}
         </form>
