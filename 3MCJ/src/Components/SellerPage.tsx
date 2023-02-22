@@ -15,6 +15,9 @@ import uuid from "react-uuid";
 import "../Styles/sellerPage.scss";
 import StarRating from "./StarRating";
 import { useNavigate } from "react-router-dom";
+import {toast, ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 type Products = {
@@ -73,7 +76,7 @@ function SellerPage() {
   
   useEffect(() =>{
   fetchComments();
-  }, []);
+  }, [comment]);
 
 
   const addToShopping = async (product: Products) => {
@@ -141,9 +144,11 @@ function SellerPage() {
     } catch (error) {
       console.log("Error updating seller rating", error);
     }
+    
   };
 
-  const handleCommentChange = async () => {
+  const handleCommentChange = async (e:any) => {
+    e.preventDefault();
     if(!isLogged){ 
       navigate("/login");
       return;
@@ -161,6 +166,10 @@ function SellerPage() {
       });
       setGetComments(newComment)
       setComment('')
+      toast.success('Dziękujemy za Twój komentarz', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'toast-message'
+      });
     } catch (error) {
       console.log("Error updating seller rating", error);
     };
@@ -208,10 +217,10 @@ function SellerPage() {
         <form>
           <textarea value={comment} onChange={(e) => setComment(e.target.value)}
            />
-          <button onClick={() => {handleCommentChange()}}>Wyślij komentarz</button>
+          <button onClick={(e) => {handleCommentChange(e)}}>Wyślij komentarz</button>
         </form>
         <div className="comments-2nd-tittle">
-          <h3>Komentarze : </h3>
+          <h3>Opinie : </h3>
         </div>
         <div>
           {getComments.map((comment: string, index:number) =>
@@ -220,6 +229,7 @@ function SellerPage() {
             </div>)}
         </div>
       </div>
+      
     </div>
   );
 }
