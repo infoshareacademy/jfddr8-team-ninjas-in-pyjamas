@@ -9,6 +9,7 @@ import "../Styles/home.scss";
 import { Dna } from "react-loader-spinner";
 import { useEffect } from "react";
 
+
 function Home() {
   const {
     setIsLogged,
