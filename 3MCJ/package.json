@@ -1,5 +1,6 @@
 {
   "name": "3mcj",
+  "homepage": "https://infoshareacademy.github.io/jfddr8-team-ninjas-in-pyjamas",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,10 +8,13 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "golive": "lt --port 5173"
+    "golive": "lt --port 5173",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "firebase": "^9.17.1",
+    "gh-pages": "^5.0.0",
     "localtunnel": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
