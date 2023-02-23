@@ -9,6 +9,7 @@
     background-image: url("../assets/Logo/login-page-background.jpg");
     background-size: cover;
     flex: 1;
+    
 }
          
   input[type="text"],
@@ -52,4 +53,11 @@
     flex-direction: column;
     gap: 8px;
     margin: 15px;
+  }
+
+
+  @media screen and (max-width: 1150px)  {
+    .login-form {
+      padding: 0;
+    }
   }

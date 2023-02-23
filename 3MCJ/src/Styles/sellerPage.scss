@@ -44,6 +44,7 @@
 
   .product-data {
     @include makeMeFlex(row, space-between);
+    margin-top: 8px;
   }
   .add-to-shopping {
     display: flex;
@@ -161,6 +162,8 @@
     justify-content: space-evenly;
   }
   .product-list {
+    display: flex;
+    flex-wrap: wrap;
     margin: 10px auto;
     width: 95%;
     p {

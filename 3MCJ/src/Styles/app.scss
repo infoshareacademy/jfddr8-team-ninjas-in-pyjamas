@@ -27,13 +27,10 @@ body {
 @media screen and (max-width: 1150px) {
   .App {
     // min-height: 800px;
-   width: 100%;
+   max-width: 100%;
+   display: flex;
+   flex-direction: column;
+
   }}
-//   html {
-//     height:  1500px;
-//   }
-//   body {
-//     height: 1500px;
-//   }
-// }
+
 

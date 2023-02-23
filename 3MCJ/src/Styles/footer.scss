@@ -22,10 +22,15 @@
     margin:0px 4px;
 }
 .site-info img {
-    height: 100px; 
+    height: auto; 
+    width:100%;
 }
 
 .author {
     display: flex;
     flex-direction: row;
+}
+.site-authors{
+    @include makeMeFlex(row, center);
+    flex-wrap: wrap;
 }

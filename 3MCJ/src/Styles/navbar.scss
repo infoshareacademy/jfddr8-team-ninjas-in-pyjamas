@@ -65,3 +65,24 @@
     cursor:pointer;
   }
   
+  @media screen and (max-width: 1150px)  {
+  .navbar {
+    img{
+    width: 30%;
+    margin:0;
+    padding:0;
+  }
+  p{
+    display: none;
+  }
+  .shopping-cart-icon-div{
+    padding:0;
+    margin:0;
+      }
+  }
+  .shopping-cart-icon{
+    width: 10px;
+   
+ 
+}
+}
