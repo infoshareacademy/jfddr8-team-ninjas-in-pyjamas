@@ -50,12 +50,24 @@
   .outer-page-box-div {
     width: 100%;
     border-radius: 0;
+    border: 0px;
   }
   .map-image {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
+    margin-top: 30px;
+    aspect-ratio:5/2;
+    margin-bottom: 20px;
+    
+    img {
+    object-fit: cover;
+    margin: 2px;
+    border:none;
+     }
+    }
 
+  .content-outer-div{
+      width: 90%;
+      line-height: 1.5;
+      font-size: 12px;
+    }
 }

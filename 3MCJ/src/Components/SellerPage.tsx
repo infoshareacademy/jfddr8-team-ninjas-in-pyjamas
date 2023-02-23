@@ -180,7 +180,7 @@ function SellerPage() {
     <div>
       <div className="seller-name-seller-page">
         <h2>{filteredSeller?.name}</h2>
-        <StarRating onRateChange={handleRatingChange} rating={filteredSeller?.rating} />
+        
         </div>
       <div className="outer-product-list" key={sellerId}>
         {filteredSeller && filteredSeller.products.map((product: Products) => (
@@ -201,7 +201,7 @@ function SellerPage() {
               </div>
               <div>
                 <p>{product.description}</p>
-                <div>Alergeny: {product.allergens}</div>
+                {/* <div>Alergeny: {product.allergens}</div> */}
                 <div className="product-price">
                 <h3>{product.price} zł / {product.packing}</h3>            
               </div>
@@ -212,6 +212,7 @@ function SellerPage() {
       </div>
       <div className="comment-title">
         <h3>Oceń Sprzedającego:</h3>
+        <StarRating onRateChange={handleRatingChange} rating={filteredSeller?.rating} />
       </div> 
       <div className="comments-container"> 
        

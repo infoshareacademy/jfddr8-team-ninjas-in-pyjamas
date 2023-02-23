@@ -155,41 +155,51 @@
 }
 
 @media screen and (max-width: 1150px) {
+
+  
+  
   .product-description {
-    min-width: 350px;
+    width: 100%; 
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    p {
+      display: none;
+    }
+    
   }
   .product-list {
     display: flex;
     flex-wrap: wrap;
     margin: 10px auto;
-    width: 95%;
-    p {
-      display: none;
+    width: 90%;
+    img {
+      border-radius: 22px 22px 0 0 ;
+      width: 100%;
     }
+   
+   
     .product-price {
-      margin: 40px 0;
+      margin: 10px 0;
       h3 {
         font-weight: bold;
         font-size: 20px;
       }
     }
     .picture-div {
-      height: 215px;
-      min-width: 200px;
+      height: 150px;
+      min-width: 100%;
     }
+    h2{
+      font-size: 24px;
+    }
+    
 
-    .img {
-      height: 100%;
-      width: 100%;
-    }
   }
   .comments-container {
     
     width: 90%;
-    margin-top: 30px;
+    margin: 30px auto 0 ;
 
     form {
       width: 90%;
@@ -200,22 +210,25 @@
     }
 
     .comments-2nd-tittle {
-      margin: 0px auto 10px 30px;
+      margin: 0px 30px;
       width: 100%;
+      height: auto;
+      font-size: 20px;
     }
   }
 
   .comment-title {
-    margin: 50px 30px 10px 30px;
-    width: 200px;
+    margin: 50px 30px 20px 30px;
+    width: 100%;
     h3{
       font-size: 20px;
     }
   }
 
   .comment {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    margin: 0 ;
+    text-align: center;
   }
 
   .shopping-cart-icon-seller-page {
@@ -224,7 +237,13 @@
 
   .seller-name-seller-page {
     justify-content: center;
-    margin-left: 10px;
+    
+
+    h2{
+      text-align: center;
+      margin: 0 5px;
+    }
   }
   
+
 }

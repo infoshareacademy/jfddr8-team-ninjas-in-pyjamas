@@ -20,7 +20,7 @@ function OuterPage() {
         <div className="content-outer-div">
         <h2>PODSUMOWANIE ZAKUPÓW</h2>
           <div>
-         <p>Kwota do zapłaty (w tym VAT):</p> {shoppingCartValue + " zł"}
+         <p>Kwota do zapłaty :</p> {shoppingCartValue + " zł (z VAT)"}
           </div>
           <div>
             <p>Sposób dostawy:</p> <p>Odbiór własny w punkcie dystrybucji</p>

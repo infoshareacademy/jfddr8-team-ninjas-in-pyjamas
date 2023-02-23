@@ -28,20 +28,20 @@
     appearance: none;
   }
 
-  input {
-    padding: 4px;
-    border-radius: 8px;
-    margin: 0px 48px;
-    width: 280px;
-    border: 1px solid black;
-    background-color: #fefcff;
-    font-size: 24px;
-    transition: 0.3s;
-  }
-  input:hover {
-    transform: scale(1.1);
-    background-color: rgba(128, 194, 203, 0.9681372549019608);
-  }
+  // input {
+  //   padding: 4px;
+  //   border-radius: 8px;
+  //   margin: 0px 48px;
+  //   width: 280px;
+  //   border: 1px solid black;
+  //   background-color: #fefcff;
+  //   font-size: 24px;
+  //   transition: 0.3s;
+  // }
+  // input:hover {
+  //   transform: scale(1.1);
+  //   background-color: rgba(128, 194, 203, 0.9681372549019608);
+  // }
   form {
     display: flex;
     align-items: center;
@@ -76,7 +76,19 @@
 }
 
 @media screen and (max-width: 1150px) {
+ 
+.search-section {
   .shop-logo {
-    max-width: 40%;
+    margin-top:30px;
+    max-width: 70%;
   }
+  
+  select {
+    padding: 0px; //było 8px
+    width: 80%;
+    font-size: 18px; // było 24px
+    margin-bottom: 8px;
+ 
+  }
+}
 }

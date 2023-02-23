@@ -4,13 +4,14 @@ import { getDoc, doc } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "./main";
 import Routing from "./Routing/Routing";
 import { globalContext } from "./Context/Context";
-import ShoppingCart from "./Components/ShoppingCart";
 import  Navbar  from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import "./Styles/app.scss";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const { setShoppingCartItems, setShoppingCartValue, isLogged, setIsLogged} = useContext(globalContext);
+  const {pathname} = useLocation();
 
   useEffect((): void => {
     onAuthStateChanged(firebaseAuth, async (user) => {
@@ -33,6 +34,10 @@ function App() {
       }
     });
   }, [setShoppingCartItems, setShoppingCartValue, setIsLogged]);
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  },[pathname])
 
   return (
     <div className="App">
