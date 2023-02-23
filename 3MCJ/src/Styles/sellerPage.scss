@@ -161,8 +161,8 @@
     justify-content: space-evenly;
   }
   .product-list {
-    margin: 10px;
-    width: 90%;
+    margin: 10px auto;
+    width: 95%;
     p {
       display: none;
     }
@@ -220,7 +220,8 @@
   }
 
   .seller-name-seller-page {
-    justify-content: flex-start;
+    justify-content: center;
+    margin-left: 10px;
   }
   
 }
