@@ -47,6 +47,7 @@ function Registration() {
     e.preventDefault();
     if(user.password !== user.confirmPassword) {
       alert("Hasła się nie zgadzają");
+      setError("Hasła się nie zgadzają");
       return;
     }
     try {      

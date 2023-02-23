@@ -10,6 +10,7 @@ function Login(): JSX.Element {
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { setIsLogged } = useContext(globalContext);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const navigate = useNavigate();
 
@@ -22,6 +23,7 @@ function Login(): JSX.Element {
       
     } catch (error) {
       console.log(error)
+      setErrorMessage("Niepoprawne dane logowania. Spróbuj ponownie.")
     }
   }
 
@@ -50,8 +52,8 @@ function Login(): JSX.Element {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          {errorMessage && <div className="error-message">{errorMessage}</div>}
           <div className="button-container"><button>Login</button></div>
-          
         </form>
       </div>
     </div>
