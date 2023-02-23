@@ -10,7 +10,6 @@ import { Dna } from "react-loader-spinner";
 import { useEffect } from "react";
 import Logo from "../assets/Logo/TCJLogo.png"
 
-
 function Home() {
   const {
     setIsLogged,

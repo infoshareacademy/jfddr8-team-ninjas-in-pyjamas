@@ -5,6 +5,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth, firebaseDb } from "../main";
 import { setDoc, doc,  } from "firebase/firestore";
 import "../Styles/registration.scss";
+// import { toast, ToastContainer } from "react-toastify/dist/components";
+import 'react-toastify/dist/ReactToastify.css';
 
 enum userType {
   Customer = "customer",
@@ -48,6 +50,7 @@ function Registration() {
     if(user.password !== user.confirmPassword) {
       alert("Hasła się nie zgadzają");
       setError("Hasła się nie zgadzają");
+      // toast.success('Hasła się nie zgadzają');
       return;
     }
     try {      
@@ -91,7 +94,7 @@ function Registration() {
           <div className="input-container">
           <input name="confirmPassword" type="password" onChange={handleInputChange} required value={user.confirmPassword} placeholder="Potwierdź Hasło"/>
           </div>
-          {error && (<div className="error-message">{error}</div>)}
+          {/* {error && (<div className="error-message">{error}</div>)} */}
           <div className="input-container">
           <input type="name" name="name" onChange={handleInputChange} required value={user.name} placeholder="Imię" />
           </div>

@@ -27,7 +27,6 @@ function Login(): JSX.Element {
     }
   }
 
-
   return (
     <div className="login-app">
       <div className="login-form">

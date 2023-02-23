@@ -19,8 +19,6 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png";
 
-
-
 type Products = {
   id: string;
   name: string;
@@ -40,7 +38,6 @@ type Seller = {
   products: Products[];
   rating: number[];
 };
-
 
 function SellerPage() {
   const {
@@ -78,7 +75,6 @@ function SellerPage() {
   useEffect(() =>{
   fetchComments();
   }, [comment]);
-
 
   const addToShopping = async (product: Products) => {
 
@@ -158,7 +154,7 @@ function SellerPage() {
     try {
       const docData = await getDoc(docRef);
       const sellerData = docData.data();
-      const newComment = [...sellerData?.comments || [], comment];
+      const newComment = [comment, ...sellerData?.comments || []];
       await updateDoc(docRef, { comments: newComment });
       setFilteredSeller({
 
@@ -225,7 +221,7 @@ function SellerPage() {
           <h3>Opinie: </h3>
         </div>
         <div>
-          {getComments.map((comment: string, index:number) =>
+          {getComments.map((  comment: string, index:number) =>
           <div className="comment" key={index}>
             <p>{comment}</p> 
             </div>)}

@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom";
 import mapa1 from "../assets/Logo/mapa1.png";
 import Logo from "../assets/Logo/TCJLogo.png";
 
-
 function OuterPage() {
   const { shoppingCartValue } = useContext(globalContext);
   const today = new Date();
@@ -13,7 +12,6 @@ function OuterPage() {
   const day = tomorrow.getDate();
   const month = tomorrow.getMonth() + 1;
   const year = tomorrow.getFullYear();
-
 
   return (
     <div className="outer-page-div">

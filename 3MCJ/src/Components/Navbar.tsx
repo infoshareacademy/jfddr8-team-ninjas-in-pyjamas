@@ -9,7 +9,6 @@ import logOut from "../assets/Logo/log-out.png";
 import Registration  from "../assets/Logo/registration.png";
 import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png";
 
-
 function Navbar() {
   const {
     setIsLogged,
