@@ -1,42 +1,49 @@
-import "./App.css";
 import { useContext, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
 import { firebaseAuth, firebaseDb } from "./main";
 import Routing from "./Routing/Routing";
 import { globalContext } from "./Context/Context";
+import  Navbar  from "./Components/Navbar";
+import Footer from "./Components/Footer";
+import "./Styles/app.scss";
+import { useLocation } from "react-router-dom";
 
 function App() {
-  // const { username, setUsername } = useContext(globalContext);
+  const { setShoppingCartItems, setShoppingCartValue, isLogged, setIsLogged} = useContext(globalContext);
+  const {pathname} = useLocation();
 
-  // useEffect((): void => {
-  //   onAuthStateChanged(firebaseAuth, async (user) => {
-  //     if (user) {
-  //       const userEmail = user.email;
-  //       setUsername(userEmail);
+  useEffect((): void => {
+    onAuthStateChanged(firebaseAuth, async (user) => {
+      if (user) {
+        const email = user.email;
+        setIsLogged(true);
+        const docRef = doc(firebaseDb, "Users", `${email}`);
+        try {
+          const shoppingCartDetailsSnapshot = await getDoc(docRef);
+          if(shoppingCartDetailsSnapshot.exists()){
+            setShoppingCartItems(shoppingCartDetailsSnapshot.data().shoppingCartItems);
+            setShoppingCartValue(shoppingCartDetailsSnapshot.data().shoppingCartValue);
+          }} catch (error) {
+            console.log("Error fetching shopping cart data", error);
+          }
+      } else {
+        setIsLogged(false);
+        setShoppingCartItems([]);
+        setShoppingCartValue(0);
+      }
+    });
+  }, [setShoppingCartItems, setShoppingCartValue, setIsLogged]);
 
-  //       try {
-  //         const docRef = doc(firebaseDb, "cart", `${userEmail}`);
-  //         const cartValueSnapshot = await getDoc(docRef);
-  //         console.log(cartValueSnapshot);
-  //         if (cartValueSnapshot.exists()) {
-  //           const data = cartValueSnapshot.data();
-  //           setCartProducts(data.products);
-  //         }
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     } else {
-  //       setUsername("");
-  //       setCartProducts([]);
-  //     }
-  //   });
-  // }, [setCartProducts, setUsername]);
+  useEffect(() => {
+    window.scrollTo(0,0)
+  },[pathname])
 
   return (
     <div className="App">
-      3jmiejskie Craft Jadło
+      <Navbar/>
       <Routing />
+      <Footer/>
     </div>
   );
 }

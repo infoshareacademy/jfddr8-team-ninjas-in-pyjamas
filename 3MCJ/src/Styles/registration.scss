@@ -1,0 +1,71 @@
+@use './variables'as *;
+
+.registration-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Lato', sans-serif;
+    background-image: url("../assets/Logo/login-page-background.jpg");
+    background-size: cover;
+    flex: 1;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="name"],
+input[type="surname"],
+input[type="city"] {
+  height: 46px;
+  width: 280px; 
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+label{
+    font-size:14px;
+  }
+
+.registration-form {
+    background-color: white;
+    padding: 40px;
+   box-shadow: 0px 10px 49px 6px rgba(75, 75, 75, 1);
+    border-radius: 15px;
+    margin: 35px; 
+  }
+
+  input[type="submit"] {
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    background: $secondary-light;
+    border: 1px solid black;
+    color:black; 
+    padding: 12px 20px;
+    width: 45%;
+    border-radius: 6px; 
+  }
+
+  .submit-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 15px;
+  }
+
+  select{
+    height: 46px;
+    width: 280px; 
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding-top: 15px;
+  }
+  
+
+  .error-massage{
+    color:red;
+  }
+  

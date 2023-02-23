@@ -1,23 +1,36 @@
 {
   "name": "3mcj",
+  "homepage": "https://infoshareacademy.github.io/jfddr8-team-ninjas-in-pyjamas",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "golive": "lt --port 5173",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "cypress": "^12.6.0",
     "firebase": "^9.17.1",
+    "localtunnel": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1"
+    "react-loader-spinner": "^5.3.4",
+    "react-router-dom": "^6.8.1",
+    "react-star-ratings": "^2.3.0",
+    "react-toastify": "^9.1.1",
+    "react-uuid": "^2.0.0",
+    "sass": "^1.58.1",
+    "use-deep-compare-effect": "^1.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "gh-pages": "^5.0.0",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }

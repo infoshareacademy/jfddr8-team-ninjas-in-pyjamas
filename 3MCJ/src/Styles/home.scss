@@ -1,0 +1,94 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.search-section {
+  background-image: url("../assets/Logo/5.jpg");
+  background-size: cover;
+  background-position: 30%;
+  padding-bottom: 100px;
+}
+
+.search-section {
+  @include makeMeFlex(column, center);
+  gap: 48px;
+  margin-bottom: 60px;
+  padding-top: 60px;
+
+  select {
+    padding: 8px;
+    margin: 0px 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 320px;
+    border: 1px solid black;
+    background-color: #fefcff;
+    // background-image: url('../assets/Logo/home-background.jpg');
+    font-size: 24px;
+    box-shadow: 0px 3px 10px 1px rgba(75, 75, 75, 1);
+    appearance: none;
+  }
+
+  // input {
+  //   padding: 4px;
+  //   border-radius: 8px;
+  //   margin: 0px 48px;
+  //   width: 280px;
+  //   border: 1px solid black;
+  //   background-color: #fefcff;
+  //   font-size: 24px;
+  //   transition: 0.3s;
+  // }
+  // input:hover {
+  //   transform: scale(1.1);
+  //   background-color: rgba(128, 194, 203, 0.9681372549019608);
+  // }
+  form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  image {
+    max-width: 50%;
+  }
+
+  option {
+    background-color: (
+      linear-gradient(
+        180deg,
+        rgba(244, 244, 244, 1) 2%,
+        rgba(128, 194, 203, 0.9681372549019608) 6%
+      )
+    );
+    transition: 0.3s;
+  }
+  option:hover {
+    background-color: rgba(128, 194, 203, 0.9681372549019608);
+    border-left: 5px solid rgba(16, 89, 99, 0.968);
+  }
+}
+
+.dna-wrapper {
+  margin: 0 auto;
+  height: 400px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1150px) {
+ 
+.search-section {
+  .shop-logo {
+    margin-top:30px;
+    max-width: 70%;
+  }
+  
+  select {
+    padding: 0px; //było 8px
+    width: 80%;
+    font-size: 18px; // było 24px
+    margin-bottom: 8px;
+ 
+  }
+}
+}

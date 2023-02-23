@@ -4,9 +4,14 @@ import { useContext, useState } from "react";
 import { signOut } from "firebase/auth";
 import { firebaseAuth } from "../main";
 import SellersList from "./SellersList";
+import StarRating from "./StarRating";
+import "../Styles/home.scss";
+import { Dna } from "react-loader-spinner";
+import { useEffect } from "react";
+import Logo from "../assets/Logo/TCJLogo.png"
+
 
 function Home() {
-  const navigate = useNavigate();
   const {
     setIsLogged,
     isLogged,
@@ -14,83 +19,70 @@ function Home() {
     setSearchingLocation,
     searchingCategory,
     setSearchingCategory,
+    readDivValue,
+    setReadDivValue,
+    spinnerHome,
   } = useContext(globalContext);
   const [locationValue, setLocationValue] = useState<string>("");
   const [categoryValue, setCategoryValue] = useState<string>("");
 
-  const handleLogInOut = () => {
-    if (!isLogged) {
-      navigate("/login");
-      setIsLogged(!isLogged);
-    } else {
-      navigate("/");
-      setIsLogged(!isLogged);
-      signOut(firebaseAuth);
-    }
-  };
-
-  const handleRegistration = () => {
-    navigate("/registration");
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  useEffect(() => {
     setSearchingLocation(locationValue);
     setSearchingCategory(categoryValue);
-  };
+  }, [locationValue, categoryValue]);
 
   return (
-    <div>
-      <div>
-        <button onClick={handleLogInOut}>
-          {isLogged ? "Wyloguj się" : "Zaloguj się"}
-        </button>
-        <button onClick={handleRegistration}>Zarejestruj się</button>
+    <div className="home">
+      <div className="search-section">
+        <img
+          className="shop-logo"
+          src={Logo}
+          alt="shop logo"
+        />
+        <form>
+          {/* <label htmlFor="location">Lokalizacja:</label> */}
+          <select
+            defaultValue={"Wybierz miasto"}
+            onChange={(e) => {
+              setLocationValue(e.target.value);
+            }}
+            name="location"
+            id="location"
+          >
+            <option disabled>Wybierz miasto</option>
+            <option value="Gdynia">Gdynia</option>
+            <option value="Sopot">Sopot</option>
+            <option value="Gdańsk">Gdańsk</option>
+            <option value="">Całe Trójmiasto</option>
+          </select>
+          {/* <label htmlFor="products">Kategoria produktu:</label> */}
+          <select
+            defaultValue={"Wybierz produkt"}
+            onChange={(e) => {
+              setCategoryValue(e.target.value);
+            }}
+            name="products"
+            id="products"
+          >
+            <option disabled>Wybierz produkt</option>
+            <option value="Wyroby Mięsne">Wyroby Mięsne</option>
+            <option value="Wyroby Rybne">Wyroby Rybne</option>
+            <option value="Wyroby Cukiernicze">Wyroby Cukiernicze</option>
+            <option value="Nabiał">Nabiał</option>
+            <option value="Wyroby Garmażeryjne">Wyroby Garmażeryjne</option>
+            <option value="">Wszystkie Kategorie</option>
+          </select>
+          {/* <input type="submit" value={"Znajdź pyszności"} /> */}
+        </form>
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor="location">Lokalizacja:</label>
-        <select 
-          defaultValue={"Wybierz miasto"}
-          onChange={(e) => {
-            setLocationValue(e.target.value);
-          }}
-          name="location"
-          id="location"
-        >
-          <option disabled >
-            Wybierz miasto
-          </option>
-          <option value="Gdynia">Gdynia</option>
-          <option value="Sopot">Sopot</option>
-          <option value="Gdańsk">Gdańsk</option>
-        </select>
-        <label htmlFor="products">Kategoria produktu:</label>
-        <select
-        defaultValue={"Wybierz produkt"}
-          onChange={(e) => {
-            setCategoryValue(e.target.value);
-          }}
-          name="products"
-          id="products"
-        >
-           <option disabled >
-            Wybierz produkt
-          </option>
-          <option value="Wyroby Mięsne">Wyroby Mięsne</option>
-          <option value="Wyroby Rybne">Wyroby Rybne</option>
-          <option value="Wyroby Cukiernicze">Wyroby Cukiernicze</option>
-          <option value="Nabiał">Nabiał</option>
-          <option value="Wyroby Garmażeryjne">Wyroby Garmażeryjne</option>
-        </select>
-        <input type="submit" value={"Znajdź pyszności"} />
-      </form>
-      <div>
-        <div >Wyroby Mięsne</div>
-        <div>Wyroby Rybne</div>
-        <div>Wyroby Cuiernicze</div>
-        <div>Nabiał</div>
-        <div>Wyroby Garmażeryjne</div>
-      </div>
+      <Dna
+        visible={spinnerHome}
+        height="80"
+        width="80"
+        ariaLabel="dna-loading"
+        wrapperStyle={{}}
+        wrapperClass="dna-wrapper"
+      />
       <SellersList />
     </div>
   );

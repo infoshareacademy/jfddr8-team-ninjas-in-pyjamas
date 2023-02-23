@@ -1,0 +1,87 @@
+@use './variables'as *;
+@use './mixins' as *;
+
+.seller-list:hover {
+    transform: scale(1.03)
+}
+
+.seller-list {
+    @include makeMeFlex(row, flex-start);
+    margin: 32px auto;
+    border-radius: 22px;
+    background-color: $primary-light;
+   
+    transition: transform .3s; box-shadow:  5px 5px 10px #9f9f9f,
+    -5px -5px 10px #ffffff;;
+    max-width: 1000px;
+
+    img {  
+    border-radius: 22px 0 0 22px;
+    width: 45%;
+    }
+
+    .seller-description {
+        align-self: flex-start;
+        margin: 14px;
+        width: 70%;  
+    }
+
+    .seller-data {
+        @include makeMeFlex(row, flex-start);
+       
+    }
+
+    p {
+        color: $font-color;    
+        font-size: 16px;
+        margin: 16px 36px; 
+        text-align: justify; 
+    }
+
+    h2 {
+        color: $font-color;
+        font-size: 36px;
+        margin-left: 12px;
+    }
+  
+}
+.seller-rating{
+    @include makeMeFlex(row, space-between);
+    margin-right: 36px
+}
+
+@media screen and (max-width: 1150px) {
+    .outer-div { 
+        width:90%;
+        margin-left: 5%;
+        p {
+            display: none;
+          }
+    }  /// dodałam
+    .seller-list {
+        max-width: 450px;}
+
+    .seller-rating{
+        @include makeMeFlex(column, center);
+        align-items: center;
+        justify-content: center;
+        text-align: center;        
+        h2{
+        font-size: 18px;
+      }
+    }
+    
+
+      .seller-list .seller-description {
+        margin: 2px;
+        width: 100%;
+
+        .seller-data {
+            margin: 0; 
+        }
+         
+    }
+     
+  }
+
+ 
