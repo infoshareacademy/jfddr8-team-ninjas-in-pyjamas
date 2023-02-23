@@ -68,14 +68,18 @@
   @media screen and (max-width: 1150px)  {
   .navbar {
     img{
-    width: 30%;
-    margin:0;
+    width: 30px;
+    margin-right: 8px;
     padding:0;
+  }
+  .nav-bar-logo{
+    width: 70px;
   }
   p{
     display: none;
   }
   .shopping-cart-icon-div{
+    flex:none;
     padding:0;
     margin:0;
       }
@@ -84,5 +88,10 @@
     width: 10px;
    
  
+}
+
+.navbar-button-div{
+  justify-content: end;
+  align-items:flex-end;
 }
 }

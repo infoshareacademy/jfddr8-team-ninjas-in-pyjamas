@@ -8,6 +8,7 @@
     @include makeMeFlex(column, center);
     border-top: 2px solid white;
     background-color:$secondary-light ;
+    
   
     ul { @include makeMeFlex(row, center);
         
@@ -22,8 +23,7 @@
     margin:0px 4px;
 }
 .site-info img {
-    height: auto; 
-    width:100%;
+    height: 100px; 
 }
 
 .author {
@@ -33,4 +33,13 @@
 .site-authors{
     @include makeMeFlex(row, center);
     flex-wrap: wrap;
+}
+
+@media screen and (max-width: 1150px)  {
+    .site-info img {
+        height: auto; 
+        width: 90%;
+        margin-left: 5%;
+    }
+
 }
