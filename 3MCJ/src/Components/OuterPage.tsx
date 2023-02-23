@@ -3,6 +3,7 @@ import { globalContext } from "../Context/Context";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import mapa1 from "../assets/Logo/mapa1.png";
+import Logo from "../assets/Logo/TCJLogo.png";
 
 
 function OuterPage() {
@@ -17,6 +18,10 @@ function OuterPage() {
   return (
     <div className="outer-page-div">
       <div className="outer-page-box-div">
+      <img className="outer-logo"
+          src={Logo}
+          alt="shop logo"
+        />
         <div className="content-outer-div">
         <h2>PODSUMOWANIE ZAKUPÓW</h2>
           <div>
