@@ -117,50 +117,52 @@ function ShoppingCart() {
 
   return (
     <div className="container">
-      
-        <div className="basket-text">Koszyk</div>
-        {shoppingCartItems.map((item) => (
-          <div key={item.id}>
-            <div className="shopping-cart-product-list">
-              <img src={item.photo} />
-              <div className="shopping-cart-product-description">
-                <div className="shopping-cart-product-data">
-                  <h2>{item.name}</h2>
-                  <h3>
-                    {item.price} zł / {item.packing}{" "}
-                  </h3>
-                  <div className="shopping-cart-quantity">
-                    <h4>{item.quantity} szt.</h4>
-                    <button
-                      className="button"
-                      onClick={() => removeItemFromShoppingCart(item)}
-                    >
-                      -
-                    </button>
-                    <button
-                      className="button"
-                      onClick={() => addItemToShoppingCart(item)}
-                    >
-                      +
-                    </button>
-                    <button
-                      className="button delete"
-                      onClick={() => deleteItemFromShoppingCart(item)}
-                    >
-                      Usuń z koszyka
-                    </button>
-                  </div>
+      <div className="basket-text">Koszyk</div>
+      {shoppingCartItems.map((item) => (
+        <div key={item.id}>
+          <div className="shopping-cart-product-list">
+            <img src={item.photo} />
+            <div className="shopping-cart-product-description">
+              <div className="shopping-cart-product-data">
+                <h2>{item.name}</h2>
+                <h3>
+                  {item.price} zł / {item.packing}{" "}
+                </h3>
+                <div className="shopping-cart-quantity">
+                  <h4>{item.quantity} szt.</h4>
+                  <button
+                    className="button"
+                    onClick={() => removeItemFromShoppingCart(item)}
+                  >
+                    -
+                  </button>
+                  <button
+                    className="button"
+                    onClick={() => addItemToShoppingCart(item)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="button delete"
+                    onClick={() => deleteItemFromShoppingCart(item)}
+                  >
+                    Usuń z koszyka
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        ))}
-     
+        </div>
+      ))}
+
       <div className="pay-container">
         <p>
           Całkowita wartość: <strong>{shoppingCartValue + " zł"}</strong>
         </p>
-        <div className="pay" onClick={() => navigate("/outerPage")}> Przejdź do płatności</div>
+        <div className="pay" onClick={() => navigate("/outerPage")}>
+          {" "}
+          Przejdź do płatności
+        </div>
       </div>
     </div>
   );

@@ -1,32 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 interface Props {
   onRateChange?: (value: number) => void;
-  rating?: number; 
+  rating?: number;
 }
 
-const StarRating: React.FC<Props> = ({ onRateChange, rating:initialRating }) => {
+const StarRating: React.FC<Props> = ({
+  onRateChange,
+  rating: initialRating,
+}) => {
+  const [rating, setRating] = useState<number>(initialRating || 0);
 
-  const [ rating, setRating ] = useState<number>(initialRating || 0);  
-
-  const onRating = (value:number) => {
-    if (!onRateChange) return
+  const onRating = (value: number) => {
+    if (!onRateChange) return;
     setRating(value);
-          onRateChange(value);
-          console.log("rating:", rating);
-
-
-  }
+    onRateChange(value);
+  };
 
   return (
-    <div className='star-ratings-div' >
-      {[1, 2, 3, 4, 5].map(value => (
+    <div className="star-ratings-div">
+      {[1, 2, 3, 4, 5].map((value) => (
         <span key={value} onClick={() => onRating(value)}>
-          {rating >= value ? '⭐️' : '☆'}
+          {rating >= value ? "⭐️" : "☆"}
         </span>
       ))}
     </div>
-  )
-}
-export default StarRating
-
+  );
+};
+export default StarRating;
