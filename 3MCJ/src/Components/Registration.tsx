@@ -47,7 +47,7 @@ function Registration() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (user.password !== user.confirmPassword) {
-      alert("Hasła się nie zgadzają");
+      // alert("Hasła się nie zgadzają");
       setError("Hasła się nie zgadzają");
       // toast.success('Hasła się nie zgadzają');
       return;
