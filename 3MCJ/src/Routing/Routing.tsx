@@ -15,7 +15,7 @@ function Routing() {
       <Route path="/" element={<Home />} />
       <Route path="/sellerPage/:sellerId" element={<SellerPage />} />
       <Route path="/shoppingCart" element={<ShoppingCart />} />
-      <Route path="/outerPage" element={<OuterPage/>}/>
+      <Route path="/outerPage" element={<OuterPage />} />
     </Routes>
   );
 }

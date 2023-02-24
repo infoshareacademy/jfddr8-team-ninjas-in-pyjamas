@@ -1,45 +1,40 @@
-@use './variables'as *;
-@use './mixins' as *;
-
-
-
+@use "./variables" as *;
+@use "./mixins" as *;
 
 .footer-container {
-    @include makeMeFlex(column, center);
-    border-top: 2px solid white;
-    background-color:$secondary-light ;
-    
-  
-    ul { @include makeMeFlex(row, center);
-        
-    }
-    li.author{
-        margin: 6px 12px;
-        font-size: 12px;
-    }
+  @include makeMeFlex(column, center);
+  border-top: 2px solid white;
+  background-color: $secondary-light;
+
+  ul {
+    @include makeMeFlex(row, center);
+  }
+  li.author {
+    margin: 6px 12px;
+    font-size: 12px;
+  }
 }
 .footer-icons {
-    height: 16px;
-    margin:0px 4px;
+  height: 16px;
+  margin: 0px 4px;
 }
 .site-info img {
-    height: 100px; 
+  height: 100px;
 }
 
 .author {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
-.site-authors{
-    @include makeMeFlex(row, center);
-    flex-wrap: wrap;
+.site-authors {
+  @include makeMeFlex(row, center);
+  flex-wrap: wrap;
 }
 
-@media screen and (max-width: 1150px)  {
-    .site-info img {
-        height: auto; 
-        width: 90%;
-        margin-left: 5%;
-    }
-
+@media screen and (max-width: 1150px) {
+  .site-info img {
+    height: auto;
+    width: 90%;
+    margin-left: 5%;
+  }
 }

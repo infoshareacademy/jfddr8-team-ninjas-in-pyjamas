@@ -1,9 +1,9 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
-// .outer-product-list {
-//   min-height: 65vh;
-// }
+.text-area {
+  padding: 12px;
+}
 
 .seller-name-seller-page {
   display: flex;
@@ -150,23 +150,15 @@
   color: rgb(49, 47, 47);
 }
 
-.toast-message {
-  background-color: blue;
-}
-
 @media screen and (max-width: 1150px) {
-
-  
-  
   .product-description {
-    width: 100%; 
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     p {
       display: none;
     }
-    
   }
   .product-list {
     display: flex;
@@ -174,11 +166,10 @@
     margin: 10px auto;
     width: 90%;
     img {
-      border-radius: 22px 22px 0 0 ;
+      border-radius: 22px 22px 0 0;
       width: 100%;
     }
-   
-   
+
     .product-price {
       margin: 10px 0;
       h3 {
@@ -190,16 +181,13 @@
       height: 150px;
       min-width: 100%;
     }
-    h2{
+    h2 {
       font-size: 24px;
     }
-    
-
   }
   .comments-container {
-    
     width: 90%;
-    margin: 30px auto 0 ;
+    margin: 30px auto 0;
 
     form {
       width: 90%;
@@ -219,15 +207,15 @@
 
   .comment-title {
     margin: 50px 30px 20px 30px;
-    width: 100%;
-    h3{
+    width: 90%;
+    h3 {
       font-size: 20px;
     }
   }
 
   .comment {
     width: 100%;
-    margin: 0 ;
+    margin: 0;
     text-align: center;
   }
 
@@ -237,13 +225,10 @@
 
   .seller-name-seller-page {
     justify-content: center;
-    
 
-    h2{
+    h2 {
       text-align: center;
       margin: 0 5px;
     }
   }
-  
-
 }

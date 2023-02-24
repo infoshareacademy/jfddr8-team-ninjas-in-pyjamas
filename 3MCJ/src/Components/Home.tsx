@@ -1,15 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { globalContext } from "../Context/Context";
 import { useContext, useState } from "react";
-import { signOut } from "firebase/auth";
-import { firebaseAuth } from "../main";
 import SellersList from "./SellersList";
-import StarRating from "./StarRating";
 import "../Styles/home.scss";
 import { Dna } from "react-loader-spinner";
 import { useEffect } from "react";
-import Logo from "../assets/Logo/TCJLogo.png"
-
+import Logo from "../assets/Logo/TCJLogo.png";
 
 function Home() {
   const {
@@ -34,13 +29,8 @@ function Home() {
   return (
     <div className="home">
       <div className="search-section">
-        <img
-          className="shop-logo"
-          src={Logo}
-          alt="shop logo"
-        />
+        <img className="shop-logo" src={Logo} alt="shop logo" />
         <form>
-          {/* <label htmlFor="location">Lokalizacja:</label> */}
           <select
             defaultValue={"Wybierz miasto"}
             onChange={(e) => {
@@ -55,7 +45,6 @@ function Home() {
             <option value="Gdańsk">Gdańsk</option>
             <option value="">Całe Trójmiasto</option>
           </select>
-          {/* <label htmlFor="products">Kategoria produktu:</label> */}
           <select
             defaultValue={"Wybierz produkt"}
             onChange={(e) => {
@@ -72,7 +61,6 @@ function Home() {
             <option value="Wyroby Garmażeryjne">Wyroby Garmażeryjne</option>
             <option value="">Wszystkie Kategorie</option>
           </select>
-          {/* <input type="submit" value={"Znajdź pyszności"} /> */}
         </form>
       </div>
       <Dna

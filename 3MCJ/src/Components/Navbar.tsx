@@ -6,9 +6,8 @@ import { signOut } from "firebase/auth";
 import "../Styles/navbar.scss";
 import TCJLogoNavbar from "../assets/Logo/TCJLogoNavbar.png";
 import logOut from "../assets/Logo/log-out.png";
-import Registration  from "../assets/Logo/registration.png";
+import Registration from "../assets/Logo/registration.png";
 import ShoppingCartLogo from "../assets/Logo/ShoppingCartLogo.png";
-
 
 function Navbar() {
   const {

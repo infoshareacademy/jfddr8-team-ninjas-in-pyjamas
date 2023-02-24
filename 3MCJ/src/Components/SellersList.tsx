@@ -8,13 +8,15 @@ import StarRating from "./StarRating";
 
 function SellersList() {
   const [filteredSellers, setFilteredSellers] = useState<any[]>([]);
-  const { spinnerHome,setSpinnerHome, searchingCategory, searchingLocation, sellers, setSellers } =
-    useContext(globalContext);
+  const {
+    spinnerHome,
+    setSpinnerHome,
+    searchingCategory,
+    searchingLocation,
+    sellers,
+    setSellers,
+  } = useContext(globalContext);
   const navigate = useNavigate();
-
-
-  
-
 
   const filterSellers = () => {
     const filteredSellers = sellers.filter((seller) => {
@@ -37,24 +39,28 @@ function SellersList() {
   return (
     <div className="outer-div">
       {filteredSellers.map((seller) => {
-        const {id, sellerPhoto, name, sellerDescription, rating} = seller
-        const starRating = rating?.reduce((acc:any, value:number)=> acc + value , 0)/rating?.length
-        return <div className="main" key={id}>
-          <div className="seller-list">
-            <Link to={`/sellerPage/${seller.id}`}>
-              <div className="seller-data">              
-                <img src={seller.sellerPhoto} />
-                <div className="seller-description">
-                  <div className="seller-rating">
-                    <h2>{seller.name}</h2>
-                    <StarRating rating={seller.ratingAverage} />
+        const { id, sellerPhoto, name, sellerDescription, rating } = seller;
+        const starRating =
+          rating?.reduce((acc: any, value: number) => acc + value, 0) /
+          rating?.length;
+        return (
+          <div className="main" key={id}>
+            <div className="seller-list">
+              <Link to={`/sellerPage/${seller.id}`}>
+                <div className="seller-data">
+                  <img src={seller.sellerPhoto} />
+                  <div className="seller-description">
+                    <div className="seller-rating">
+                      <h2>{seller.name}</h2>
+                      <StarRating rating={seller.ratingAverage} />
+                    </div>
+                    <p>{seller.sellerDescription}</p>
                   </div>
-                  <p>{seller.sellerDescription}</p>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
-        </div>
+        );
       })}
     </div>
   );
